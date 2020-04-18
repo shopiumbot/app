@@ -1,0 +1,79 @@
+{
+    "name": "shopiumbot/app",
+    "description": "Shopium Bot",
+    "keywords": ["shopiumbot"],
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/shopiumbot/app/issues?state=open",
+        "source": "https://github.com/shopiumbot/app"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "^2.0.30",
+        "yiisoft/yii2-jui": "^2.0.0",
+        "yiisoft/yii2-smarty": "^2.0",
+        "yiisoft/yii2-bootstrap4": "^2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.1.0",
+        "yiisoft/yii2-debug": "~2",
+        "panix/engine": "dev-master",
+        "panix/mod-stats": "dev-master",
+        "panix/mod-delivery": "dev-master",
+        "panix/mod-admin": "dev-master",
+        "panix/mod-shop": "dev-master",
+        "panix/mod-pages": "dev-master",
+        "panix/mod-images": "dev-master",
+        "panix/mod-plugins": "dev-master",
+        "panix/mod-rbac": "dev-master",
+        "panix/mod-compare": "dev-master",
+        "panix/mod-user": "dev-master",
+        "panix/mod-seo": "dev-master",
+        "panix/mod-banner": "dev-master",
+        "giggsey/libphonenumber-for-php": "^8.0@dev",
+        "panix/mod-contacts": "dev-master"
+    },
+    "require-dev": {
+        "yiisoft/yii2-gii": "~2",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "~2.3.0",
+        "codeception/verify": "~0.4.0",
+        "codeception/specify": "~0.4.6",
+        "symfony/browser-kit": ">=2.7 <=4.2.4"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "web/uploads": "0755",
+                    "cmd": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}

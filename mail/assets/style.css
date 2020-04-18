@@ -1,0 +1,27 @@
+
+
+.footer-center{
+    background-color: #343a40;
+    padding: 1rem;
+}
+.footer-bottom{
+    color: #fff;
+    padding: 1rem;
+}
+.footer-center a{
+    color:#fff;
+}
+.btn,
+a.btn{
+    padding: 10px 15px;
+    background: #343a40;
+    color:#fff;
+    text-decoration: none;
+}
+.btn-primary{
+    background: navy;
+}
+hr{
+
+    border-top: 1px dashed #343a40;
+}

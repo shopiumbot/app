@@ -1,0 +1,37 @@
+#Options -Indexes
+AddDefaultCharset UTF-8
+#Options FollowSymlinks
+
+
+#Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule ^assets/(.*)$ /web/assets/$1 [L]
+RewriteRule ^css/(.*)$ web/css/$1 [L]
+RewriteRule ^js/(.*)$ web/js/$1 [L]
+RewriteRule ^uploads/(.*)$ web/uploads/$1 [L]
+RewriteRule ^(.*)$ /web/$1 [L]
+
+
+
+RewriteCond %{REQUEST_URI} !^/(api)
+RewriteRule ^(.*)$ /api/$1 [L]
+
+
+#RewriteCond %{THE_REQUEST} ^.*/index\.php
+#RewriteRule ^(.*)index.php$ /$1 [R=301,L]
+
+RewriteRule ^install.php$ /web/install.php
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+#RewriteRule ^exchange1c(.*)$ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+
+RewriteRule . /web/index.php
