@@ -2,9 +2,346 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47f675b8-00d4-4e88-af57-03a34d387be5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/Bootstrap.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/Module.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/README_RU.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/Module.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/controllers/CountryController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/models/Country.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/attribute.options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/category.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/jquery.dualListBox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/kitProductsTab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/productType.update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.configurations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.variations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/relatedProductsTab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/css/shop.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/notify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/product.view.configurations.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/switchCurrency.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/PopularBlock.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/messages/ru/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/views/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/AdminAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/NotifyAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/ProductConfigureAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/WebAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/AttributeAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/CategoryAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ConfigurationsAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductIndex.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductTypeAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/VariationsAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/commands/ForsageController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/commands/ForsageV2Controller.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/AttributeData.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/AttributesRender.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/BaseUrlRule.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/BaseUrlRule1.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRule.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRuleBACKUP.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRule_1.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlValidator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CurrencyManager.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior1.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior111.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavColumn.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ExternalFinder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/FilterController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ManufacturerUrlRule.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/PrivatBank.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ProductsDuplicator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/SearchUrlRule.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageExternalFinder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageProductImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageProductsImport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageExternalFinder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageProductImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageProductsImport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/AjaxController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/CatalogController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/DefaultController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/ManufacturerController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/NotifyController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/ProductController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/SearchController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/AttributeController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/AttributeGroupController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/CategoryController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/CurrencyController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/DefaultController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/ManufacturerController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/NotifyController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/ProductController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/SettingsController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/SupplierController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/TypeController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/mail/ru/product_notify.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Attribute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/AttributeGroup.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Category.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Currency.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Manufacturer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Product.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/ProductType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/SettingsForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Supplier.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/admin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180857_193215_shop_kit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193213_shop_product.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193214_shop_product_weight.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193216_shop_product_length.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193313_shop_product_prices.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193421_shop_attribute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193433_shop_attribute_option.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193505_shop_category.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193517_shop_currency.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193531_shop_manufacturer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193557_shop_suppliers.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193608_shop_type_attribute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193650_shop_product_attribute_eav.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193704_shop_product_category_ref.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193720_shop_product_configurable_attributes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193731_shop_product_configurations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193746_shop_product_type.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193757_shop_product_variant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193811_shop_related_product.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193913_shop_product_notify.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_194311_shop_product_image.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m190315_062942_shop_attribute_group.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m190316_061840_shop_insert.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Attribute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/AttributeGroup.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/AttributeOption.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Category.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Currency.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Kit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Manufacturer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Product.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductAttributesEav.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductCategoryRef.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductImage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductNotifications.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductPrices.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductVariant.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/RelatedProduct.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Supplier.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/TypeAttribute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/forms/SettingsForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeGroupQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeOptionsQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/CategoryQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/FilterQueryTrait.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ManufacturerQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ProductNotificationsQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ProductQuery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/AttributeGroupSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/AttributeSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/CurrencySearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ManufacturerSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductNotificationsSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/SupplierSearch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/traits/EavQueryTrait.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/traits/ProductTrait.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeGroupTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeOptionTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/CategoryTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/ManufacturerTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/ProductTranslate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/__multi_input.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_color.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_main.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_options.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/_category.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/_main.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_global.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_price.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_search.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/default/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/_main.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/_search.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/_send_delivery.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/_send_delivery_1.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/delivery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/_search.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_attributes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_configurations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images_2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_kit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_main.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_prices.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_prices111.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_related.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_tree.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_variations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_warehouse.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/variants/_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/category_assign_window.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/duplicate_products_window.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/products_price_window.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/_global.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/_seo_categories.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/supplier/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/supplier/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_options.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_product_seo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_tree.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/update.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_sorting.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_grid.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_list.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/listview.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/search.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/default/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/layouts/catalog.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/manufacturer/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/manufacturer/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/notify/_form.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_attributes_group.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_attributes_list.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_configurations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_kit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_attributes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_comments.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_related.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_video.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/view2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/search/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/search/view.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/brands/BrandsWidget.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/brands/views/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/CategoriesWidget.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/menu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/views/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/FiltersWidget.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/attributes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/current.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/manufacturer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/price.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/FilterAsset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/FiltersWidget.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/assets/js/filter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/assets/js/filter2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/attributes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/current.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/manufacturer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/price.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/SearchWidget.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/_item.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/_result.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/navbar.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/LICENSE_EN.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/LICENSE_RU.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/Module.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/InstallAsset.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/css/install.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/images/en.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/images/side.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/controllers/WizardController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/ChooseLanguage.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/Configure.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/License.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/en/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/ru/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/uk/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/migrations/scheme.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/ChooseLanguage.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Configure.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Db.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Info.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/License.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/chooseLanguage.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/completed.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/configure.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/info.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/license.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/_alert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/_error.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/error.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/install.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/invalidStep.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/ChooseLanguage.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/cancelled.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/complete.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/configure.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/db.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/info.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/license.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notPaused.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notResumed.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notStarted.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/paused.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/Module.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/assets/AdminAsset.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/assets/WebAsset.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/DefaultController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/admin/DefaultController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/admin/SettingsController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/Items.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/SettingsForm.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/admin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/default.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/migrations/m170908_125100_portfolio.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/Category.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/Items.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/forms/SettingsForm.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/query/ItemsQuery.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/traits/ItemsTrait.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/translate/ItemsTranslate.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/tabs/_main.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/update.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/_global.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/_price.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_attributes.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_related.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_video.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/view.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/shop11/Module.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/install/assets/images/ru.png" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/arrow_up.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/install/assets/images/uk.png" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/arrow_down.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/models/search/ItemsSearch.php" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductTypeSearch.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/_search.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/_search.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/index.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/tabs/_images.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images_1.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/update.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/product/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,13 +357,13 @@
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+              <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitattributes">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -46,12 +383,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Country.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/shop/api/v1/models/Country.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="102">
-                <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+                <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -113,6 +460,38 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -126,6 +505,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\domains\shopiumbot.loc\modules" />
       <recent name="D:\OSPanel\domains\shopiumbot.loc" />
     </key>
   </component>
@@ -214,7 +594,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587207811655</updated>
-      <workItem from="1587207813732" duration="499000" />
+      <workItem from="1587207813732" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1587208275079</created>
@@ -223,17 +603,24 @@
       <option name="project" value="LOCAL" />
       <updated>1587208275079</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init">
+      <created>1587208317297</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587208317297</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499000" />
+    <option name="totallyTimeSpent" value="619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -259,6 +646,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="init" />
     <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
@@ -271,7 +660,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="102">
-            <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
             <folding />
           </first_editor>
           <second_editor />
@@ -281,7 +670,15 @@
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+          <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -294,7 +691,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitattributes">
+    <entry file="file://$PROJECT_DIR$/modules/shop/api/v1/models/Country.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
