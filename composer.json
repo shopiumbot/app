@@ -18,7 +18,13 @@
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "yiisoft/yii2-debug": "~2",
         "panix/engine": "dev-master",
-        "giggsey/libphonenumber-for-php": "^8.0@dev"
+        "giggsey/libphonenumber-for-php": "^8.0@dev",
+        "panix/mod-plugins": "dev-master",
+        "panix/mod-admin": "dev-master",
+        "panix/mod-rbac": "dev-master",
+        "panix/mod-user": "dev-master",
+        "panix/mod-contacts": "dev-master",
+        "panix/mod-telegram": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
