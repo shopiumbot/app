@@ -2,10 +2,10 @@
 
 return [
     'class' => 'panix\engine\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=',
-    'username' => '',
-    'password' => '',
-    'charset' => 'utf8mb4', //utf8 на utf8mb4. FOR Emoji
+    'dsn' => 'mysql:host=localhost;dbname=shopiumbot',
+    'username' => 'root',
+    'password' => 'panix47228960',
+    'charset' => 'utf8',
     'tablePrefix' => 'cms_',
     'serverStatusCache' => YII_DEBUG ? 0 : 3600,
     'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
