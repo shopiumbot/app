@@ -3,7 +3,6 @@
 namespace app\modules\shop\controllers\admin;
 
 use panix\engine\CMS;
-use app\modules\shop\models\translate\CategoryTranslate;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\shop\models\Category;
@@ -143,7 +142,6 @@ class CategoryController extends AdminController
     {
 
         Yii::$app->db->createCommand()->truncateTable(Category::tableName())->execute();
-        Yii::$app->db->createCommand()->truncateTable(CategoryTranslate::tableName())->execute();
 
 
         $model = new Category;

@@ -39,12 +39,12 @@ $config = [
         'shop' => ['class' => 'app\modules\shop\Module'],
         //'shop' => ['class' => 'app\modules\shop\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
-        //'seo' => ['class' => 'panix\mod\seo\Module'],
-        //'discounts' => ['class' => 'panix\mod\discounts\Module'],
+        'seo' => ['class' => 'panix\mod\seo\Module'],
+        'discounts' => ['class' => 'panix\mod\discounts\Module'],
        // 'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
        // 'csv' => ['class' => 'panix\mod\csv\Module'],
        // 'delivery' => ['class' => 'panix\mod\delivery\Module'],
-       // 'images' => ['class' => 'panix\mod\images\Module'],
+        'images' => ['class' => 'panix\mod\images\Module'],
        // 'cart' => ['class' => 'panix\mod\cart\Module'],
        // 'pages' => ['class' => 'panix\mod\pages\Module'],
        // 'news' => ['class' => 'panix\mod\news\Module'],
@@ -56,11 +56,6 @@ $config = [
         ],
         'img' => [
             'class' => 'panix\engine\components\ImageHandler',
-        ],
-        'curl' => ['class' => 'panix\engine\Curl'],
-        'consoleRunner' => [
-            'class' => 'panix\engine\components\ConsoleRunner',
-            'file' => '@app/cmd' // or an absolute path to console file
         ],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'formatter' => ['class' => 'panix\engine\i18n\Formatter'],

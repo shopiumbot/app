@@ -7,7 +7,6 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use panix\engine\db\ActiveRecord;
 use app\modules\shop\models\query\ManufacturerQuery;
-use app\modules\shop\models\translate\ManufacturerTranslate;
 
 /**
  * Class Manufacturer
@@ -23,7 +22,6 @@ class Manufacturer extends ActiveRecord
 
     const MODULE_ID = 'shop';
     const route = '/admin/shop/manufacturer';
-    public $translationClass = ManufacturerTranslate::class;
 
     /**
      * @inheritdoc

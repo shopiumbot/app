@@ -24,7 +24,11 @@
         "panix/mod-rbac": "dev-master",
         "panix/mod-user": "dev-master",
         "panix/mod-contacts": "dev-master",
-        "panix/mod-telegram": "dev-master"
+        "panix/mod-telegram": "dev-master",
+        "panix/mod-images": "dev-master",
+        "panix/mod-seo": "dev-master",
+        "panix/wgt-fancybox": "dev-master",
+        "panix/mod-discounts": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",

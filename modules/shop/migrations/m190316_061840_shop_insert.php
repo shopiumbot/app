@@ -17,17 +17,13 @@ use panix\engine\db\Migration;
 use app\modules\shop\models\Attribute;
 use app\modules\shop\models\AttributeOption;
 use app\modules\shop\models\ProductType;
-use app\modules\shop\models\translate\AttributeOptionTranslate;
 use app\modules\shop\models\Category;
 use app\modules\shop\models\Product;
-use app\modules\shop\models\translate\CategoryTranslate;
 use panix\mod\images\models\Image;
 use app\modules\shop\models\AttributeGroup;
 use app\modules\shop\models\ProductAttributesEav;
 use app\modules\shop\models\ProductCategoryRef;
 use app\modules\shop\models\Kit;
-use app\modules\shop\models\translate\AttributeGroupTranslate;
-use app\modules\shop\models\translate\ProductTranslate;
 
 /**
  * Class m190316_061840_shop_insert
@@ -58,15 +54,11 @@ class m190316_061840_shop_insert extends Migration
 
 
         //Add Root Category
-        $this->batchInsert(Category::tableName(), ['lft', 'rgt', 'depth', 'slug', 'full_path'], [
-            [1, 2, 1, 'root', '']
+        $this->batchInsert(Category::tableName(), ['lft', 'rgt', 'depth', 'slug', 'name', 'full_path'], [
+            [1, 2, 1, 'root', 'Каталог продукции', '']
         ]);
 
-        foreach (Yii::$app->languageManager->getLanguages(false) as $lang) {
-            $this->batchInsert(CategoryTranslate::tableName(), ['object_id', 'language_id', 'name'], [
-                [1, $lang['id'], 'Каталог продукции']
-            ]);
-        }
+
 
 
         $categories = [
@@ -273,8 +265,7 @@ class m190316_061840_shop_insert extends Migration
                 foreach ($product['attributes'] as $attribute_name => $attribute_value) {
 
                     $attribute = Attribute::find()
-                        ->joinWith('translations as translate')
-                        ->where(['translate.title' => $attribute_name])
+                        ->where(['title' => $attribute_name])
                         ->one();
                     if (!$attribute) {
                         $attribute = new Attribute;
@@ -331,44 +322,26 @@ class m190316_061840_shop_insert extends Migration
             [4, 3, '', '']
         ]);
 
-        /*$this->batchInsert('{{%shop__product_attribute_eav}}', ['entity', 'attribute', 'value'], [
-            [1, CMS::slug(array_keys($attributesList)[0]), 3]
-        ]);
-        $this->batchInsert('{{%shop__product_attribute_eav}}', ['entity', 'attribute', 'value'], [
-            [2, CMS::slug(array_keys($attributesList)[0]), 2]
-        ]);
-        $this->batchInsert('{{%shop__product_attribute_eav}}', ['entity', 'attribute', 'value'], [
-            [3, CMS::slug(array_keys($attributesList)[0]), 2]
-        ]);
-        $this->batchInsert('{{%shop__product_attribute_eav}}', ['entity', 'attribute', 'value'], [
-            [4, CMS::slug(array_keys($attributesList)[0]), 2]
-        ]);
-        $this->batchInsert('{{%shop__product_attribute_eav}}', ['entity', 'attribute', 'value'], [
-            [5, CMS::slug(array_keys($attributesList)[0]), 2]
-        ]);*/
+
     }
 
     public function down()
     {
-        /*$this->dropTable(Attribute::tableName());
-        $this->dropTable(AttributeOption::tableName());
-        $this->dropTable(AttributeOptionTranslate::tableName());
-        $this->dropTable(AttributeGroup::tableName());
-        $this->dropTable(AttributeGroupTranslate::tableName());*/
+
         $this->truncateTable(Attribute::tableName());
         $this->truncateTable(AttributeOption::tableName());
-        $this->truncateTable(AttributeOptionTranslate::tableName());
+
 
         $this->truncateTable(AttributeGroup::tableName());
-        $this->truncateTable(AttributeGroupTranslate::tableName());
+
 
 
         $this->truncateTable(Product::tableName());
-        $this->truncateTable(ProductTranslate::tableName());
+
 
 
         $this->truncateTable(Category::tableName());
-        $this->truncateTable(CategoryTranslate::tableName());
+
         $this->truncateTable(ProductType::tableName());
         $this->truncateTable(ProductCategoryRef::tableName());
         $this->truncateTable(ProductAttributesEav::tableName());
@@ -380,8 +353,7 @@ class m190316_061840_shop_insert extends Migration
     private function writeAttribute($attribute_id, $value)
     {
         $attributeOption = AttributeOption::find()
-            ->joinWith('translations as translate')
-            ->where(['translate.value' => $value])
+            ->where(['value' => $value])
             ->one();
         if (!$attributeOption) {
             $attributeOption = new AttributeOption;

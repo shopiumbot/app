@@ -4,7 +4,7 @@ return [
     'class' => 'panix\engine\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=shopiumbot',
     'username' => 'root',
-    'password' => '',
+    'password' => '47228960panix',
     'charset' => 'utf8',
     'tablePrefix' => 'm90f_',
     'serverStatusCache' => YII_DEBUG ? 0 : 3600,

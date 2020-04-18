@@ -1,6 +1,5 @@
 <?php
 
-use app\modules\shop\models\translate\AttributeOptionTranslate;
 use panix\engine\Html;
 use panix\engine\widgets\Pjax;
 use panix\ext\multipleinput\MultipleInput;

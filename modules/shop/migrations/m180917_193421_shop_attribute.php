@@ -13,7 +13,7 @@ use Yii;
 use panix\engine\CMS;
 use panix\engine\db\Migration;
 use app\modules\shop\models\Attribute;
-use app\modules\shop\models\translate\AttributeTranslate;
+
 
 class m180917_193421_shop_attribute extends Migration
 {

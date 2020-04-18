@@ -10,7 +10,7 @@ namespace app\modules\shop\migrations;
 use yii\db\Schema;
 use panix\engine\db\Migration;
 use app\modules\shop\models\AttributeOption;
-use app\modules\shop\models\translate\AttributeOptionTranslate;
+
 
 class m180917_193433_shop_attribute_option extends Migration
 {
