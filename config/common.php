@@ -22,39 +22,7 @@ $config = [
         'maintenance' => 'panix\engine\maintenance\controllers\MaintenanceController'
     ],
     'modules' => [
-        'plugins' => [
-            'class' => 'panix\mod\plugins\Module',
-            'pluginsDir' => [
-                '@panix/engine/plugins',
-            ]
-        ],
-        'rbac' => [
-            'class' => 'panix\mod\rbac\Module',
-            //'as access' => [
-            //    'class' => panix\mod\rbac\filters\AccessControl::class
-            //],
-        ],
-        'stats' => ['class' => 'panix\mod\stats\Module'],
-        'admin' => ['class' => 'panix\mod\admin\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
-        'compare' => ['class' => 'panix\mod\compare\Module'],
-        'shop' => ['class' => 'panix\mod\shop\Module'],
-        //'shop' => ['class' => 'app\modules\shop\Module'],
-        'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-        'banner' => ['class' => 'panix\mod\banner\Module'],
-        'contacts' => ['class' => 'panix\mod\contacts\Module'],
-        'seo' => ['class' => 'panix\mod\seo\Module'],
-        'discounts' => ['class' => 'panix\mod\discounts\Module'],
-        'comments' => ['class' => 'panix\mod\comments\Module'],
-        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-        'csv' => ['class' => 'panix\mod\csv\Module'],
-        'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
-        'delivery' => ['class' => 'panix\mod\delivery\Module'],
-        'images' => ['class' => 'panix\mod\images\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'],
-        'pages' => ['class' => 'panix\mod\pages\Module'],
-        'news' => ['class' => 'panix\mod\news\Module'],
+
     ],
     'components' => [
         'authManager' => [
@@ -91,17 +59,6 @@ $config = [
             //  ],
             // ],
             //'appendTimestamp' => true
-        ],
-        'plugins' => [
-            'class' => panix\mod\plugins\components\PluginsManager::class,
-            'appId' => panix\mod\plugins\BasePlugin::APP_BACKEND,
-            // by default
-            'enablePlugins' => true,
-            'shortcodesParse' => true,
-            'shortcodesIgnoreBlocks' => [
-                '<pre[^>]*>' => '<\/pre>',
-                // '<div class="content[^>]*>' => '<\/div>',
-            ]
         ],
         'i18n' => [
             'translations' => [
