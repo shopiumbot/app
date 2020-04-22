@@ -36,18 +36,9 @@ $config = [
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
-        'shop' => ['class' => 'app\modules\shop\Module'],
-        //'shop' => ['class' => 'app\modules\shop\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
-        'discounts' => ['class' => 'panix\mod\discounts\Module'],
-       // 'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-       // 'csv' => ['class' => 'panix\mod\csv\Module'],
-       // 'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
-       // 'cart' => ['class' => 'panix\mod\cart\Module'],
-       // 'pages' => ['class' => 'panix\mod\pages\Module'],
-       // 'news' => ['class' => 'panix\mod\news\Module'],
     ],
     'components' => [
         'authManager' => [

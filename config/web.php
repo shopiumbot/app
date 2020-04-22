@@ -53,16 +53,6 @@ $config = [
                 // '<div class="content[^>]*>' => '<\/div>',
             ]
         ],
-        'sphinx' => [
-            'class' => 'yii\sphinx\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;port=9306;',
-            'username' => '',
-            'password' => '',
-        ],
-        'fcm' => [
-            'class' => 'understeam\fcm\Client',
-            'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
-        ],
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
@@ -86,7 +76,7 @@ $config = [
             'baseUrl' => '',
             // 'csrfParam' => '_csrf-frontend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
+            'cookieValidationKey' => 'm38y535nygo8wytowertg78gm4wt',
         ],
 
         'errorHandler' => [
