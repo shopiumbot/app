@@ -35,7 +35,7 @@ $config = [
             //],
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
+        'user' => ['class' => 'app\modules\user\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],

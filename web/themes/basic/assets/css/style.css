@@ -1095,6 +1095,14 @@ html {
   min-height: 100%;
 }
 
+a {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
 .btn-round {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
@@ -1124,6 +1132,13 @@ html {
   right: 0;
   position: absolute;
   z-index: 2;
+}
+
+.auth-icon.telegram {
+  background: red;
+  width: 30px;
+  height: 30px;
+  display: block;
 }
 
 .no-radius .alert,
