@@ -79,27 +79,6 @@ $config = Yii::$app->settings->get('contacts');
                                 </div>
                             </li>
                         <?php } ?>
-                        <?php if (count(Yii::$app->currency->currencies) > 1) { ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <span class="d-none d-md-inline">Валюта</span>
-                                <strong><?= Yii::$app->currency->active['iso'] ?></strong>
-                            </a>
-                            <div class="dropdown-menu">
-                                <?php
-
-                                foreach (Yii::$app->currency->currencies as $currency) {
-                                    echo Html::a($currency['iso'].$currency['symbol'], ['/shop/ajax/currency', 'id' => $currency['id']], [
-                                        'class' => Yii::$app->currency->active['id'] === $currency['id'] ? 'dropdown-item active' : 'dropdown-item',
-                                        'id' => 'sw' . $currency['id'],
-                                        'onClick' => 'switchCurrency(' . $currency['id'] . '); return false;'
-                                    ]);
-                                }
-                                ?>
-                            </div>
-                        </li>
-                        <?php } ?>
 
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">
