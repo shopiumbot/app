@@ -24,10 +24,10 @@ use yii\helpers\Html;
             'enableAjaxValidation' => true,
         ]); ?>
 
-
+        <?= $form->field($model, 'token'); ?>
+        <?= $form->field($model, 'bot_name'); ?>
         <?= $form->field($model, 'phone')->widget(\panix\ext\telinput\PhoneInput::class); ?>
         <?= $form->field($model, 'gender')->dropDownList($model->getGenderList(), ['prompt' => $model::t('NO_SELECT_GENDER')]); ?>
-        <?= $form->field($model, 'subscribe')->checkbox(); ?>
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
                 <?= Html::submitButton(Yii::t('app/default', 'UPDATE'), ['class' => 'btn btn-primary']) ?>

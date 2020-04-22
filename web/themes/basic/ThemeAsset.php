@@ -21,21 +21,18 @@ class ThemeAsset extends AssetBundle
     }
 
     public $js = [
-        'swiper/js/swiper.min.js',
     ];
 
     public $css = [
         '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto+Slab:400,700&amp;subset=cyrillic',
         'css/app.css',
         'css/style.css',
-        'swiper/css/swiper.min.css',
     ];
 
     public $depends = [
         'panix\engine\assets\JqueryCookieAsset',
         'panix\engine\assets\TouchPunchAsset',
         'panix\engine\assets\CommonAsset',
-        'app\modules\shop\bundles\WebAsset',
     ];
 
 }

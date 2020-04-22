@@ -5,7 +5,7 @@
     display: none;
 }
 
-.required > label:after {
+.required label:after {
     content: ' *';
     color: red;
 }

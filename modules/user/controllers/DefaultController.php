@@ -276,7 +276,8 @@ class DefaultController extends WebController
         if (!$user)
             $this->error404();
 
-        //$user->setScenario('profile');
+        $user->setScenario('profile');
+
         $this->pageName = Yii::t('user/default', 'PROFILE');
         $this->view->title = $this->pageName;
         $this->breadcrumbs[] = $this->pageName;

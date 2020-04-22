@@ -86,11 +86,14 @@ class User extends ActiveRecord implements IdentityInterface
         $rules = [
             [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             // general email and username rules
-            [['email', 'username', 'phone'], 'string', 'max' => 255],
+            [['email', 'username', 'phone', 'token', 'bot_name'], 'string', 'max' => 255],
             [['email', 'username'], 'unique'],
-            [['email', 'username'], 'filter', 'filter' => 'trim'],
+            [['email', 'username','bot_name','token'], 'filter', 'filter' => 'trim'],
             [['email'], 'email'],
             ['image', 'file'],
+
+            [['token', 'bot_name'], 'required', 'on' => ['profile']],
+
             ['new_password', 'string', 'min' => 4, 'on' => ['reset', 'change']],
             // [['username'], 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('user/default', '{attribute} can contain only letters, numbers, and "_"')],
             // password rules
@@ -125,14 +128,18 @@ class User extends ActiveRecord implements IdentityInterface
         return $rules;
     }
 
+
     public function scenarios()
     {
-        return ArrayHelper::merge(parent::scenarios(), [
-            'register_fast' => ['username', 'email', 'phone'],
-            'register' => ['username', 'email', 'password', 'password_confirm'],
-            'reset' => ['new_password', 'password_confirm'],
-            'admin' => ['role', 'username'],
-        ]);
+        $scenarios = parent::scenarios();
+
+        $scenarios['register_fast'] = ['username', 'email', 'phone'];
+        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm'];
+        $scenarios['reset'] = ['new_password', 'password_confirm'];
+        $scenarios['admin'] = ['role', 'username'];
+       // $scenarios['profile'] = ['token', 'bot_name'];
+
+        return $scenarios;
     }
 
     /**

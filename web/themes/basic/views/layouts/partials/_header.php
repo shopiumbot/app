@@ -127,9 +127,6 @@ $config = Yii::$app->settings->get('contacts');
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 d-flex align-items-center">
-                <?php echo \app\modules\shop\widgets\search\SearchWidget::widget([]); ?>
-            </div>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg">
@@ -142,9 +139,6 @@ $config = Yii::$app->settings->get('contacts');
                 <span></span>
             </button>
 
-            <div class="navbar-right">
-                <?php echo \app\modules\shop\widgets\search\SearchWidget::widget(['skin' => 'navbar']); ?>
-            </div>
         </div>
     </nav>
 

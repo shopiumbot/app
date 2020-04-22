@@ -120,7 +120,7 @@ $config = [
             'class' => 'yii\caching\FileCache', //DummyCache
         ],
         'user' => [
-            'class' => 'panix\mod\user\components\WebUser',
+            'class' => 'app\modules\user\components\WebUser',
             // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'mailer' => [
