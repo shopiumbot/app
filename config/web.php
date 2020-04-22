@@ -41,6 +41,16 @@ $config = [
         }
     },
     'components' => [
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'telegram' => [
+                    'class' => 'app\commands\Telegram',
+                    'token' => '',
+                    'bot_name' => '',
+                ],
+            ],
+        ],
         'plugins' => [
             'class' => 'panix\mod\plugins\components\PluginsManager',
             'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
