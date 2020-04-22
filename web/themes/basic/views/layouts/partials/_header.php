@@ -48,21 +48,8 @@ $config = Yii::$app->settings->get('contacts');
                         <li class="nav-item">
                             <?= Html::a(Yii::t('compare/default', 'Возврат'), ['/compare'], ['class' => 'nav-link']) ?>
                         </li>
-                        <?php if (Yii::$app->hasModule('compare')) {
-                            $count = Html::tag('span', \panix\mod\compare\components\CompareProducts::countSession(), ['class' => 'badge badge-secondary', 'id' => 'countCompare']);
-                            ?>
-                            <li class="nav-item">
-                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('compare/default', 'MODULE_NAME') . '</span> ' . $count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
-                            </li>
-                        <?php } ?>
 
-                        <?php if (Yii::$app->hasModule('wishlist')) {
-                            $count = Html::tag('span', (new \panix\mod\wishlist\components\WishListComponent)->count(), ['class' => 'badge badge-secondary', 'id' => 'countWishlist']);
-                            ?>
-                            <li class="nav-item">
-                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('wishlist/default', 'WISHLIST') . '</span> ' . $count, ['/wishlist'], ['class' => 'top-wishlist nav-link']) ?>
-                            </li>
-                        <?php } ?>
+
 
                     </ul>
                     <ul class="nav ml-auto">
@@ -122,20 +109,14 @@ $config = Yii::$app->settings->get('contacts');
                                 <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>
                             </li>
                         <?php } else { ?>
-                            <?php
 
-                            $userOrderCount = Yii::$app->getModule('cart')->countByUser;
-
-                            ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->username; ?>
                                 </a>
                                 <div class="dropdown-menu">
                                     <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
-                                    <?= Html::a(Html::icon('shopcart') . ' ' . Yii::t('cart/default', 'MY_ORDERS') . ' <span class="badge badge-success">' . $userOrderCount . '</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
-
-                                    <?php
+                                     <?php
                                     if (Yii::$app->user->can('admin')) {
                                         echo '<div class="dropdown-divider"></div>';
                                         echo Html::a(Html::icon('tools') . ' ' . Yii::t('admin/default', 'MODULE_NAME'), ['/admin'], ['class' => 'dropdown-item']);
@@ -169,11 +150,6 @@ $config = Yii::$app->settings->get('contacts');
             </div>
             <div class="col-lg-4 col-md-6 d-flex align-items-center">
                 <?php echo \app\modules\shop\widgets\search\SearchWidget::widget([]); ?>
-            </div>
-            <div class="col-lg-3 col-md-6 d-flex align-items-center">
-                <div class="m-auto">
-                    <?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin' => 'dropdown']); ?>
-                </div>
             </div>
         </div>
     </div>

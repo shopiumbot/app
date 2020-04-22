@@ -1,347 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47f675b8-00d4-4e88-af57-03a34d387be5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/Bootstrap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/Module.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/README_RU.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/Module.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/controllers/CountryController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/api/v1/models/Country.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/attribute.options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/category.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/jquery.dualListBox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/kitProductsTab.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/productType.update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.configurations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/products.variations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/admin/js/relatedProductsTab.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/css/shop.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/notify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/product.view.configurations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/assets/js/switchCurrency.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/PopularBlock.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/messages/ru/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/blocks/popular/views/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/AdminAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/NotifyAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/ProductConfigureAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/WebAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/AttributeAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/CategoryAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ConfigurationsAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductIndex.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/ProductTypeAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/bundles/admin/VariationsAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/commands/ForsageController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/commands/ForsageV2Controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/AttributeData.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/AttributesRender.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/BaseUrlRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/BaseUrlRule1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRuleBACKUP.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlRule_1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CategoryUrlValidator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/CurrencyManager.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavBehavior111.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/EavColumn.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ExternalFinder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/FilterController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ManufacturerUrlRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/PrivatBank.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/ProductsDuplicator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/SearchUrlRule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageExternalFinder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageProductImage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsage/ForsageProductsImport.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageExternalFinder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageProductImage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/components/forsagev2/ForsageProductsImport.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/AjaxController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/CatalogController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/DefaultController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/ManufacturerController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/NotifyController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/ProductController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/SearchController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/AttributeController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/AttributeGroupController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/CategoryController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/CurrencyController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/DefaultController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/ManufacturerController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/NotifyController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/ProductController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/SettingsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/SupplierController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/controllers/admin/TypeController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/mail/ru/product_notify.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Attribute.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/AttributeGroup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Currency.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Manufacturer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Product.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/ProductType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/SettingsForm.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/Supplier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/messages/ru/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180857_193215_shop_kit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193213_shop_product.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193214_shop_product_weight.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193216_shop_product_length.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193313_shop_product_prices.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193421_shop_attribute.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193433_shop_attribute_option.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193505_shop_category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193517_shop_currency.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193531_shop_manufacturer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193557_shop_suppliers.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193608_shop_type_attribute.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193650_shop_product_attribute_eav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193704_shop_product_category_ref.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193720_shop_product_configurable_attributes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193731_shop_product_configurations.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193746_shop_product_type.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193757_shop_product_variant.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193811_shop_related_product.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_193913_shop_product_notify.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m180917_194311_shop_product_image.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m190315_062942_shop_attribute_group.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/migrations/m190316_061840_shop_insert.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Attribute.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/AttributeGroup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/AttributeOption.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Currency.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Kit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Manufacturer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Product.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductAttributesEav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductCategoryRef.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductImage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductNotifications.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductPrices.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/ProductVariant.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/RelatedProduct.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/Supplier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/TypeAttribute.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/forms/SettingsForm.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeGroupQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeOptionsQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/AttributeQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/CategoryQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/FilterQueryTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ManufacturerQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ProductNotificationsQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/query/ProductQuery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/AttributeGroupSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/AttributeSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/CurrencySearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ManufacturerSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductNotificationsSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/search/SupplierSearch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/traits/EavQueryTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/traits/ProductTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeGroupTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeOptionTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/AttributeTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/CategoryTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/ManufacturerTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/models/translate/ProductTranslate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/__multi_input.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_color.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_main.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/tabs/_options.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/_category.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/_main.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/category/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_global.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_price.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/_search.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/default/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/_main.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/_search.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/manufacturer/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/_send_delivery.tpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/_send_delivery_1.tpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/delivery.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/notify/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/_search.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_attributes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_configurations.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images_2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_kit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_main.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_prices.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_prices111.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_related.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_tree.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_variations.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_warehouse.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/variants/_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/category_assign_window.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/duplicate_products_window.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/window/products_price_window.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/_global.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/_seo_categories.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/settings/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/supplier/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/supplier/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_options.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_product_seo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/tabs/_tree.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/admin/type/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_sorting.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_grid.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/_view_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/listview.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/search.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/catalog/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/default/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/layouts/catalog.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/manufacturer/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/manufacturer/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/notify/_form.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_attributes_group.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_attributes_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_configurations.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/_kit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_attributes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_comments.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_related.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/tabs/_video.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/product/view2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/search/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/views/search/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/brands/BrandsWidget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/brands/views/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/CategoriesWidget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/views/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/FiltersWidget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/attributes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/current.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/manufacturer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filters/views/price.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/FilterAsset.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/FiltersWidget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/assets/js/filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/assets/js/filter2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/attributes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/current.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/manufacturer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/filtersnew/views/price.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/SearchWidget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/_item.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/_result.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/default.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/shop/widgets/search/views/navbar.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/LICENSE_EN.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/LICENSE_RU.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/Module.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/InstallAsset.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/css/install.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/images/en.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/assets/images/side.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/controllers/WizardController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/ChooseLanguage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/Configure.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/forms/License.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/en/default.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/ru/default.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/messages/uk/default.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/migrations/scheme.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/ChooseLanguage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Configure.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Db.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/Info.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/models/wizard/registration/License.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/chooseLanguage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/completed.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/configure.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/info.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/default/license.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/_alert.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/_error.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/error.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/layouts/install.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/invalidStep.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/ChooseLanguage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/cancelled.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/complete.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/configure.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/db.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/info.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/license.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notPaused.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notResumed.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/notStarted.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/install/views/wizard/registration/paused.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/Module.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/assets/AdminAsset.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/assets/WebAsset.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/DefaultController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/admin/DefaultController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/controllers/admin/SettingsController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/Items.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/SettingsForm.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/admin.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/messages/ru/default.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/migrations/m170908_125100_portfolio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/Category.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/Items.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/forms/SettingsForm.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/query/ItemsQuery.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/traits/ItemsTrait.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/models/translate/ItemsTranslate.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/tabs/_main.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/update.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/_global.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/_price.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_attributes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_related.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/tabs/_video.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/view.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/shop11/Module.php" afterPath="" />
+    <list default="true" id="47f675b8-00d4-4e88-af57-03a34d387be5" name="Default" comment="init">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/shopiumbot.loc.iml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/install/assets/images/ru.png" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/arrow_up.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/install/assets/images/uk.png" afterPath="$PROJECT_DIR$/modules/shop/widgets/categories/assets/arrow_down.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/models/search/ItemsSearch.php" afterPath="$PROJECT_DIR$/modules/shop/models/search/ProductTypeSearch.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/_search.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute-group/_search.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/attribute/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/default/tabs/_images.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/product/tabs/_images_1.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/admin/settings/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/admin/currency/update.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/portfolio/views/default/index.php" afterPath="$PROJECT_DIR$/modules/shop/views/product/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/themes/basic/views/layouts/partials/_header.php" afterPath="$PROJECT_DIR$/web/themes/basic/views/layouts/partials/_header.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -352,61 +16,164 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="m190330_115548_seo_url.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/migrations/m190330_115548_seo_url.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+              <folding>
+                <element signature="e#237#267#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/models/SettingsForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-663">
+              <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_header.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/themes/basic/views/layouts/partials/_header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1310">
+              <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+              <folding>
+                <marker date="1587580591822" expanded="true" signature="6823:7342" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="6849:7342" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="6919:7021" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7091:7342" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7164:7342" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7620:7728" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7796:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7837:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="7941:8149" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8310:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8350:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8415:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8519:8632" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8713:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8775:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8825:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8884:9227" ph="..." />
+                <marker date="1587580591822" expanded="true" signature="8994:9227" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_local.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/db_local.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/common.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="805">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding>
+                <marker date="1587219492138" expanded="true" signature="759:760" ph="..." />
+                <marker date="1587219492138" expanded="true" signature="3496:3505" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+            <state relative-caret-position="289">
+              <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <file leaf-file-name="Module.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/Module.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/api.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Country.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/shop/api/v1/models/Country.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="102">
-                <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-                <folding />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>view</find>
+      <find>v</find>
+      <find>categ</find>
+      <find>Category</find>
+      <find>shop_product_length</find>
+      <find>b</find>
+      <find>bas</find>
+      <find>basicb</find>
+      <find>basic</find>
+      <find>basice</find>
+      <find>basicenw</find>
+      <find>basicew</find>
+      <find>basicnew</find>
+      <find>panix\mod\shop</find>
+      <find>c</find>
+      <find>cart</find>
+      <find>panix\mod\cart\CartAsset</find>
+      <find>panix\mod\comments\WebAsset</find>
+      <find>trtan</find>
+      <find>trtans</find>
+      <find>t</find>
+      <find>tra</find>
+      <find>trans</find>
+      <find>-&gt;translate()</find>
+      <find>'translations translate',</find>
+      <find>translations as translate</find>
+      <find>$userOrderCount</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>app\modules\shop</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\OSPanel\domains\shopiumbot.loc\modules\shop\migrations</dir>
+      <dir>D:\OSPanel\domains\shopiumbot.loc\web\themes</dir>
+      <dir>D:\OSPanel\domains\shopiumbot.loc\web\themes\basic</dir>
+      <dir>D:\OSPanel\domains\shopiumbot.loc</dir>
+      <dir>D:\OSPanel\domains\shopiumbot.loc\modules\shop</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -415,7 +182,30 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/modules/shop/api/v1/models/Country.php" />
+        <option value="$PROJECT_DIR$/config/web.php" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/config/db_local.php" />
+        <option value="$PROJECT_DIR$/config/db.php" />
+        <option value="$PROJECT_DIR$/migrations/m000007_114919_notifications.php" />
+        <option value="$PROJECT_DIR$/vendor/panix/engine/db/Migration.php" />
+        <option value="$PROJECT_DIR$/vendor/panix/mod-user/migrations/m150214_044831_init_user.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m180917_193214_shop_product_weight.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m180917_193650_shop_product_attribute_eav.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m190316_061840_shop_insert.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/Category.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/Product.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m180917_193531_shop_manufacturer.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m180917_193421_shop_attribute.php" />
+        <option value="$PROJECT_DIR$/modules/shop/migrations/m180917_193433_shop_attribute_option.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/AttributeOption.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/Attribute.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/AttributeGroup.php" />
+        <option value="$PROJECT_DIR$/modules/shop/models/Manufacturer.php" />
+        <option value="$PROJECT_DIR$/web/themes/basic/modules/shop/views/catalog/_view_grid.php" />
+        <option value="$PROJECT_DIR$/web/themes/basic/ThemeAsset.php" />
+        <option value="$PROJECT_DIR$/config/common.php" />
+        <option value="$PROJECT_DIR$/web/themes/basic/views/layouts/partials/_header.php" />
       </list>
     </option>
   </component>
@@ -448,6 +238,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -470,11 +262,199 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panix" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,22 +472,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopiumbot.loc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\domains\shopiumbot.loc\modules" />
-      <recent name="D:\OSPanel\domains\shopiumbot.loc" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -561,6 +547,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -595,6 +587,10 @@
       <option name="presentableId" value="Default" />
       <updated>1587207811655</updated>
       <workItem from="1587207813732" duration="619000" />
+      <workItem from="1587211956190" duration="1329000" />
+      <workItem from="1587213490839" duration="3632000" />
+      <workItem from="1587219577849" duration="438000" />
+      <workItem from="1587580323299" duration="423000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1587208275079</created>
@@ -610,32 +606,53 @@
       <option name="project" value="LOCAL" />
       <updated>1587208317297</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init">
+      <created>1587212686913</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587212686914</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <created>1587213106285</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587213106285</updated>
+    </task>
+    <task id="LOCAL-00005" summary="init">
+      <created>1587219510915</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587219510915</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="619000" />
+    <option name="totallyTimeSpent" value="6441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26222494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -652,24 +669,86 @@
     <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="102">
-            <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/api/v1/models/Country.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="9" lean-forward="false" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding>
+            <marker date="1587219492138" expanded="true" signature="759:760" ph="..." />
+            <marker date="1587219492138" expanded="true" signature="3496:3505" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db_local.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="12" lean-forward="false" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/m000007_114919_notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="340">
           <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
           <folding />
         </state>
@@ -679,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,7 +765,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="102">
+            <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -695,7 +782,304 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="102">
+            <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/api/v1/models/Country.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="12" lean-forward="false" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/mod-admin/models/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/m000007_114919_notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/SchemaBuilderTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="84" column="20" lean-forward="false" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/mod-user/migrations/m150214_044831_init_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/engine/db/Migration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193216_shop_product_length.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193214_shop_product_weight.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193650_shop_product_attribute_eav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193704_shop_product_category_ref.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/Currency.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193505_shop_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193531_shop_manufacturer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m190316_061840_shop_insert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="342" column="37" lean-forward="false" selection-start-line="342" selection-start-column="29" selection-end-line="342" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193421_shop_attribute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-215">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/migrations/m180917_193433_shop_attribute_option.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/AttributeOption.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/Attribute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/AttributeGroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/shop/models/Manufacturer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/themes/basic/modules/shop/views/catalog/_view_grid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="97" column="25" lean-forward="false" selection-start-line="97" selection-start-column="25" selection-end-line="97" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/themes/basic/ThemeAsset.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <marker date="1587219492138" expanded="true" signature="759:760" ph="..." />
+            <marker date="1587219492138" expanded="true" signature="3496:3505" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/Module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/migrations/m190330_115548_seo_url.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="e#237#267#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/panix/mod-seo/models/SettingsForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db_local.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/themes/basic/views/layouts/partials/_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1310">
+          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+          <folding>
+            <marker date="1587580591822" expanded="true" signature="6823:7342" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="6849:7342" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="6919:7021" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7091:7342" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7164:7342" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7620:7728" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7796:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7837:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="7941:8149" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8310:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8350:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8415:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8519:8632" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8713:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8775:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8825:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8884:9227" ph="..." />
+            <marker date="1587580591822" expanded="true" signature="8994:9227" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

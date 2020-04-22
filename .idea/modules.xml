@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/shopiumbot.loc.iml" filepath="$PROJECT_DIR$/.idea/shopiumbot.loc.iml" />
+      <module fileurl="file://D:\OSPanel\domains\shopiumbot.loc\.idea\shopiumbot.loc.iml" filepath="D:\OSPanel\domains\shopiumbot.loc\.idea\shopiumbot.loc.iml" />
     </modules>
   </component>
 </project>
