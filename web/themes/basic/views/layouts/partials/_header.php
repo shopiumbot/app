@@ -49,7 +49,7 @@ $config = Yii::$app->settings->get('contacts');
                             <?= Html::a(Yii::t('compare/default', 'Возврат'), ['/compare'], ['class' => 'nav-link']) ?>
                         </li>
 
-
+                        <script async src="https://telegram.org/js/telegram-widget.js?8" data-telegram-login="shopiumbot" data-size="large" data-auth-url="/test" data-request-access="write"></script>
 
                     </ul>
                     <ul class="nav ml-auto">
