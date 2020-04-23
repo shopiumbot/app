@@ -21,6 +21,7 @@ class ThemeAsset extends AssetBundle
     }
 
     public $js = [
+        'js/script.js'
     ];
 
     public $css = [

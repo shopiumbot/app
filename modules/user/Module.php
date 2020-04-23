@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\user;
-
+use yii\httpclient\Client;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\InvalidConfigException;
@@ -85,7 +85,24 @@ class Module extends WebModule implements BootstrapInterface
      */
     public $emailViewPath = "@user/mail";
 
+    public function hostingApi(array $data=[]){
 
+        $client = new Client();
+        $response = $client->createRequest()
+            ->setMethod('POST')
+            ->setFormat(Client::FORMAT_JSON)
+            ->setUrl('https://adm.tools/api.php')
+            ->setData(\yii\helpers\ArrayHelper::merge([
+                'auth_login' => 'andrew.panix@gmail.com',
+                'auth_token' => '4abtu62s4kdk646ed99437ld3dd3ub9dbdc47v8s7jvpvk4qm4yr8sat9xprb36w',
+                'account' => 'corner'
+            ], $data))
+            ->send();
+        if ($response->isOk) {
+            return $response->data;
+        }
+        return false;
+    }
 
     public function getAdminMenu()
     {

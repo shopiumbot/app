@@ -46,9 +46,10 @@ $config = Yii::$app->settings->get('contacts');
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </form>
+            <div class="my-2 my-md-0">
+                <a class="nav-link float-left" href="#"><i class="icon-user-outline"></i> войти</a>
+                <a class="btn btn-success" href="#">Регистрация</a>
+            </div>
         </div>
     </div>
 </nav>
