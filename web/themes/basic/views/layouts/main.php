@@ -25,16 +25,17 @@ $this->registerJs("
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?= $this->render('partials/_header'); ?>
+<?= $this->render('partials/_header'); ?>
+<main role="main" class="flex-shrink-0">
+
 
 
     <div class="container">
@@ -48,8 +49,8 @@ $this->registerJs("
         <?= $content ?>
 
     </div>
-</div>
-<?= $this->render('partials/_subscribe'); ?>
+</main>
+
 <?= $this->render('partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>

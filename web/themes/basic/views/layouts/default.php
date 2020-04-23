@@ -36,7 +36,7 @@ $this->registerJs("
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="wrap">
+<main role="main" class="flex-shrink-0">
     <?= $this->render('partials/_header'); ?>
     <div class="container">
         <?php
@@ -62,8 +62,8 @@ $this->registerJs("
 
 
     </div>
-</div>
-<?= $this->render('partials/_subscribe'); ?>
+</main>
+
 <?= $this->render('partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>
