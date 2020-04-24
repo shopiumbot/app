@@ -28,7 +28,8 @@
         "panix/mod-images": "dev-master",
         "panix/mod-seo": "dev-master",
         "panix/wgt-fancybox": "dev-master",
-        "panix/mod-discounts": "dev-master"
+        "panix/mod-discounts": "dev-master",
+        "nelexa/zip": "~3"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
