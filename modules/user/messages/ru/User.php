@@ -17,6 +17,7 @@ return [
     'MALE' => 'Мужской',
     'TIMEZONE' => 'Часовой пояс',
     'API_KEY' => 'API ключ',
+    'TOKEN'=>'Токен бота',
     'NO_SELECT_GENDER' => 'Не указан',
     'SUBSCRIBE' => 'Подписаться на рассылку',
     'UPDATED_AT' => 'Дата обновление',

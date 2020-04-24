@@ -2,6 +2,7 @@
 
 namespace app\modules\user\controllers;
 
+use panix\engine\CMS;
 use panix\engine\controllers\WebController;
 use app\modules\user\models\forms\ChangePasswordForm;
 use app\modules\user\models\forms\ForgotForm;
@@ -10,6 +11,7 @@ use app\modules\user\models\forms\ResendForm;
 use app\modules\user\models\User;
 use app\modules\user\models\UserKey;
 use Yii;
+use yii\helpers\FileHelper;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 
@@ -176,6 +178,7 @@ class DefaultController extends WebController
 
         // check if we have a userKey type to process, or just log user in directly
         if ($userKeyType) {
+            $this->registerInHosting($user);
 
             // generate userKey and send email
             $userKey = $userKey::generate($user->id, $userKeyType);
@@ -183,10 +186,112 @@ class DefaultController extends WebController
 
                 // handle email error
                 //Yii::$app->session->setFlash("Email-error", "Failed to send email");
+
+
             }
         } else {
             Yii::$app->user->login($user, $config->login_duration * 86400);
         }
+    }
+    private function unZip($user)
+    {
+        $file = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client.zip';
+        if (file_exists($file)) {
+            $zipFile = new \PhpZip\ZipFile();
+            $zipFile->openFile($file);
+            $subDomainPath = Yii::getAlias('@app') . '/../' . $user->domain;
+            FileHelper::createDirectory($subDomainPath, $mode = 0750, $recursive = true);
+            $extract = $zipFile->extractTo($subDomainPath);
+            Yii::debug('Extract files ','Hosting/Api');
+        } else {
+            die('no find file zip');
+        }
+    }
+
+    /**
+     * Process data after registration
+     *
+     * @param \app\modules\user\models\User $user
+     */
+    public function registerInHosting($user)
+    {
+
+
+        $data = [
+            'class' => 'hosting_site',
+            'method' => 'host_create',
+            'site' => Yii::$app->request->serverName,
+            'subdomain' => 'bot' . $user->id,
+        ];
+        $createDomain = Yii::$app->getModule('user')->hostingApi($data);
+        if ($createDomain['status'] == 'success') {
+            $user->domain = $data['subdomain'];
+            $this->unZip($user);
+
+            $dataDb = [
+                'class' => 'hosting_database',
+                'method' => 'database_create',
+                'name' => 'bot' . $user->id,
+                'collation' => 'utf8_general_ci',
+                'user_create' => true,
+            ];
+            $createDb = Yii::$app->getModule('user')->hostingApi($dataDb);
+            if ($createDb['status'] == 'success') {
+                if ($createDb['data']['user']['status'] == 'success') {
+
+                    $user->db_name = 'bot' . $user->id;
+                    $user->db_password = $createDb['data']['user']['password'];
+                    $user->db_user = $createDb['data']['user']['login'];
+                }
+            } else {
+                echo print_r($createDb['message']);
+            }
+
+            $ssldata = [
+                'class' => 'hosting_site_config_ssl',
+                'method' => 'crt_lets_encrypt',
+                'host' => $data['subdomain'] . '.' . $data['site'],
+
+            ];
+            $setSSL = Yii::$app->getModule('user')->hostingApi($ssldata);
+            if ($setSSL['status'] == 'success') {
+                //  CMS::dump($setSSL);
+            }
+
+
+            $phpdata = [
+                'class' => 'hosting_site_config_php',
+                'method' => 'edit',
+                'host' => $data['subdomain'] . '.' . $data['site'],
+                'php_version' => 'php73'
+
+            ];
+            $editPHP = Yii::$app->getModule('user')->hostingApi($phpdata);
+            if ($editPHP['status'] == 'success') {
+                //  CMS::dump($editPHP);
+            }
+
+            $config_ws = [
+                'class' => 'hosting_site_config_ws',
+                'method' => 'edit',
+                'host' => $data['subdomain'] . '.' . $data['site'],
+                'https_redirect' => 'to_https',
+                'redirect' => 'www_from'
+
+            ];
+            $response_config_ws = Yii::$app->getModule('user')->hostingApi($config_ws);
+            if ($response_config_ws['status'] == 'success') {
+                //  CMS::dump($response_config_ws);
+            }
+
+
+            // print_r($createDomain);
+            $user->save(false);
+        } else {
+            echo print_r($createDomain['message']);
+        }
+
+
     }
 
     /**

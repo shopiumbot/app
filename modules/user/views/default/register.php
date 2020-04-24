@@ -29,6 +29,7 @@ use yii\widgets\ActiveForm;
             // 'enableAjaxValidation' => true,
         ]); ?>
         <?= $form->field($user, 'email') ?>
+        <?= $form->field($user, 'token') ?>
         <?= $form->field($user, 'password')->passwordInput() ?>
         <?= $form->field($user, 'password_confirm')->passwordInput() ?>
         <div class="form-group text-center">

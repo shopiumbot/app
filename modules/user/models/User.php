@@ -88,7 +88,7 @@ class User extends ActiveRecord implements IdentityInterface
             // general email and username rules
             [['email', 'username', 'phone', 'token', 'bot_name'], 'string', 'max' => 255],
             [['email', 'username'], 'unique'],
-            [['email', 'username','bot_name','token'], 'filter', 'filter' => 'trim'],
+            [['email', 'username', 'bot_name', 'token'], 'filter', 'filter' => 'trim'],
             [['email'], 'email'],
             ['image', 'file'],
 
@@ -102,7 +102,11 @@ class User extends ActiveRecord implements IdentityInterface
             [['new_password'], 'required', 'on' => ['reset', 'change']],
             [['password_confirm'], 'required', 'on' => ['reset', 'register']],
 
-            [['password'], 'required', 'on' => ['register']],
+            [['password', 'token'], 'required', 'on' => ['register']],
+
+
+            [['token'], 'validateBotToken', 'on' => ['register']],
+
             ['phone', 'panix\ext\telinput\PhoneInputValidator'],
             //[['password_confirm'], 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('user/default', 'Passwords do not match')],
             [['password_confirm'], 'compare', 'compareAttribute' => 'password', 'message' => Yii::t('user/default', 'PASSWORD_NOT_MATCH'), 'on' => 'register'],
@@ -128,16 +132,38 @@ class User extends ActiveRecord implements IdentityInterface
         return $rules;
     }
 
+    public function validateBotToken($attribute)
+    {
+
+
+        Yii::$app->setComponents([
+            'telegram2' => [
+                'class' => 'panix\mod\telegram\components\Telegram',
+                'botToken' => $this->$attribute,
+                'botUsername' => $this->bot_name,
+            ]
+        ]);
+
+        $response = Yii::$app->telegram2->getMe();
+        $result = json_decode($response);
+
+        if ($result->ok) {
+            return true;
+        } else {
+            $this->addError($attribute, $result->description);
+        }
+
+    }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
 
         $scenarios['register_fast'] = ['username', 'email', 'phone'];
-        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm'];
+        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token', 'bot_name'];
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
-       // $scenarios['profile'] = ['token', 'bot_name'];
+        // $scenarios['profile'] = ['token', 'bot_name'];
 
         return $scenarios;
     }
