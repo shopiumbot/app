@@ -103,9 +103,12 @@ class User extends ActiveRecord implements IdentityInterface
             [['password_confirm'], 'required', 'on' => ['reset', 'register']],
 
             [['password', 'token'], 'required', 'on' => ['register']],
-
-
             [['token'], 'validateBotToken', 'on' => ['register']],
+
+
+
+            [['db_name','db_password','db_user','domain'], 'string', 'on' => ['db']],
+
 
             ['phone', 'panix\ext\telinput\PhoneInputValidator'],
             //[['password_confirm'], 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('user/default', 'Passwords do not match')],
@@ -160,9 +163,10 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios = parent::scenarios();
 
         $scenarios['register_fast'] = ['username', 'email', 'phone'];
-        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token', 'bot_name'];
+        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token'];
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
+        $scenarios['db'] = ['db_user', 'db_password','db_name','domain'];
         // $scenarios['profile'] = ['token', 'bot_name'];
 
         return $scenarios;
@@ -293,7 +297,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function beforeSave($insert)
     {
         // hash new password if set
-        if ($this->password) {
+        if ($this->password && in_array($this->scenario,['reset','register'])) {
+
             $this->password = Yii::$app->security->generatePasswordHash($this->password);
         }
         if ($this->scenario == 'reset') {

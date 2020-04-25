@@ -7,6 +7,10 @@ use yii\helpers\Html;
  * @var \app\modules\user\models\User $model
  * @var \app\modules\user\models\forms\ChangePasswordForm $changePasswordForm
  */
+
+
+print_r(Yii::$app->user->clientDb);
+
 ?>
 <?php if(!$model->status){ ?>
 <div class="alert alert-warning">

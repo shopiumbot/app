@@ -4,6 +4,7 @@ namespace app\modules\user\components;
 
 use panix\engine\CMS;
 use Yii;
+use yii\db\Connection;
 use yii\web\User;
 
 /**
@@ -77,21 +78,39 @@ class WebUser extends User
         //return $user ? $user->timezone : NULL;
     }
 
+    public function getClientDb()
+    {
+        $user = $this->getIdentity();
+        return new Connection([
+            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                '{db_name}' => $user->db_name,
+            ]),
+            'username' => $user->db_user,
+            'password' => $user->db_password,
+            'tablePrefix' => 'prefix_'
+        ]);
+        // $connection->open();
+        // $connection->close();
+    }
+
     public function getPhone()
     {
         $user = $this->getIdentity();
         return $user ? $user->phone : "";
     }
+
     public function getBanTime()
     {
         $user = $this->getIdentity();
         return $user ? $user->ban_time : false;
     }
+
     public function getBanReason()
     {
         $user = $this->getIdentity();
         return $user ? $user->ban_reason : false;
     }
+
     public function getUsername()
     {
         $user = $this->getIdentity();
@@ -119,17 +138,17 @@ class WebUser extends User
      * @return bool
 
     public function can($permissionName, $params = [], $allowCaching = true)
-    {
-        // check for auth manager to call parent
-        $auth = Yii::$app->getAuthManager();
-        if ($auth) {
-            return parent::can($permissionName, $params, $allowCaching);
-        }
-
-        // otherwise use our own custom permission (via the role table)
-
-        $user = $this->getIdentity();
-        return $user ? $user->can($permissionName) : false;
-    }*/
+     * {
+     * // check for auth manager to call parent
+     * $auth = Yii::$app->getAuthManager();
+     * if ($auth) {
+     * return parent::can($permissionName, $params, $allowCaching);
+     * }
+     *
+     * // otherwise use our own custom permission (via the role table)
+     *
+     * $user = $this->getIdentity();
+     * return $user ? $user->can($permissionName) : false;
+     * }*/
 
 }

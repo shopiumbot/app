@@ -47,8 +47,14 @@ $config = Yii::$app->settings->get('contacts');
                 </li>
             </ul>
             <div class="my-2 my-md-0">
-                <a class="nav-link float-left" href="#"><i class="icon-user-outline"></i> войти</a>
-                <a class="btn btn-success" href="#">Регистрация</a>
+                <?php if(Yii::$app->user->isGuest){ ?>
+                    <a class="nav-link float-left" href="/user/login"><i class="icon-user-outline"></i> войти</a>
+                    <a class="btn btn-success" href="/user/register">Регистрация</a>
+                <?php }else{ ?>
+
+                    <a class="btn btn-success" href="/user/profile">профиль</a>
+                <?php } ?>
+
             </div>
         </div>
     </div>

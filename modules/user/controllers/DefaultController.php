@@ -10,7 +10,9 @@ use app\modules\user\models\forms\LoginForm;
 use app\modules\user\models\forms\ResendForm;
 use app\modules\user\models\User;
 use app\modules\user\models\UserKey;
+use panix\engine\db\Connection;
 use Yii;
+use yii\db\Exception;
 use yii\helpers\FileHelper;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
@@ -193,6 +195,7 @@ class DefaultController extends WebController
             Yii::$app->user->login($user, $config->login_duration * 86400);
         }
     }
+
     private function unZip($user)
     {
         $file = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client.zip';
@@ -202,7 +205,23 @@ class DefaultController extends WebController
             $subDomainPath = Yii::getAlias('@app') . '/../' . $user->domain;
             FileHelper::createDirectory($subDomainPath, $mode = 0750, $recursive = true);
             $extract = $zipFile->extractTo($subDomainPath);
-            Yii::debug('Extract files ','Hosting/Api');
+            Yii::debug('Extract files ', 'Hosting/Api');
+
+            if ($extract) {
+                $replacements = require($subDomainPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . '_db.php');
+                $configDb = array_replace($replacements, [
+                    'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
+                    'username' => $user->db_user,
+                    'password' => $user->db_password,
+                    'tablePrefix' => CMS::gen(4) . '_',
+                ]);
+                $filePath = $subDomainPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . '_db.php';
+
+                if (!@file_put_contents($filePath, '<?php return ' . var_export($configDb, true) . ';')) {
+                    throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $filePath]));
+                }
+                $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/'.$user->domain.'/cmd migrate --interactive=0');
+            }
         } else {
             die('no find file zip');
         }
@@ -215,6 +234,9 @@ class DefaultController extends WebController
      */
     public function registerInHosting($user)
     {
+        $user = User::findOne($user->id);
+
+        $user->setScenario('db');
 
 
         $data = [
@@ -226,7 +248,7 @@ class DefaultController extends WebController
         $createDomain = Yii::$app->getModule('user')->hostingApi($data);
         if ($createDomain['status'] == 'success') {
             $user->domain = $data['subdomain'];
-            $this->unZip($user);
+
 
             $dataDb = [
                 'class' => 'hosting_database',
@@ -239,9 +261,10 @@ class DefaultController extends WebController
             if ($createDb['status'] == 'success') {
                 if ($createDb['data']['user']['status'] == 'success') {
 
-                    $user->db_name = 'bot' . $user->id;
+                    $user->db_name = $createDb['data']['user']['login'];
                     $user->db_password = $createDb['data']['user']['password'];
                     $user->db_user = $createDb['data']['user']['login'];
+                    $this->unZip($user);
                 }
             } else {
                 echo print_r($createDb['message']);
@@ -263,7 +286,23 @@ class DefaultController extends WebController
                 'class' => 'hosting_site_config_php',
                 'method' => 'edit',
                 'host' => $data['subdomain'] . '.' . $data['site'],
-                'php_version' => 'php73'
+                'php_version' => 'php73',
+                'php_short_open_tag'=>true,
+                'php_open_basedir'=>'none',
+                'display_errors'=>true,
+                'php_error_reporting'=>[
+                    [
+                        "E_ERROR",
+                        "E_PARSE",
+                        "E_CORE_ERROR",
+                        "E_COMPILE_ERROR"
+                    ]
+                ],
+                'post_max_size'=>50,
+                'max_input_time'=>60,
+                'php_max_input_vars'=>1000,
+                'php_max_execution_time_user'=>30,
+                'php_output_buffering'=>true
 
             ];
             $editPHP = Yii::$app->getModule('user')->hostingApi($phpdata);
@@ -276,7 +315,12 @@ class DefaultController extends WebController
                 'method' => 'edit',
                 'host' => $data['subdomain'] . '.' . $data['site'],
                 'https_redirect' => 'to_https',
-                'redirect' => 'www_from'
+                'redirect' => 'www_from',
+                'disable_service_url'=>true,
+                'static_404_redirect'=>true,
+                'modsecurity_enabled'=>true,
+                //'aliases'=>'www.'.$data['subdomain'] . '.' . $data['site'],
+                'static_files'=>'avi,bmp,png,css,doc,gif,htm,html,ico,jpeg,jpg,js,mp3,swf,txt,xls,zip,wml,wmlc,wmls,wmlsc,wbmp,fla,flv,mpg,mpeg,pdf,woff,eot,otf,svg,ttf,woff2,docx,xlsx,ppt,pptx,webp,mp4'
 
             ];
             $response_config_ws = Yii::$app->getModule('user')->hostingApi($config_ws);
@@ -284,8 +328,10 @@ class DefaultController extends WebController
                 //  CMS::dump($response_config_ws);
             }
 
-
+           // $this->setAttributes($attributes, false);
             // print_r($createDomain);
+
+           // CMS::dump($user);die;
             $user->save(false);
         } else {
             echo print_r($createDomain['message']);
