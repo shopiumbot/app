@@ -420,8 +420,9 @@ class DefaultController extends WebController
     /**
      * Profile
      */
-    public function actionProfile()
+    public function actionProfile222()
     {
+
         /** @var User $user */
         $user = Yii::$app->user->identity;
         if (!$user)

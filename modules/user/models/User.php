@@ -6,6 +6,7 @@ use DrewM\MailChimp\MailChimp;
 use panix\engine\CMS;
 use Yii;
 use panix\engine\db\ActiveRecord;
+use yii\db\Connection;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\helpers\Inflector;
@@ -86,13 +87,13 @@ class User extends ActiveRecord implements IdentityInterface
         $rules = [
             [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             // general email and username rules
-            [['email', 'username', 'phone', 'token', 'bot_name'], 'string', 'max' => 255],
+            [['email', 'username', 'phone', 'token'], 'string', 'max' => 255],
             [['email', 'username'], 'unique'],
-            [['email', 'username', 'bot_name', 'token'], 'filter', 'filter' => 'trim'],
+            [['email', 'username', 'token'], 'filter', 'filter' => 'trim'],
             [['email'], 'email'],
             ['image', 'file'],
 
-            [['token', 'bot_name'], 'required', 'on' => ['profile']],
+            [['token'], 'required', 'on' => ['profile']],
 
             ['new_password', 'string', 'min' => 4, 'on' => ['reset', 'change']],
             // [['username'], 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => Yii::t('user/default', '{attribute} can contain only letters, numbers, and "_"')],
@@ -143,7 +144,7 @@ class User extends ActiveRecord implements IdentityInterface
             'telegram2' => [
                 'class' => 'panix\mod\telegram\components\Telegram',
                 'botToken' => $this->$attribute,
-                'botUsername' => $this->bot_name,
+                //'botUsername' => $this->bot_name,
             ]
         ]);
 
@@ -167,7 +168,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
         $scenarios['db'] = ['db_user', 'db_password','db_name','domain'];
-        // $scenarios['profile'] = ['token', 'bot_name'];
+
 
         return $scenarios;
     }
@@ -256,6 +257,27 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(["api_key" => $token]);
     }
 
+
+    public static function findByHook($hook)
+    {
+        return static::findOne(["webhook" => $hook]);
+    }
+    public function getClientDb()
+    {
+        return new Connection([
+            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                '{db_name}' => $this->db_name,
+            ]),
+            'username' => $this->db_user,
+            'password' => $this->db_password,
+            'tablePrefix' => '64Tv_',
+            'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+            'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+            'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+            'enableSchemaCache' => true,
+            'schemaCache' => 'cache'
+        ]);
+    }
     /**
      * @inheritdoc
      */

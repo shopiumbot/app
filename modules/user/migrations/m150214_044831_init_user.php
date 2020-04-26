@@ -30,7 +30,7 @@ class m150214_044831_init_user extends Migration
             'api_key' => $this->string(255)->null()->defaultValue(NULL),
             'token' => $this->string(255)->null()->defaultValue(NULL),
             'bot_name' => $this->string(50)->null()->defaultValue(NULL),
-
+            'webhook' => $this->string(255)->null()->defaultValue(NULL),
             'db_name' => $this->string(50)->null()->defaultValue(NULL),
             'db_password' => $this->string(50)->null()->defaultValue(NULL),
             'db_user' => $this->string(50)->null()->defaultValue(NULL),
@@ -77,7 +77,7 @@ class m150214_044831_init_user extends Migration
 
         // insert admin user: admin/admin
         $security = \Yii::$app->security;
-        $columns = ['email', 'username', 'password', 'status', 'created_at', 'api_key', 'auth_key'];
+        $columns = ['email', 'username', 'password', 'status', 'created_at', 'api_key', 'auth_key','webhook'];
         $this->batchInsert(User::tableName(), $columns, [
             [
                 'dev@pixelion.com.ua',
@@ -85,6 +85,7 @@ class m150214_044831_init_user extends Migration
                 $security->generatePasswordHash('admin'),
                 User::STATUS_ACTIVE,
                 time(),
+                $security->generateRandomString(),
                 $security->generateRandomString(),
                 $security->generateRandomString(),
             ],

@@ -65,7 +65,11 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->language : "";
     }
-
+    public function getClientDb()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->getClientDb() : false;
+    }
     public function getEmail()
     {
         $user = $this->getIdentity();
@@ -78,20 +82,7 @@ class WebUser extends User
         //return $user ? $user->timezone : NULL;
     }
 
-    public function getClientDb()
-    {
-        $user = $this->getIdentity();
-        return new Connection([
-            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
-                '{db_name}' => $user->db_name,
-            ]),
-            'username' => $user->db_user,
-            'password' => $user->db_password,
-            'tablePrefix' => 'prefix_'
-        ]);
-        // $connection->open();
-        // $connection->close();
-    }
+
 
     public function getPhone()
     {

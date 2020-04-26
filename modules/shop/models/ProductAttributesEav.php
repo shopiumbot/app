@@ -1,0 +1,21 @@
+<?php
+
+namespace app\modules\shop\models;
+
+use yii\db\ActiveRecord;
+use Yii;
+/**
+ * This is the model class for table "ProductAttributesEav".
+ */
+class ProductAttributesEav extends ActiveRecord
+{
+    public static function getDb()
+    {
+        return Yii::$app->user->getClientDb();
+    }
+    public static function tableName()
+    {
+        return '{{%shop__product_attribute_eav}}';
+    }
+
+}

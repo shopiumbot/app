@@ -267,10 +267,13 @@ class Module extends WebModule implements BootstrapInterface
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
             'rules' => [
+                '<controller:(profile)>' => '<controller>/index',
+                '<controller:(webhook)>/<hook:[0-9a-zA-Z\-]+>' => '<controller>/index',
                 '<controller:(admin|copy|auth)>' => '<controller>',
                 '<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',
                 '<action:\w+>/authclient/<authclient:[0-9a-zA-Z\-]+>' => 'default/<action>',
                 '<action:\w+>' => 'default/<action>',
+
             ],
         ]);
         $app->getUrlManager()->addRules($groupUrlRule->rules, false);
