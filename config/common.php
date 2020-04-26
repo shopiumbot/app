@@ -38,7 +38,10 @@ $config = [
         'user' => ['class' => 'app\modules\user\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
-        'images' => ['class' => 'panix\mod\images\Module'],
+        'images' => ['class' => 'app\modules\images\Module'],
+        'discounts' => ['class' => 'app\modules\discounts\Module'],
+        'telegram' => ['class' => 'app\modules\telegram\Module'],
+        'shop' => ['class' => 'app\modules\shop\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -47,6 +50,9 @@ $config = [
         ],
         'img' => [
             'class' => 'panix\engine\components\ImageHandler',
+        ],
+        'telegram' => [
+            'class' => 'app\modules\telegram\components\Telegram',
         ],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'formatter' => ['class' => 'panix\engine\i18n\Formatter'],

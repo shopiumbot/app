@@ -341,7 +341,7 @@ class EavBehavior extends \yii\base\Behavior
      */
     public function loadEavAttributes($attributes)
     {
-        $data = $this->getLoadEavAttributesQuery($attributes)->all();
+        $data = $this->getLoadEavAttributesQuery($attributes)->all(Yii::$app->user->getClientDb());
         foreach ($data as $row) {
             $attribute = $this->stripPrefix($row[$this->attributeField]);
             $value = $row[$this->valueField];
@@ -612,8 +612,6 @@ class EavBehavior extends \yii\base\Behavior
         if (!empty($attributes)) {
             $query->andWhere(['IN', $this->attributeField, $attributes]);
         }
-
-        $query->createCommand(Yii::$app->user->getClientDb());
         return $query;
     }
 
@@ -625,7 +623,6 @@ class EavBehavior extends \yii\base\Behavior
         if (!empty($attributes)) {
             $query->andWhere(['IN', $this->attributeField, $attributes]);
         }
-        $query->createCommand(Yii::$app->user->getClientDb());
         return $query;
     }
 

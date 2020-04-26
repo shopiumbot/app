@@ -29,7 +29,8 @@
         "panix/mod-seo": "dev-master",
         "panix/wgt-fancybox": "dev-master",
         "panix/mod-discounts": "dev-master",
-        "nelexa/zip": "~3"
+        "nelexa/zip": "3.3.1",
+        "shopium/mod-telegram": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",

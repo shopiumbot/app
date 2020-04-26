@@ -163,7 +163,7 @@ class Product extends ActiveRecord
 
     public function getMainImage($size = false)
     {
-        /** @var $image \core\modules\images\behaviors\ImageBehavior|\core\modules\images\models\Image */
+        /** @var $image \app\modules\images\behaviors\ImageBehavior|\app\modules\images\models\Image */
         $image = $this->getImage();
         $result = [];
         if ($image) {
@@ -537,7 +537,7 @@ class Product extends ActiveRecord
 
         if (Yii::$app->getModule('discounts'))
             $a['discounts'] = [
-                'class' => '\shopium\mod\discounts\components\DiscountBehavior'
+                'class' => '\app\modules\discounts\components\DiscountBehavior'
             ];
 
         return ArrayHelper::merge($a, parent::behaviors());
