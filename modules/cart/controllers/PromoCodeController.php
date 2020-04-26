@@ -1,13 +1,14 @@
 <?php
 
-namespace app\modules\cart\controllers\admin;
+namespace app\modules\cart\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\cart\models\PromoCode;
 use app\modules\cart\models\search\PromoCodeSearch;
 
-class PromoCodeController extends AdminController
+class PromoCodeController extends ClientController
 {
 
 

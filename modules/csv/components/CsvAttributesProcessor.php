@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\csv\components;
+namespace app\modules\csv\components;
 
 use yii\base\Component;
 use yii\base\Exception;

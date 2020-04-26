@@ -3,13 +3,14 @@
 namespace app\modules\cart\models;
 
 use app\modules\cart\components\payment\PaymentSystemManager;
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\db\ActiveRecord;
 
 /**
  * Class Payment
  * @package app\modules\cart\models
  */
-class Payment extends ActiveRecord
+class Payment extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

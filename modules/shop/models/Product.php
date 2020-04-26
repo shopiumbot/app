@@ -5,7 +5,7 @@ namespace app\modules\shop\models;
 
 use app\modules\user\components\ClientActiveRecord;
 use shopium\mod\discounts\components\DiscountBehavior;
-use core\modules\images\models\Image;
+use app\modules\images\models\Image;
 use panix\mod\sitemap\behaviors\SitemapBehavior;
 use panix\mod\user\models\User;
 use Yii;

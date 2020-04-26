@@ -1,12 +1,12 @@
 <?php
 
-namespace shopium\mod\csv\models;
+namespace app\modules\csv\models;
 
 use panix\engine\SettingsModel;
 
 /**
  * Class SettingsForm
- * @package shopium\mod\csv\models
+ * @package app\modules\csv\models
  */
 class SettingsForm extends SettingsModel
 {

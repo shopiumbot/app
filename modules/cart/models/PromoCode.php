@@ -2,6 +2,7 @@
 
 namespace app\modules\cart\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use panix\engine\db\ActiveRecord;
 
@@ -18,7 +19,7 @@ use panix\engine\db\ActiveRecord;
  * @package app\modules\cart\models
  *
  */
-class PromoCode extends ActiveRecord
+class PromoCode extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

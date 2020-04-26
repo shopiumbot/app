@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\cart\controllers\admin;
+namespace app\modules\cart\controllers;
 
+use app\modules\user\controllers\ClientController;
 use panix\engine\Html;
 use Yii;
 use panix\engine\controllers\AdminController;
@@ -9,7 +10,7 @@ use app\modules\cart\models\OrderStatus;
 use app\modules\cart\models\search\OrderStatusSearch;
 use yii\web\HttpException;
 
-class StatusesController extends AdminController
+class StatusesController extends ClientController
 {
     public function actions()
     {

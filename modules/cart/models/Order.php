@@ -2,6 +2,7 @@
 
 namespace app\modules\cart\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use panix\engine\Html;
 use yii\behaviors\TimestampBehavior;
@@ -37,7 +38,7 @@ use yii\db\ActiveRecord;
  *
  * @package app\modules\cart\models
  */
-class Order extends ActiveRecord
+class Order extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

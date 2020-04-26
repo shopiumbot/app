@@ -19,7 +19,7 @@ use app\modules\shop\models\AttributeOption;
 use app\modules\shop\models\ProductType;
 use app\modules\shop\models\Category;
 use app\modules\shop\models\Product;
-use core\modules\images\models\Image;
+use app\modules\images\models\Image;
 use app\modules\shop\models\ProductAttributesEav;
 use app\modules\shop\models\ProductCategoryRef;
 
@@ -230,7 +230,7 @@ class m190316_061840_shop_insert extends Migration
 
 
         foreach ($products as $product_key => $product) {
-            /** @var Product|\core\modules\images\behaviors\ImageBehavior $model */
+            /** @var Product|\app\modules\images\behaviors\ImageBehavior $model */
             $model = new Product;
             $model->id = $product['id'];
             $model->type_id = $product['type_id'];

@@ -70,7 +70,7 @@ class WebhookController extends Controller
                     realpath($basePath . '/commands') . '/AdminCommands',
                     realpath($basePath . '/commands') . '/UserCommands',
                 ];
-                $telegram->enableMySql($mysql_credentials, '64Tv_telegram__');
+                $telegram->enableMySql($mysql_credentials, 'client_telegram__');
                 $telegram->addCommandsPaths($commands_paths);
                 // Handle telegram webhook request
                 $telegram->handle();

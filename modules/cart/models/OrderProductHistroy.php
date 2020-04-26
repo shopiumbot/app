@@ -1,6 +1,8 @@
 <?php
 namespace app\modules\cart\models;
-class OrderProductHistroy extends \panix\engine\db\ActiveRecord {
+use app\modules\user\components\ClientActiveRecord;
+
+class OrderProductHistroy extends ClientActiveRecord {
 
 
 

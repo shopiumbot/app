@@ -2,9 +2,10 @@
 
 namespace app\modules\cart\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\db\ActiveRecord;
 
-class OrderStatus extends ActiveRecord
+class OrderStatus extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

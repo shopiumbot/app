@@ -3,7 +3,7 @@
 use panix\engine\Html;
 use panix\engine\widgets\Pjax;
 use panix\engine\grid\GridView;
-use core\modules\shop\models\search\ProductSearch;
+use app\modules\shop\models\search\ProductSearch;
 use app\modules\cart\models\search\OrderProductSearch;
 
 $searchModel = new ProductSearch();

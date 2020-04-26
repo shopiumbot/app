@@ -4,6 +4,7 @@ namespace app\modules\cart\models;
 
 
 use app\modules\cart\components\delivery\DeliverySystemManager;
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\db\ActiveRecord;
 
 /**
@@ -16,7 +17,7 @@ use panix\engine\db\ActiveRecord;
  *
  * @package app\modules\cart\models
  */
-class Delivery extends ActiveRecord
+class Delivery extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\csv\models;
+namespace app\modules\csv\models;
 
 use Yii;
 use yii\base\Model;
@@ -8,7 +8,7 @@ use yii\base\Model;
 /**
  * Class FilterForm
  * @property integer $manufacturer_id
- * @package shopium\mod\csv\models
+ * @package app\modules\csv\models
  */
 class FilterForm extends Model
 {

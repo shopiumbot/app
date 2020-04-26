@@ -1,12 +1,13 @@
 <?php
 
-namespace app\modules\cart\controllers\admin;
+namespace app\modules\cart\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\cart\models\forms\SettingsForm;
 
-class SettingsController extends AdminController
+class SettingsController extends ClientController
 {
 
     public $icon = 'settings';

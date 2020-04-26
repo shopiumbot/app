@@ -2,6 +2,7 @@
 
 namespace app\modules\cart\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use yii\db\ActiveRecord;
 
 /**
@@ -12,7 +13,7 @@ use yii\db\ActiveRecord;
  *
  * @package app\modules\cart\models
  */
-class DeliveryPayment extends ActiveRecord
+class DeliveryPayment extends ClientActiveRecord
 {
     /**
      * @inheritdoc

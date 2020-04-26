@@ -41,7 +41,18 @@ class ClientController extends Controller
             ],
         ];
     }
+    public function redirectPage($isNewRecord, $post, $action = ['index'])
+    {
 
+        Yii::$app->session->setFlash('success', Yii::t('app/default', ($isNewRecord) ? 'SUCCESS_CREATE' : 'SUCCESS_UPDATE'));
+        $redirect = (isset($post['redirect'])) ? $post['redirect'] : Yii::$app->request->url;
+
+        if ($isNewRecord) {
+            return $this->redirect($action);
+        }
+        if (!Yii::$app->request->isAjax)
+            return Yii::$app->response->redirect($redirect);
+    }
     public function actionCreate()
     {
         return $this->actionUpdate(false);

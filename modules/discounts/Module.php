@@ -17,18 +17,21 @@ class Module extends WebModule implements BootstrapInterface
      * @var null
      */
     public $discounts = null;
+
     /**
      * @inheritdoc
      */
     public function bootstrap($app)
     {
-        /*if ($this->discounts === null) {
 
-            $this->discounts = Discount::find()
-                ->published()
-                ->applyDate()
-                ->all();
-        }*/
+        if (!(Yii::$app instanceof \yii\console\Application)) {
+            if ($this->discounts === null && !Yii::$app->user->isGuest) {
+                $this->discounts = Discount::find()
+                    ->published()
+                    ->applyDate()
+                    ->all();
+            }
+        }
     }
 
     public function getInfo()

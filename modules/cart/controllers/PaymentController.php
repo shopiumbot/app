@@ -2,43 +2,158 @@
 
 namespace app\modules\cart\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
-use app\modules\cart\components\payment\BasePaymentSystem;
-use app\modules\cart\models\Order;
+use app\modules\cart\models\search\PaymentSearch;
 use app\modules\cart\models\Payment;
-use panix\engine\controllers\WebController;
-use yii\web\Controller;
+use app\modules\cart\components\payment\PaymentSystemManager;
+use panix\engine\Html;
+use panix\engine\controllers\AdminController;
 
-class PaymentController extends WebController
+class PaymentController extends ClientController
 {
-    /**
-     * @inheritdoc
-     */
-    public function beforeAction($action)
+
+    public $icon = 'creditcard';
+
+    public function actions()
     {
-        $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
+        return [
+            'sortable' => [
+                'class' => 'panix\engine\grid\sortable\Action',
+                'modelClass' => Payment::class,
+            ],
+            'delete' => [
+                'class' => 'panix\engine\actions\DeleteAction',
+                'modelClass' => Payment::class,
+            ],
+        ];
     }
 
-    public function actionProcess()
+    /*
+      public function actions() {
+      return array(
+      'order' => array(
+      'class' => 'ext.adminList.actions.SortingAction',
+      ),
+      'switch' => array(
+      'class' => 'ext.adminList.actions.SwitchAction',
+      ),
+      'sortable' => array(
+      'class' => 'ext.sortable.SortableAction',
+      'model' => Delivery::model(),
+      )
+      );
+      }
+     */
+
+    public function actionIndex()
     {
-        $payment_id = (int) Yii::$app->request->get('payment_id');
-        $model = Payment::findOne($payment_id);
+        $this->pageName = Yii::t('cart/admin', 'PAYMENTS');
+        $this->buttons = [
+            [
+                'icon' => 'add',
+                'label' => Yii::t('app/default', 'CREATE'),
+                'url' => ['/admin/cart/payment/create'],
+                'options' => ['class' => 'btn btn-success']
+            ]
+        ];
+        $this->breadcrumbs[] = [
+            'label' => Yii::t('cart/default', 'MODULE_NAME'),
+            'url' => ['/admin/cart']
+        ];
+        $this->breadcrumbs[] = $this->pageName;
 
-        if (!$model)
-            $this->error404('Ошибка');
+        $searchModel = new PaymentSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
+    }
 
+    public function actionUpdate($id = false)
+    {
+        $model = Payment::findModel($id);
+        $isNew = $model->isNewRecord;
+        $this->pageName = Yii::t('cart/admin', 'PAYMENTS');
 
-        $system = $model->getPaymentSystemClass();
+        $this->breadcrumbs[] = [
+            'label' => Yii::t('cart/admin', 'ORDERS'),
+            'url' => ['/admin/cart']
+        ];
+        $this->breadcrumbs[] = [
+            'label' => $this->pageName,
+            'url' => ['index']
+        ];
+        $this->breadcrumbs[] = Yii::t('app/default', ($isNew) ? 'CREATE' : 'UPDATE');
+        \app\modules\cart\CartPaymentAsset::register($this->view);
 
-        if ($system instanceof BasePaymentSystem) {
-            $response = $system->processPaymentRequest($model);
-            if ($response instanceof Order)
-                return $this->redirect($response->getUrl());
-            else
-                $this->error404(Yii::t('cart/default', 'Возникла ошибка при обработке запроса. <br/> {err}', ['err' => $response]));
+        $post = Yii::$app->request->post();
+
+        if ($model->load($post) && $model->validate()) {
+            $model->save();
+
+            /*if ($model->payment_system) {
+                $manager = new PaymentSystemManager;
+                $system = $manager->getSystemClass($model->payment_system);
+                $system->saveAdminSettings($model->id, $_POST);
+                // print_r($system);die;
+            }*/
+
+            return $this->redirectPage($isNew, $post);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+
+    /**
+     * Renders payment system configuration form
+     */
+    public function actionRenderConfigurationForm()
+    {
+
+        $systemId = Yii::$app->request->get('system');
+        $paymentMethodId = Yii::$app->request->get('payment_method_id');
+        if (empty($systemId))
+            exit;
+        $manager = new PaymentSystemManager;
+        $system = $manager->getSystemClass($systemId);
+
+        // print_r($system->getConfigurationFormHtml($paymentMethodId));
+        return $this->renderPartial('@cart/widgets/payment/' . $systemId . '/_form', ['model' => $system->getConfigurationFormHtml($paymentMethodId)]);
+    }
+
+    /**
+     * Дополнительное меню Контроллера.
+     * @return array
+     */
+    public function getAddonsMenu()
+    {
+        return array(
+            array(
+                'label' => Yii::t('cart/admin', 'STATUSES'),
+                'url' => array('/admin/cart/statuses'),
+            ),
+            array(
+                'label' => Yii::t('cart/admin', 'STATS'),
+                'url' => array('/admin/cart/statistics'),
+                'icon' => Html::icon('stats'),
+            ),
+            array(
+                'label' => Yii::t('cart/admin', 'HISTORY'),
+                'url' => array('/admin/cart/history'),
+                'icon' => Html::icon('history'),
+            ),
+            array(
+                'label' => Yii::t('app/default', 'SETTINGS'),
+                'url' => array('/admin/cart/settings'),
+                'icon' => Html::icon('settings'),
+            ),
+        );
     }
 
 }

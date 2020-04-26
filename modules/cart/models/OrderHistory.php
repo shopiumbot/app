@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\cart\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use panix\engine\db\ActiveRecord;
 /**
@@ -16,7 +17,7 @@ use panix\engine\db\ActiveRecord;
  * @property string $data_after
  * @property string $date_create
  */
-class OrderHistory extends ActiveRecord {
+class OrderHistory extends ClientActiveRecord {
 
 
 

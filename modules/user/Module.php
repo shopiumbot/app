@@ -262,7 +262,7 @@ class Module extends WebModule implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $config = $app->settings->get($this->id);
+
         // add rules for admin/copy/auth controllers
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
@@ -277,115 +277,64 @@ class Module extends WebModule implements BootstrapInterface
             ],
         ]);
         $app->getUrlManager()->addRules($groupUrlRule->rules, false);
+        if (!(Yii::$app instanceof \yii\console\Application)) {
+            $config = $app->settings->get($this->id);
+            $authClientCollection = [];
 
-        $authClientCollection = [];
+            if (!empty($config->oauth_google_id) && !empty($config->oauth_google_secret))
+                $authClientCollection['clients']['google'] = [
+                    'class' => 'panix\engine\authclient\clients\Google',
+                ];
 
-        if (!empty($config->oauth_google_id) && !empty($config->oauth_google_secret))
-            $authClientCollection['clients']['google'] = [
-                'class' => 'panix\engine\authclient\clients\Google',
-            ];
+            if (!empty($config->oauth_facebook_id) && !empty($config->oauth_facebook_secret))
+                $authClientCollection['clients']['facebook'] = [
+                    'class' => 'panix\engine\authclient\clients\Facebook',
+                ];
 
-        if (!empty($config->oauth_facebook_id) && !empty($config->oauth_facebook_secret))
-            $authClientCollection['clients']['facebook'] = [
-                'class' => 'panix\engine\authclient\clients\Facebook',
-            ];
+            if (!empty($config->oauth_vkontakte_id) && !empty($config->oauth_vkontakte_secret))
+                $authClientCollection['clients']['vkontakte'] = [
+                    'class' => 'panix\engine\authclient\clients\VKontakte',
+                ];
 
-        if (!empty($config->oauth_vkontakte_id) && !empty($config->oauth_vkontakte_secret))
-            $authClientCollection['clients']['vkontakte'] = [
-                'class' => 'panix\engine\authclient\clients\VKontakte',
-            ];
+            if (!empty($config->oauth_yandex_id) && !empty($config->oauth_yandex_secret))
+                $authClientCollection['clients']['yandex'] = [
+                    'class' => 'panix\engine\authclient\clients\Yandex',
+                ];
 
-        if (!empty($config->oauth_yandex_id) && !empty($config->oauth_yandex_secret))
-            $authClientCollection['clients']['yandex'] = [
-                'class' => 'panix\engine\authclient\clients\Yandex',
-            ];
+            if (!empty($config->oauth_github_id) && !empty($config->oauth_github_secret))
+                $authClientCollection['clients']['github'] = [
+                    'class' => 'panix\engine\authclient\clients\Github',
+                ];
 
-        if (!empty($config->oauth_github_id) && !empty($config->oauth_github_secret))
-            $authClientCollection['clients']['github'] = [
-                'class' => 'panix\engine\authclient\clients\Github',
-            ];
+            if (!empty($config->oauth_linkedin_id) && !empty($config->oauth_linkedin_secret))
+                $authClientCollection['clients']['linkedin'] = [
+                    'class' => 'panix\engine\authclient\clients\LinkedIn',
+                ];
 
-        if (!empty($config->oauth_linkedin_id) && !empty($config->oauth_linkedin_secret))
-            $authClientCollection['clients']['linkedin'] = [
-                'class' => 'panix\engine\authclient\clients\LinkedIn',
-            ];
-
-        if (!empty($config->oauth_live_id) && !empty($config->oauth_live_secret))
-            $authClientCollection['clients']['live'] = [
-                'class' => 'panix\engine\authclient\clients\Live',
-            ];
+            if (!empty($config->oauth_live_id) && !empty($config->oauth_live_secret))
+                $authClientCollection['clients']['live'] = [
+                    'class' => 'panix\engine\authclient\clients\Live',
+                ];
 
 
-        if (!empty($config->oauth_twitter_id) && !empty($config->oauth_twitter_secret))
-            $authClientCollection['clients']['twitter'] = [
-                'class' => 'panix\engine\authclient\clients\TwitterOAuth2',
-                // for Oauth v1
-                /*'attributeParams' => [
-                    'include_email' => 'true'
-                ]*/
-            ];
+            if (!empty($config->oauth_twitter_id) && !empty($config->oauth_twitter_secret))
+                $authClientCollection['clients']['twitter'] = [
+                    'class' => 'panix\engine\authclient\clients\TwitterOAuth2',
+                    // for Oauth v1
+                    /*'attributeParams' => [
+                        'include_email' => 'true'
+                    ]*/
+                ];
 
-        if (isset($authClientCollection['clients']) && count($authClientCollection['clients'])) {
-            $app->setComponents([
-                'authClientCollection' => [
-                    'class' => 'yii\authclient\Collection',
-                    'clients' => $authClientCollection['clients'],
-                ],
-            ]);
-        }
-
-    }
-
-    /**
-     * Modify createController() to handle routes in the default controller
-     *
-     * This is a temporary hack until they add in url management via modules
-     *
-     * @link https://github.com/yiisoft/yii2/issues/810
-     * @link http://www.yiiframework.com/forum/index.php/topic/21884-module-and-url-management/
-     *
-     * "user", "user/default", "user/admin", and "user/copy" work like normal
-     * any other "user/xxx" gets changed to "user/default/xxx"
-     *
-     * @inheritdoc
-
-    public function createController2($route)
-    {
-        // check valid routes
-        $validRoutes = [$this->defaultRoute, "admin", "copy", "auth"];
-        $isValidRoute = false;
-        foreach ($validRoutes as $validRoute) {
-            if (strpos($route, $validRoute) === 0) {
-                $isValidRoute = true;
-                break;
+            if (isset($authClientCollection['clients']) && count($authClientCollection['clients'])) {
+                $app->setComponents([
+                    'authClientCollection' => [
+                        'class' => 'yii\authclient\Collection',
+                        'clients' => $authClientCollection['clients'],
+                    ],
+                ]);
             }
         }
-
-        return (empty($route) or $isValidRoute) ? parent::createController($route) : parent::createController("{$this->defaultRoute}/{$route}");
-    }*/
-
-    /**
-     * Get a list of actions for this module. Used for debugging/initial installations
-     */
-    public function getActions()
-    {
-        return [
-            "/{$this->id}" => "This 'actions' list. Appears only when <strong>YII_DEBUG</strong>=true, otherwise redirects to /login or /account",
-            "/admin/{$this->id}" => "Admin CRUD",
-            "/{$this->id}/login" => "Login page",
-            "/{$this->id}/logout" => "Logout page",
-            "/{$this->id}/register" => "Register page",
-            "/{$this->id}/auth/login?authclient=facebook" => "Register/login via social account",
-            "/{$this->id}/auth/connect?authclient=facebook" => "Connect social account to currently logged in user",
-            "/{$this->id}/account" => "User account page (email, username, password)",
-            "/{$this->id}/profile" => "Profile page",
-            "/{$this->id}/forgot" => "Forgot password page",
-            "/{$this->id}/reset?key=zzzzz" => "Reset password page. Automatically generated from forgot password page",
-            "/{$this->id}/resend" => "Resend email confirmation (for both activation and change of email)",
-            "/{$this->id}/resend-change" => "Resend email change confirmation (quick link on the 'Account' page)",
-            "/{$this->id}/cancel" => "Cancel email change confirmation (quick link on the 'Account' page)",
-            "/{$this->id}/confirm?key=zzzzz" => "Confirm email address. Automatically generated upon registration/email change",
-        ];
     }
 
 }

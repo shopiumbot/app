@@ -1,7 +1,7 @@
 {use class="Yii"}
 {use class="yii\helpers\Url"}
 {use class="panix\engine\Html"}
-{use class="core\modules\shop\models\Product"}
+{use class="app\modules\shop\models\Product"}
 
 
 {if $order.user_name}

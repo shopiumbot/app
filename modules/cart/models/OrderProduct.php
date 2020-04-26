@@ -2,7 +2,8 @@
 
 namespace app\modules\cart\models;
 
-use core\modules\shop\models\Product;
+use app\modules\user\components\ClientActiveRecord;
+use app\modules\shop\models\Product;
 use yii\db\ActiveRecord;
 
 /**
@@ -26,7 +27,7 @@ use yii\db\ActiveRecord;
  *
  * @package app\modules\cart\models
  */
-class OrderProduct extends ActiveRecord
+class OrderProduct extends ClientActiveRecord
 {
 
     const MODULE_ID = 'cart';

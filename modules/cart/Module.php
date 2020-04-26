@@ -7,6 +7,7 @@ use Yii;
 use panix\engine\WebModule;
 use app\modules\cart\models\Order;
 use yii\base\BootstrapInterface;
+use yii\web\GroupUrlRule;
 
 class Module extends WebModule implements BootstrapInterface
 {
@@ -39,6 +40,16 @@ class Module extends WebModule implements BootstrapInterface
         if (!(Yii::$app instanceof yii\console\Application)) {
             $app->counters[$this->id] = (int)$this->count['num'];
         }
+        $groupUrlRule = new GroupUrlRule([
+            'prefix' => $this->id,
+            'rules' => [
+                '<controller:\w+>' => '<controller>/index',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                //'<action:\w+>' => 'default/<action>',
+
+            ],
+        ]);
+        $app->getUrlManager()->addRules($groupUrlRule->rules, false);
 
     }
 

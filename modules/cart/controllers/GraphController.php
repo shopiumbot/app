@@ -1,9 +1,10 @@
 <?php
 
-namespace app\modules\cart\controllers\admin;
+namespace app\modules\cart\controllers;
 
 
 use app\modules\cart\models\Order;
+use app\modules\user\controllers\ClientController;
 use Yii;
 use yii\db\Query;
 use yii\web\NotFoundHttpException;
@@ -15,7 +16,7 @@ use shopium\mod\shop\models\search\ProductSearch;
 use app\modules\cart\models\search\OrderSearch;
 use yii\web\Response;
 
-class GraphController extends AdminController
+class GraphController extends ClientController
 {
 
 

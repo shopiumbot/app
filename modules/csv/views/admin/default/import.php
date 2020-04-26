@@ -4,7 +4,7 @@ use panix\engine\bootstrap\ActiveForm;
 use panix\engine\CMS;
 
 /**
- * @var $importer \shopium\mod\csv\components\CsvImporter
+ * @var $importer \app\modules\csv\components\CsvImporter
  */
 
 ?>

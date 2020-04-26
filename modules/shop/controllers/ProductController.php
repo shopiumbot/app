@@ -84,7 +84,7 @@ class ProductController extends ClientController
 
     public function actionUpdate($id = false)
     {
-        /** @var Product|\core\modules\images\behaviors\ImageBehavior $model */
+        /** @var Product|\app\modules\images\behaviors\ImageBehavior $model */
         $model = Product::findModel($id);
         $isNew = $model->isNewRecord;
         $this->pageName = Yii::t('shop/default', 'MODULE_NAME');

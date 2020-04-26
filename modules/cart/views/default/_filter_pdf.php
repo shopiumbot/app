@@ -22,6 +22,7 @@ use panix\engine\jui\DatePicker;
                         'value' => (Yii::$app->request->get('start')) ? Yii::$app->request->get('start') : date('Y-m-d'),
                         //'language' => 'ru',
                         'dateFormat' => 'yyyy-MM-dd',
+                        'options'=>['class'=>'form-control']
                     ]);
                     ?>
                     <div class="input-group-prepend">
@@ -33,6 +34,7 @@ use panix\engine\jui\DatePicker;
                         'value' => (Yii::$app->request->get('end')) ? Yii::$app->request->get('end') : date('Y-m-d'),
                         //'language' => 'ru',
                         'dateFormat' => 'yyyy-MM-dd',
+                        'options'=>['class'=>'form-control']
                     ]);
                     ?>
                     <?php

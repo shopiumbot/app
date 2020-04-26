@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\csv;
+namespace app\modules\csv;
 
 use panix\mod\admin\widgets\sidebar\BackendNav;
 use Yii;

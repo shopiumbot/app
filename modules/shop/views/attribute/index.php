@@ -12,7 +12,16 @@ echo GridView::widget([
     'tableOptions' => ['class' => 'table table-striped'],
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-    'layoutOptions' => ['title' => $this->context->pageName],
+    'layoutOptions' => [
+        'title' => $this->context->pageName,
+        'buttons' => [
+            [
+                'url' => ['create'],
+                'label' => Yii::t('shop/admin', 'CREATE_ATTRIBUTE'),
+                'icon' => 'add'
+            ]
+        ]
+    ],
     'showFooter' => true,
     'enableColumns' => false,
     'columns' => [

@@ -3,7 +3,7 @@
 namespace app\modules\shop\components;
 
 
-use core\modules\images\models\Image;
+use app\modules\images\models\Image;
 use Yii;
 use app\modules\shop\models\Product;
 use panix\engine\CMS;
