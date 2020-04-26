@@ -90,7 +90,7 @@ class m150214_044831_init_user extends Migration
                 $security->generateRandomString(),
             ],
         ]);
-        $this->loadSettings();
+        //$this->loadSettings();
 
     }
 

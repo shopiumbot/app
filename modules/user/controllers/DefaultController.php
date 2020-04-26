@@ -227,6 +227,7 @@ class DefaultController extends WebController
                 throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $newFile]));
             }
             $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
+           // echo '<pre>'.$runMigrate.'</pre>';
             if (file_exists($newFile)) {
                 unlink($newFile);
             }

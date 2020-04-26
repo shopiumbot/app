@@ -71,9 +71,7 @@ class m170908_134034_cart extends Migration
             'order_id' => $this->bigInteger()->notNull()->unsigned(),
             'product_id' => $this->integer()->notNull()->unsigned(),
             'currency_id' => $this->integer()->unsigned(),
-            'supplier_id' => $this->integer()->unsigned(),
             'manufacturer_id' => $this->integer()->unsigned(),
-            'configurable_id' => $this->integer()->unsigned(),
             'name' => $this->string(255),
             'image' => $this->string(255),
             'discount' => $this->string(25)->null(),
@@ -167,7 +165,7 @@ class m170908_134034_cart extends Migration
             //$this->addForeignKey('{{%fk_product_order}}', OrderProduct::tableName(), 'order_id', Order::tableName(), 'id', "CASCADE", "CASCADE");
         }
 
-        $this->loadSettings();
+        //$this->loadSettings();
     }
 
     public function down()
@@ -206,8 +204,6 @@ class m170908_134034_cart extends Migration
         $this->createIndex('order_id', OrderProduct::tableName(), 'order_id');
         $this->createIndex('product_id', OrderProduct::tableName(), 'product_id');
         $this->createIndex('currency_id', OrderProduct::tableName(), 'currency_id');
-        $this->createIndex('supplier_id', OrderProduct::tableName(), 'supplier_id');
-        $this->createIndex('configurable_id', OrderProduct::tableName(), 'configurable_id');
         $this->createIndex('manufacturer_id', OrderProduct::tableName(), 'manufacturer_id');
 
         // order history indexes

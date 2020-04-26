@@ -13,7 +13,7 @@ class m160808_112253_telegram extends Migration
     {
 
 
-        $this->loadSettings();
+        //$this->loadSettings();
 
         $this->createTable('{{%tlgrm_actions}}', [
             'chat_id' => $this->primaryKey(),

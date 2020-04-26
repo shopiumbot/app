@@ -213,46 +213,6 @@ class Module extends WebModule implements BootstrapInterface
             'UserKey' => 'app\modules\user\models\UserKey',
         ];
     }
-    /**
-     * Get default model classes
-
-    protected function getDefaultModelClasses()
-    {
-        return [
-            'User' => 'app\modules\user\models\User',
-            'Role' => 'app\modules\user\models\Role',
-            'UserKey' => 'app\modules\user\models\UserKey',
-            'UserAuth' => 'app\modules\user\models\UserAuth',
-            'ForgotForm' => 'app\modules\user\models\forms\ForgotForm',
-            'LoginForm' => 'app\modules\user\models\forms\LoginForm',
-            'ResendForm' => 'app\modules\user\models\forms\ResendForm',
-            'UserSearch' => 'app\modules\user\models\search\UserSearch',
-        ];
-    }*/
-
-    /**
-     * Get object instance of model
-     *
-     * @param string $name
-     * @param array $config
-     * @return ActiveRecord
-
-    public function model($name, $config = [])
-    {
-        // return object if already created
-        if (!empty($this->_models[$name])) {
-            return $this->_models[$name];
-        }
-
-        // process "Userkey" -> "UserKey" for backwards compatibility
-        if ($name === "Userkey") {
-            $name = "UserKey";
-        }
-        // create model and return it
-        $className = $this->modelClasses[ucfirst($name)];
-        $this->_models[$name] = Yii::createObject(array_merge(["class" => $className], $config));
-        return $this->_models[$name];
-    }*/
 
     /**
      * @inheritdoc
