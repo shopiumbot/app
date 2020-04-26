@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use Yii;
@@ -13,14 +14,11 @@ use Yii;
  *
  * @package app\modules\shop\models
  */
-class ProductType extends ActiveRecord
+class ProductType extends ClientActiveRecord
 {
 
     const MODULE_ID = 'shop';
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     public static function getCSort()
     {
         $sort = new \yii\data\Sort([

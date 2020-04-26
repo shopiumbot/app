@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
 use Longman\TelegramBot\Entities\InlineKeyboard;
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
 use Longman\TelegramBot\Request;
-use core\modules\shop\models\Category;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\shop\models\Category;
+use app\modules\telegram\components\UserCommand;
 use Yii;
 
 /**

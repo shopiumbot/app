@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\SystemCommands;
+namespace app\modules\telegram\commands\SystemCommands;
 
 use Longman\TelegramBot\Entities\Payments\LabeledPrice;
 use Longman\TelegramBot\Entities\ReplyKeyboardHide;
 use Longman\TelegramBot\Request;
 use panix\engine\CMS;
-use shopium\mod\telegram\components\SystemCommand;
+use app\modules\telegram\components\SystemCommand;
 
 /**
  *

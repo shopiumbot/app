@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\SystemCommands;
+namespace app\modules\telegram\commands\SystemCommands;
 
-use shopium\mod\telegram\components\SystemCommand;
+use app\modules\telegram\components\SystemCommand;
 
 
 /**

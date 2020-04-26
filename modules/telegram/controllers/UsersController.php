@@ -6,7 +6,7 @@ namespace app\modules\telegram\controllers;
 use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
-use shopium\mod\telegram\models\search\UserSearch;
+use app\modules\telegram\models\search\UserSearch;
 
 class UsersController extends ClientController
 {

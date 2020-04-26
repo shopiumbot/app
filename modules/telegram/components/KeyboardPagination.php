@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace shopium\mod\telegram\components;
+namespace app\modules\telegram\components;
 
 use Yii;
 use yii\base\BaseObject;

@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Request;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\telegram\components\UserCommand;
 
 /**
  * User "/weather" command

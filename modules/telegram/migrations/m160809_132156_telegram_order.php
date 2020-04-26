@@ -1,9 +1,9 @@
 <?php
 
-namespace shopium\mod\telegram\migrations;
+namespace app\modules\telegram\migrations;
 
-use shopium\mod\telegram\models\Order;
-use shopium\mod\telegram\models\OrderProduct;
+use app\modules\telegram\models\Order;
+use app\modules\telegram\models\OrderProduct;
 use panix\engine\db\Migration;
 
 class m160809_132156_telegram_order extends Migration

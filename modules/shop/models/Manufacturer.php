@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\Html;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -15,15 +16,12 @@ use app\modules\shop\models\query\ManufacturerQuery;
  * @property Product[] $productsCount
  *
  */
-class Manufacturer extends ActiveRecord
+class Manufacturer extends ClientActiveRecord
 {
 
     const MODULE_ID = 'shop';
     const route = '/admin/shop/manufacturer';
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     /**
      * @inheritdoc
      * @return ManufacturerQuery

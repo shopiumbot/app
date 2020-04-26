@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\AdminCommands;
+namespace app\modules\telegram\commands\AdminCommands;
 
-use shopium\mod\telegram\components\AdminCommand;
+use app\modules\telegram\components\AdminCommand;
 use Longman\TelegramBot\Entities\Message;
 use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Exception\TelegramException;

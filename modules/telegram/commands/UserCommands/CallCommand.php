@@ -1,10 +1,10 @@
 <?php
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
 use Longman\TelegramBot\Request;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\telegram\components\UserCommand;
 use Yii;
 /**
  * User "/cell" command

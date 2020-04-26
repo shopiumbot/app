@@ -14425,7 +14425,7 @@ ul.list-style-none li a:hover {
     opacity: .5
 }
 .sidebar-nav ul .sidebar-item .sidebar-link .badge{
-    margin-right: 10px;
+    margin-right: 15px;
 }
 .sidebar-nav ul .sidebar-item .sidebar-link i {
     font-style: normal;
@@ -14462,11 +14462,11 @@ ul.list-style-none li a:hover {
 }
 
 .sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link i {
-    font-size: 14px
+    font-size: 16px
 }
 
 .sidebar-nav ul .nav-small-cap {
-    font-size: 12px;
+    font-size: 13px;
     padding: 12px 15px;
     white-space: nowrap;
     display: flex;

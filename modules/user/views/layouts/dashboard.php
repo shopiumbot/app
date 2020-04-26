@@ -112,7 +112,7 @@ use yii\widgets\Breadcrumbs;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="font-22 mdi mdi-email-outline"></i>
+                            <i class="font-22 icon-comments"></i>
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
@@ -132,7 +132,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="<?= $this->context->asset->baseUrl; ?>/images/1.jpg" alt="user"
+                                                    <img src="<?= $this->context->asset->baseUrl; ?>/images/2.jpg" alt="user"
                                                          class="rounded-circle">
                                                     <span class="profile-status online pull-right"></span>
                                                 </span>
@@ -171,7 +171,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="../../assets/images/users/4.jpg" alt="user"
+                                                    <img src="<?= $this->context->asset->baseUrl; ?>/images/3.jpg" alt="user"
                                                          class="rounded-circle">
                                                     <span class="profile-status offline pull-right"></span>
                                                 </span>
@@ -220,7 +220,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="btn btn-danger btn-circle">
-                                                    <i class="fa fa-link"></i>
+                                                    <i class="icon-external-link"></i>
                                                 </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Luanch Admin</h5>
@@ -231,7 +231,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="btn btn-success btn-circle">
-                                                    <i class="ti-calendar"></i>
+                                                    <i class="icon-calendar"></i>
                                                 </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Event today</h5>
@@ -242,7 +242,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="btn btn-info btn-circle">
-                                                    <i class="ti-settings"></i>
+                                                    <i class="icon-settings"></i>
                                                 </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Settings</h5>
@@ -253,7 +253,7 @@ use yii\widgets\Breadcrumbs;
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
                                                 <span class="btn btn-primary btn-circle">
-                                                    <i class="ti-user"></i>
+                                                    <i class="icon-user"></i>
                                                 </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Pavan kumar</h5>
@@ -283,7 +283,7 @@ use yii\widgets\Breadcrumbs;
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="<?= $this->context->asset->baseUrl; ?>/images/2.jpg" alt="user" class="rounded-circle"
                                  width="40">
-                            <span class="m-l-5 font-medium d-none d-sm-inline-block">Jonathan Doe <i
+                            <span class="m-l-5 font-medium d-none d-sm-inline-block"><?= Yii::$app->user->getDisplayName(); ?> <i
                                         class="icon-arrow-down"></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -296,9 +296,8 @@ use yii\widgets\Breadcrumbs;
                                          width="60">
                                 </div>
                                 <div class="ml-2">
-                                    <h4 class="mb-0">Jonathan Doe</h4>
-                                    <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                       data-cfemail="6d0702032d0a000c0401430e0200">[email&#160;protected]</a>
+                                    <h4 class="mb-0"><?= Yii::$app->user->getDisplayName(); ?></h4>
+                                    <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__">[email&#160;protected]</a>
                                     </p>
                                 </div>
                             </div>
@@ -346,32 +345,32 @@ use yii\widgets\Breadcrumbs;
                         <span class="hide-menu">Telegram-магазин</span>
                     </li>
                     <li class="sidebar-item">
-                        <?= Html::a(Html::icon('folder-open').'<span class="hide-menu">Каталог продукции</span>', ['/shop/category'], ['class' => 'sidebar-link']); ?>
+                        <?= Html::a(Html::icon('folder-open').'<span class="hide-menu">Каталог</span>', ['/shop/category'], ['class' => 'sidebar-link']); ?>
                     </li>
                     <li class="sidebar-item">
+                        <?= Html::a(Html::icon('shopcart').'<span class="hide-menu">Продукция</span>', ['/shop/product'], ['class' => 'sidebar-link']); ?>
+                    </li>
+                    <li class="sidebar-item">
+                        <?= Html::a(Html::icon('discount').'<span class="hide-menu">Скидки</span>', ['/discount'], ['class' => 'sidebar-link']); ?>
+                    </li>
+                    <li class="sidebar-item d-none">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                            aria-expanded="false">
-                            <i class="icon-folder-open"></i>
-                            <span class="hide-menu">Каталог продукции</span>
+                            <i class="icon-puzzle"></i>
+                            <span class="hide-menu">Интеграция</span>
                             <span class="badge badge-pill badge-info ml-auto m-r-15">3</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item">
                                 <a href="index.html" class="sidebar-link">
-                                    <i class="icon-folder-open"></i>
-                                    <span class="hide-menu">Категории</span>
+                                    <i class="icon-arrow-right"></i>
+                                    <span class="hide-menu">CSV</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="index2.html" class="sidebar-link">
-                                    <i class="icon-shopcart"></i>
-                                    <span class="hide-menu">Товары</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="index3.html" class="sidebar-link">
-                                    <i class="mdi mdi-adjust"></i>
-                                    <span class="hide-menu"> Modern </span>
+                                    <i class="icon-arrow-right"></i>
+                                    <span class="hide-menu">EXEL</span>
                                 </a>
                             </li>
                         </ul>
@@ -404,28 +403,59 @@ use yii\widgets\Breadcrumbs;
                                 <?= Html::a(Html::icon('delivery').'<span class="hide-menu">Доставка</span>', ['/'], ['class' => 'sidebar-link']); ?>
                             </li>
                             <li class="sidebar-item">
-                                <?= Html::a(Html::icon('payment').'<span class="hide-menu">Оплата</span>', ['/'], ['class' => 'sidebar-link']); ?>
+                                <?= Html::a(Html::icon('creditcard').'<span class="hide-menu">Оплата</span>', ['/'], ['class' => 'sidebar-link']); ?>
                             </li>
                         </ul>
                     </li>
+
+
+                    <li class="nav-small-cap">
+                        <i class="icon-puzzle"></i>
+                        <span class="hide-menu">Интеграция</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false">
+                            <i class="icon-upload"></i>
+                            <span class="hide-menu">Импорт</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false">
+                            <i class="icon-download"></i>
+                            <span class="hide-menu">Экспорт</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
                     <li class="nav-small-cap">
                         <i class="icon-books"></i>
                         <span class="hide-menu">Дополнительный</span>
                     </li>
+
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                           href="../../docs/documentation.html" aria-expanded="false">
-                            <i class="icon-info"></i>
-                            <span class="hide-menu">Документация</span>
-                        </a>
+                        <?= Html::a(Html::icon('info').'<span class="hide-menu">Документация</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="authentication-login1.html"
-                           aria-expanded="false">
-                            <i class="icon-logout"></i>
-                            <span class="hide-menu">Выход</span>
-                        </a>
+                        <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
                     </li>
+                    <li class="sidebar-item">
+                        <?= Html::a(Html::icon('logout').'<span class="hide-menu">Выход</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
+                    </li>
+
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->

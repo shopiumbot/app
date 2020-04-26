@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\commands\pager\Exceptions;
+namespace app\modules\telegram\commands\pager\Exceptions;
 
 use Exception;
 

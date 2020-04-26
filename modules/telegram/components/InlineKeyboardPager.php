@@ -1,7 +1,7 @@
 <?php
 
 
-namespace shopium\mod\telegram\components;
+namespace app\modules\telegram\components;
 
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
 use Longman\TelegramBot\Entities\KeyboardButton;

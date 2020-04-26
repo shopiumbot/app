@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\discounts\controllers\admin;
+namespace app\modules\discounts\controllers;
 
 use Yii;
 use panix\engine\controllers\AdminController;

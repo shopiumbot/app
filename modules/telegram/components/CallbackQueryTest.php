@@ -6,7 +6,7 @@
  * Time: 22:49
  */
 
-namespace shopium\mod\telegram\components;
+namespace app\modules\telegram\components;
 
 
 use Longman\TelegramBot\Entities\CallbackQuery;

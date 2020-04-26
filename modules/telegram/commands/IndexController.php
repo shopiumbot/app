@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\commands;
+namespace app\modules\telegram\commands;
 
 use Longman\TelegramBot\Commands\UserCommands\CatalogCommand;
 use Longman\TelegramBot\Conversation;
@@ -9,7 +9,7 @@ use Longman\TelegramBot\Telegram;
 use yii\console\Controller;
 use Yii;
 use yii\console\Exception;
-use shopium\mod\telegram\components\Api;
+use app\modules\telegram\components\Api;
 
 class IndexController extends Controller
 {

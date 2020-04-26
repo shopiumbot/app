@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use app\modules\shop\models\query\ProductQuery;
 use yii\db\ActiveRecord;
@@ -16,12 +17,8 @@ use yii\db\ActiveRecord;
  *
  * @package app\modules\shop\models
  */
-class ProductPrices extends ActiveRecord
+class ProductPrices extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
 
     const route = '/admin/shop/default';
     const MODULE_ID = 'shop';

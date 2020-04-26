@@ -79,7 +79,7 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
     {
         $config = Yii::$app->settings->get('telegram');
         if ($app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'shopium\mod\telegram\commands';
+            $this->controllerNamespace = 'app\modules\telegram\commands';
         }
 
         $groupUrlRule = new GroupUrlRule([
@@ -96,7 +96,7 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
         if (isset($config->api_token)) {
             $app->setComponents([
                 'telegram' => [
-                    'class' => 'shopium\mod\telegram\components\Telegram',
+                    'class' => 'app\modules\telegram\components\Telegram',
                     'botToken' => $config->api_token,
                 ]
             ]);

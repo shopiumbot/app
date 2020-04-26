@@ -1,13 +1,13 @@
 <?php
 
-namespace shopium\mod\telegram\migrations;
+namespace app\modules\telegram\migrations;
 
 use yii\console\Exception;
 use panix\engine\db\Migration;
 
 class m160808_112253_telegram extends Migration
 {
-    public $settingsForm = 'shopium\mod\telegram\models\SettingsForm';
+    public $settingsForm = 'app\modules\telegram\models\SettingsForm';
     // Use safeUp/safeDown to run migration code within a transaction
     public function safeUp()
     {

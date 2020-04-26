@@ -1,13 +1,13 @@
 <?php
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
 use Longman\TelegramBot\Entities\PollOption;
 use Longman\TelegramBot\Entities\User;
 use Longman\TelegramBot\Request;
-use shopium\mod\telegram\commands\pager\InlineKeyboardPagination;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\telegram\commands\pager\InlineKeyboardPagination;
+use app\modules\telegram\components\UserCommand;
 
 
 /**

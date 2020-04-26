@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
 use Longman\TelegramBot\Conversation;
@@ -17,8 +17,8 @@ use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;
 use Longman\TelegramBot\Entities\PhotoSize;
 use Longman\TelegramBot\Request;
-use core\modules\shop\models\Product;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\shop\models\Product;
+use app\modules\telegram\components\UserCommand;
 use Yii;
 
 /**

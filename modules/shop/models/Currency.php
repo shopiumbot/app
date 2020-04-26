@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use \panix\engine\db\ActiveRecord;
 use Yii;
 /**
@@ -17,14 +18,11 @@ use Yii;
  * @property string $separator_thousandth
  * @property string $separator_hundredth
  */
-class Currency extends ActiveRecord
+class Currency extends ClientActiveRecord
 {
 
     const MODULE_ID = 'shop';
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     /**
      * @inheritdoc
      */

@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
-use core\modules\contacts\models\SettingsForm;
+use app\modules\contacts\models\SettingsForm;
 use Longman\TelegramBot\Request;
 use panix\engine\Html;
-use shopium\mod\telegram\components\UserCommand;
+use app\modules\telegram\components\UserCommand;
 use Yii;
 
 /**

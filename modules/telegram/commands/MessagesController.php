@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\commands;
+namespace app\modules\telegram\commands;
 
 use Longman\TelegramBot\Request;
 use yii\console\Controller;

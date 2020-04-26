@@ -14,7 +14,7 @@ echo GridView::widget([
     'showFooter' => true,
 
     'layoutOptions' => [
-        //'title' => $this->context->pageName,
+        'title' => $this->context->pageName,
         'buttons' => [
             [
                 'url' => ['create'],

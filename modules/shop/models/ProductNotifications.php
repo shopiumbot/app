@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use panix\engine\db\ActiveRecord;
 
@@ -13,12 +14,9 @@ use panix\engine\db\ActiveRecord;
  * @property integer $product_id
  * @property string $email
  */
-class ProductNotifications extends ActiveRecord
+class ProductNotifications extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     const MODULE_ID = 'cart';
 
     /**

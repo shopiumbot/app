@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;

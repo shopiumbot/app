@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\SystemCommands;
+namespace app\modules\telegram\commands\SystemCommands;
 
 
 use Longman\TelegramBot\Commands\SystemCommand;

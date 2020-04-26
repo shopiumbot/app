@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\AdminCommands;
+namespace app\modules\telegram\commands\AdminCommands;
 
 
 use Longman\TelegramBot\Commands\AdminCommand;
@@ -17,10 +17,10 @@ use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;
 use Longman\TelegramBot\Request;
 use panix\engine\CMS;
-use core\modules\shop\models\Attribute;
-use core\modules\shop\models\Category;
-use core\modules\shop\models\Product;
-use core\modules\shop\models\ProductType;
+use app\modules\shop\models\Attribute;
+use app\modules\shop\models\Category;
+use app\modules\shop\models\Product;
+use app\modules\shop\models\ProductType;
 use Yii;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace shopium\mod\telegram\models;
+namespace app\modules\telegram\models;
 
-use core\modules\shop\models\Product;
+use app\modules\shop\models\Product;
 use Yii;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\components;
+namespace app\modules\telegram\components;
 
 use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Entities\KeyboardButton;

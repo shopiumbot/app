@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\models;
+namespace app\modules\telegram\models;
 
 use panix\engine\SettingsModel;
 

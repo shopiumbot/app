@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use yii\db\ActiveRecord;
 
 /**
@@ -13,11 +14,8 @@ use yii\db\ActiveRecord;
  * @property integer $type_id
  * @property integer $attribute_id
  */
-class TypeAttribute extends ActiveRecord {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+class TypeAttribute extends ClientActiveRecord {
+
     /**
      * @return string the associated database table name
      */

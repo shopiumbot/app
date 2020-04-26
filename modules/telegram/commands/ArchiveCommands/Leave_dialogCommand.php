@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
-use shopium\mod\telegram\models\AuthorizedManagerChat;
+use app\modules\telegram\models\AuthorizedManagerChat;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 

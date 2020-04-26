@@ -1,9 +1,9 @@
 <?php
 
-namespace shopium\mod\telegram\Commands;
+namespace app\modules\telegram\Commands;
 
-use shopium\mod\telegram\models\AuthorizedManagerChat;
-use shopium\mod\telegram\models\Message;
+use app\modules\telegram\models\AuthorizedManagerChat;
+use app\modules\telegram\models\Message;
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
 use Longman\TelegramBot\Entities\InlineKeyboardMarkup;
 use Longman\TelegramBot\Request;

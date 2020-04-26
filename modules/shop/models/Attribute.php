@@ -2,12 +2,12 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use panix\engine\CMS;
 use Yii;
 use yii\caching\DbDependency;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use app\modules\shop\models\translate\AttributeTranslate;
 use app\modules\shop\models\AttributeOption;
 use app\modules\shop\models\query\AttributeQuery;
 use panix\engine\db\ActiveRecord;
@@ -29,12 +29,9 @@ use panix\engine\db\ActiveRecord;
  * @property boolean $select_many Allow to filter products on front by more than one option value.
  * @method Category useInFilter()
  */
-class Attribute extends ActiveRecord
+class Attribute extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     const TYPE_TEXT = 1;
     const TYPE_TEXTAREA = 2;
     const TYPE_DROPDOWN = 3;

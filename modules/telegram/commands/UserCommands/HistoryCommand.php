@@ -8,16 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 
 use Longman\TelegramBot\Entities\InlineKeyboard;
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
 use Longman\TelegramBot\Request;
-use shopium\mod\telegram\components\InlineKeyboardPager;
-use shopium\mod\telegram\components\KeyboardPagination;
-use shopium\mod\telegram\components\UserCommand;
-use shopium\mod\cart\models\Order;
+use app\modules\telegram\components\InlineKeyboardPager;
+use app\modules\telegram\components\KeyboardPagination;
+use app\modules\telegram\components\UserCommand;
+use app\modules\cart\models\Order;
 use Yii;
 
 /**

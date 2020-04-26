@@ -3,6 +3,7 @@
 namespace app\modules\shop\models;
 
 
+use app\modules\user\components\ClientActiveRecord;
 use shopium\mod\discounts\components\DiscountBehavior;
 use core\modules\images\models\Image;
 use panix\mod\sitemap\behaviors\SitemapBehavior;
@@ -54,15 +55,12 @@ use yii\web\NotFoundHttpException;
  * @property ProductPrices[] $prices
  * @property ProductType $type
  */
-class Product extends ActiveRecord
+class Product extends ClientActiveRecord
 {
 
     use traits\ProductTrait;
 
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     public $file;
 
     const route = '/admin/shop/default';

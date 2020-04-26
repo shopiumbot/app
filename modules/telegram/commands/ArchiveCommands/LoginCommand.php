@@ -1,11 +1,11 @@
 <?php
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
-use shopium\mod\telegram\models\Actions;
-use shopium\mod\telegram\models\AuthorizedManagerChat;
-use shopium\mod\telegram\models\Usernames;
-use shopium\mod\telegram\TelegramVars;
+use app\modules\telegram\models\Actions;
+use app\modules\telegram\models\AuthorizedManagerChat;
+use app\modules\telegram\models\Usernames;
+use app\modules\telegram\TelegramVars;
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
 use Yii;

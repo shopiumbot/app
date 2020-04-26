@@ -2,9 +2,9 @@
 
 namespace app\modules\user\controllers;
 
+use app\modules\telegram\components\Api;
 use app\modules\user\models\User;
 use Longman\TelegramBot\Exception\TelegramException;
-use Longman\TelegramBot\Telegram;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -62,7 +62,8 @@ class WebhookController extends Controller
             try {
                 // Create Telegram API object
                 //$telegram = new Api($user->token, 'test');
-                $telegram = new Telegram($user->token, 'shopiumbot');
+                $telegram = new Api($user->token, 'shopiumbot');
+                $telegram->db = $user->getClientDb();
                 $basePath = \Yii::$app->getModule('telegram')->basePath;
                 $commands_paths = [
                     realpath($basePath . '/commands') . '/SystemCommands',

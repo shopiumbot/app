@@ -11,7 +11,7 @@
  * Written by Jack'lul <jacklul@jacklul.com>
  */
 
-namespace shopium\mod\telegram\commands\AdminCommands;
+namespace app\modules\telegram\commands\AdminCommands;
 
 
 use Longman\TelegramBot\DB;
@@ -21,7 +21,7 @@ use Longman\TelegramBot\Entities\ServerResponse;
 use Longman\TelegramBot\Entities\UserProfilePhotos;
 use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Request;
-use shopium\mod\telegram\components\AdminCommand;
+use app\modules\telegram\components\AdminCommand;
 
 /**
  * Admin "/whois" command

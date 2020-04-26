@@ -3,13 +3,12 @@
 namespace app\modules\shop\models;
 
 
+use app\modules\user\components\ClientActiveRecord;
+use app\modules\user\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 use panix\engine\behaviors\nestedsets\NestedSetsBehavior;
 use app\modules\shop\models\query\CategoryQuery;
-use panix\engine\CMS;
-use panix\engine\db\ActiveRecord;
-use panix\engine\behaviors\UploadFileBehavior;
 
 /**
  * Class Category
@@ -27,17 +26,14 @@ use panix\engine\behaviors\UploadFileBehavior;
  * @property integer $updated_at
  * @property integer $countItems Relation of getCountItems()
  */
-class Category extends ActiveRecord
+class Category extends ClientActiveRecord
 {
 
     const MODULE_ID = 'shop';
     const route = '/admin/shop/category';
     const route_update = 'index';
     public $parent_id;
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     /**
      * @inheritdoc
      */

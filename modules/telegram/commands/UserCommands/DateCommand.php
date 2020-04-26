@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

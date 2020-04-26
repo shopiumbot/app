@@ -1,8 +1,8 @@
 <?php
 
-namespace shopium\mod\telegram\commands\pager;
+namespace app\modules\telegram\commands\pager;
 
-use shopium\mod\telegram\commands\pager\Exceptions\InlineKeyboardPaginationException;
+use app\modules\telegram\commands\pager\Exceptions\InlineKeyboardPaginationException;
 
 /**
  * Class InlineKeyboardPagination

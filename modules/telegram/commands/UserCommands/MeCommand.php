@@ -10,7 +10,7 @@
  * Written by Marco Boretto <marco.bore@gmail.com>
  */
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Entities\File;

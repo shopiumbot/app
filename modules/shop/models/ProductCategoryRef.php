@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use yii\db\ActiveRecord;
 use Yii;
 /**
@@ -14,12 +15,8 @@ use Yii;
  * @property boolean $is_main
  * @property boolean $switch
  */
-class ProductCategoryRef extends ActiveRecord
+class ProductCategoryRef extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
     /**
      * @inheritdoc
      */

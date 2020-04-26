@@ -4,10 +4,10 @@ namespace app\modules\telegram\controllers;
 
 use app\modules\user\controllers\ClientController;
 use Longman\TelegramBot\Exception\TelegramException;
-use shopium\mod\telegram\components\Api;
+use app\modules\telegram\components\Api;
 use Yii;
 use panix\engine\controllers\AdminController;
-use shopium\mod\telegram\models\SettingsForm;
+use app\modules\telegram\models\SettingsForm;
 use yii\base\UserException;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;

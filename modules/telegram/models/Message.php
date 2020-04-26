@@ -2,7 +2,7 @@
 
 namespace app\modules\telegram\models;
 
-use shopium\mod\telegram\Telegram;
+use app\modules\telegram\Telegram;
 use Yii;
 
 /**

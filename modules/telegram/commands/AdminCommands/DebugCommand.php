@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\AdminCommands;
+namespace app\modules\telegram\commands\AdminCommands;
 
 
 use Longman\TelegramBot\Commands\AdminCommand;

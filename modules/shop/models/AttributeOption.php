@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use yii\caching\DbDependency;
 use yii\db\Exception;
@@ -21,12 +22,9 @@ use panix\engine\db\ActiveRecord;
  * @property string $data
  * @property integer $position
  */
-class AttributeOption extends ActiveRecord
+class AttributeOption extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     /**
      * @return string the associated database table name
      */

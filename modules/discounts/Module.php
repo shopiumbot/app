@@ -22,13 +22,13 @@ class Module extends WebModule implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        if ($this->discounts === null) {
+        /*if ($this->discounts === null) {
 
             $this->discounts = Discount::find()
                 ->published()
                 ->applyDate()
                 ->all();
-        }
+        }*/
     }
 
     public function getInfo()

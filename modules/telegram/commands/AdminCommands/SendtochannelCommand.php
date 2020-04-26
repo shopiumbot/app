@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace shopium\mod\telegram\commands\AdminCommands;
+namespace app\modules\telegram\commands\AdminCommands;
 
-use shopium\mod\telegram\components\AdminCommand;
+use app\modules\telegram\components\AdminCommand;
 use Longman\TelegramBot\Conversation;
 use Longman\TelegramBot\Entities\Chat;
 use Longman\TelegramBot\Entities\Keyboard;

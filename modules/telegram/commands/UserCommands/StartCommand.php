@@ -1,13 +1,13 @@
 <?php
 
-namespace shopium\mod\telegram\commands\UserCommands;
+namespace app\modules\telegram\commands\UserCommands;
 
 use Longman\TelegramBot\Entities\BotCommand;
 use Longman\TelegramBot\Entities\Poll;
 use Longman\TelegramBot\Entities\PollOption;
 use Longman\TelegramBot\Request;
 use panix\engine\CMS;
-use shopium\mod\telegram\components\SystemCommand;
+use app\modules\telegram\components\SystemCommand;
 use Yii;
 
 /**

@@ -3,7 +3,7 @@
 namespace app\modules\telegram\models\search;
 
 use panix\engine\data\ActiveDataProvider;
-use shopium\mod\telegram\models\User;
+use app\modules\telegram\models\User;
 
 /**
  * Class UserSearch
