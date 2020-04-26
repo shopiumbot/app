@@ -2,12 +2,13 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use app\modules\shop\models\Currency;
 use app\modules\shop\models\search\CurrencySearch;
 use panix\engine\controllers\AdminController;
 
-class CurrencyController extends AdminController
+class CurrencyController extends ClientController
 {
 
 

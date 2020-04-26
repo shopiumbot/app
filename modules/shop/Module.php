@@ -22,8 +22,8 @@ class Module extends WebModule implements BootstrapInterface
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
             'rules' => [
-                '<controller:(product)>' => '<controller>/index',
-                //'<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>' => '<controller>/index',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 //'<action:\w+>' => 'default/<action>',
 
             ],

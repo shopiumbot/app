@@ -3,7 +3,7 @@
 namespace app\modules\telegram\controllers;
 
 use app\modules\user\controllers\ClientController;
-use shopium\mod\telegram\models\search\MessageSearch;
+use app\modules\telegram\models\search\MessageSearch;
 use Yii;
 use panix\engine\controllers\AdminController;
 

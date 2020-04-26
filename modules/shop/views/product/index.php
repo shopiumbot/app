@@ -16,6 +16,8 @@ echo GridView::widget([
     'tableOptions' => ['class' => 'table table-striped'],
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
+   // 'enableLayout'=>false,
+    'showFooter' => true,
     'layoutOptions' => [
         'title' => $this->context->pageName,
         'buttons' => [
@@ -26,7 +28,6 @@ echo GridView::widget([
             ]
         ]
     ],
-    'showFooter' => true,
     //'footerRowOptions' => ['class' => 'text-center'],
 ]);
 Pjax::end();

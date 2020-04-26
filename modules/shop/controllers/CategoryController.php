@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use panix\engine\CMS;
 use Yii;
 use panix\engine\controllers\AdminController;
@@ -11,7 +12,7 @@ use yii\web\Response;
 /**
  * AdminController implements the CRUD actions for User model.
  */
-class CategoryController extends AdminController
+class CategoryController extends ClientController
 {
 
     public $icon = 'folder-open';

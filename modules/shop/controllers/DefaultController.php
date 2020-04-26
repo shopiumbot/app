@@ -2,11 +2,12 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\shop\models\search\ProductTypeSearch;
 
-class DefaultController extends AdminController {
+class DefaultController extends ClientController {
 
     public $icon = 'icon-t';
 

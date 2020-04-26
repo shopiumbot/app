@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\shop\models\Attribute;
@@ -9,7 +10,7 @@ use app\modules\shop\models\search\AttributeSearch;
 use app\modules\shop\models\AttributeOption;
 use yii\web\Response;
 
-class AttributeController extends AdminController
+class AttributeController extends ClientController
 {
 
     public $icon = 'sliders';

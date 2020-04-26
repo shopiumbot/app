@@ -1,8 +1,8 @@
 <?php
 
-namespace shopium\mod\telegram\models;
+namespace app\modules\telegram\models;
 
-use shopium\mod\telegram\Telegram;
+
 use Yii;
 
 /**
@@ -16,6 +16,10 @@ use Yii;
 class User extends \yii\db\ActiveRecord
 {
     const MODULE_ID = 'telegram';
+    public static function getDb()
+    {
+        return Yii::$app->user->getClientDb();
+    }
     /**
      * @inheritdoc
      */

@@ -2,7 +2,7 @@
 
 use panix\engine\Html;
 use panix\ext\fancybox\Fancybox;
-use core\modules\images\models\ImageSearch;
+use app\modules\images\models\ImageSearch;
 use panix\engine\widgets\Pjax;
 use panix\engine\bootstrap\Modal;
 
@@ -95,7 +95,7 @@ Pjax::begin([
     'dataProvider' => $dataProvider,
 ]);
 echo panix\engine\grid\GridView::widget([
-    //'id' => 'grid-images',
+    'layoutPath' => '@user/views/layouts/_grid_layout',
     'tableOptions' => ['class' => 'table table-striped'],
     'dataProvider' => $dataProvider,
     'enableLayout' => false,

@@ -64,8 +64,8 @@ class Image extends ActiveRecord
         //echo Yii::getAlias($this->path).DIRECTORY_SEPARATOR.$this->product_id.DIRECTORY_SEPARATOR.$this->filePath;
         //echo '<br>';
         //echo $filePath;
-
-        $filePath = Yii::getAlias($this->path) . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+$user_id = Yii::$app->user->id;
+        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
 
         if (!file_exists($filePath)) {
             $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.png';
@@ -90,8 +90,9 @@ class Image extends ActiveRecord
 
     public function getPathToOrigin()
     {
+        $user_id = Yii::$app->user->id;
         //$base = Yii::$app->getModule('images')->getStorePath();
-        $filePath = Yii::getAlias($this->path) . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
         if (!file_exists($filePath)) {
             $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.png';
         }
@@ -100,7 +101,8 @@ class Image extends ActiveRecord
 
     public function getUrlToOrigin()
     {
-        $base = '/uploads/store/product/'.$this->product_id.'/' . $this->filePath;
+        $user_id = Yii::$app->user->id;
+        $base = '/uploads/'.$user_id.'/product/'.$this->product_id.'/' . $this->filePath;
         $filePath = $base;
         return $filePath;
     }

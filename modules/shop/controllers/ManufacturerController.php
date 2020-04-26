@@ -2,12 +2,13 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use app\modules\shop\models\Manufacturer;
 use app\modules\shop\models\search\ManufacturerSearch;
 use panix\engine\controllers\AdminController;
 
-class ManufacturerController extends AdminController
+class ManufacturerController extends ClientController
 {
 
     public $icon = 'apple';

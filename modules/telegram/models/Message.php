@@ -1,6 +1,6 @@
 <?php
 
-namespace shopium\mod\telegram\models;
+namespace app\modules\telegram\models;
 
 use shopium\mod\telegram\Telegram;
 use Yii;
@@ -29,8 +29,7 @@ class Message extends \yii\db\ActiveRecord
      */
     public static function getDb()
     {
-        $db = \Yii::$app->controller->module->db;
-        return Yii::$app->get($db);
+        return Yii::$app->user->getClientDb();
     }
 
     /**

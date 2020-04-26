@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use yii\helpers\ArrayHelper;
 use panix\engine\controllers\AdminController;
@@ -13,7 +14,7 @@ use app\modules\shop\models\Attribute;
  * Class TypeController
  * @package app\modules\shop\controllers\admin
  */
-class TypeController extends AdminController
+class TypeController extends ClientController
 {
 
     public $icon = 'icon-t';

@@ -270,6 +270,7 @@ class User extends ActiveRecord implements IdentityInterface
             ]),
             'username' => $this->db_user,
             'password' => $this->db_password,
+            'charset'=>'utf8',
             'tablePrefix' => '64Tv_',
             'serverStatusCache' => YII_DEBUG ? 0 : 3600,
             'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,

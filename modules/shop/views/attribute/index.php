@@ -8,6 +8,7 @@ Pjax::begin([
 ]);
 echo GridView::widget([
     'id' => 'grid-attribute',
+    'layoutPath' => '@user/views/layouts/_grid_layout',
     'tableOptions' => ['class' => 'table table-striped'],
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,

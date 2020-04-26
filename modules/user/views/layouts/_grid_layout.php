@@ -9,7 +9,7 @@ use panix\engine\Html;
         <div class="container-fluid pt-2 pb-2">
             <div class="row">
                 <div class="col-sm-6 d-none d-sm-block">
-                    <h5><?php if (isset($title)) echo $title; ?></h5>
+                    <h3><?php if (isset($title)) echo $title; ?></h3>
                 </div>
                 <div class="col-sm-6 text-right">
                     <?php if (isset($buttons)) { ?>
@@ -18,7 +18,7 @@ use panix\engine\Html;
                         foreach ($buttons as $btn) {
                             $icon = '';
                             if (!isset($options['class']))
-                                $options['class'] = 'btn btn-sm btn-success';
+                                $options['class'] = 'btn btn-success';
                             if (!isset($options['data-pjax']))
                                 $options['data-pjax'] = 1;
 

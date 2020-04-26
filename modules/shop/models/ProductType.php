@@ -4,7 +4,7 @@ namespace app\modules\shop\models;
 
 use panix\engine\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
-
+use Yii;
 /**
  * Class ProductType
  *

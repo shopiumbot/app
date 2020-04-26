@@ -2,11 +2,12 @@
 
 namespace app\modules\shop\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\shop\models\forms\SettingsForm;
 
-class SettingsController extends AdminController
+class SettingsController extends ClientController
 {
 
     public $icon = 'settings';

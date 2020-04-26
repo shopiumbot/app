@@ -1,9 +1,9 @@
 <?php
 
-namespace shopium\mod\telegram\models\search;
+namespace app\modules\telegram\models\search;
 
 use panix\engine\data\ActiveDataProvider;
-use shopium\mod\telegram\models\Message;
+use app\modules\telegram\models\Message;
 
 /**
  * Class DeliverySearch

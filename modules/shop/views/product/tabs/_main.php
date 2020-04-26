@@ -28,7 +28,7 @@ echo $this->render('_prices', ['model' => $model, 'form' => $form]);
 ?>
 <?=
 
-$form->field($model, 'manufacturer_id')->dropDownList(ArrayHelper::map(Manufacturer::find()->cache(3200, new DbDependency(['sql' => 'SELECT MAX(`updated_at`) FROM ' . Manufacturer::tableName()]))->all(), 'id', 'name'), [
+$form->field($model, 'manufacturer_id')->dropDownList(ArrayHelper::map(Manufacturer::find()->cache(3200, new DbDependency(['db'=>Yii::$app->user->getClientDb(),'sql' => 'SELECT MAX(`updated_at`) FROM ' . Manufacturer::tableName()]))->all(), 'id', 'name'), [
     'prompt' => html_entity_decode($model::t('SELECT_MANUFACTURER_ID'))
 ]);
 ?>

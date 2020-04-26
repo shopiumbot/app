@@ -6,6 +6,7 @@ use Yii;
 use yii\base\UserException;
 use yii\helpers\Url;
 use panix\engine\WebModule;
+use yii\web\GroupUrlRule;
 
 /**
  * telegram module definition class
@@ -22,6 +23,9 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
     public $options = [];
 
     public $icon = 'telegram-outline';
+    /**
+     * @inheritdoc
+     */
 
     public function getDsnAttribute($name)
     {
@@ -78,12 +82,17 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
             $this->controllerNamespace = 'shopium\mod\telegram\commands';
         }
 
-        $rules['telegram/chat/<action:[0-9a-zA-Z_\-]+>'] = 'telegram/chat/<action>';
-        $rules['telegram/<action:[0-9a-zA-Z_\-]+>'] = 'telegram/default/<action>';
-        $app->urlManager->addRules(
-            $rules,
-            false
-        );
+        $groupUrlRule = new GroupUrlRule([
+            'prefix' => $this->id,
+            'rules' => [
+                '<controller:\w+>' => '<controller>/index',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                //'<action:\w+>' => 'default/<action>',
+
+            ],
+        ]);
+        $app->getUrlManager()->addRules($groupUrlRule->rules, false);
+
         if (isset($config->api_token)) {
             $app->setComponents([
                 'telegram' => [
