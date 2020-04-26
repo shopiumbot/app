@@ -2,6 +2,7 @@
 
 namespace app\modules\user\controllers;
 
+use app\modules\telegram\components\Api;
 use panix\engine\CMS;
 use panix\engine\controllers\WebController;
 use app\modules\user\models\forms\ChangePasswordForm;
@@ -198,50 +199,39 @@ class DefaultController extends WebController
 
     private function unZip($user)
     {
+        $newFile = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.php';
+        if (copy(Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.dist.php', $newFile)) {
 
 
+            $replacements = require($newFile);
+            $configDb = array_replace($replacements, [
+                'components' => [
+                    'db' => [
+                        'class' => 'yii\db\Connection',
+                        'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
+                        'username' => $user->db_user,
+                        'password' => $user->db_password,
+                        'tablePrefix' => 'client_',
+                        'charset' => 'utf8',
+                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                        'enableSchemaCache' => true,
+                        'schemaCache' => 'cache'
 
 
-
-            $newFile = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.php';
-            if (copy(Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.dist.php', $newFile)) {
-
-
-                $replacements = require($newFile);
-                $configDb = array_replace($replacements, [
-                    'components' => [
-                        'db' => [
-                            'class' => 'yii\db\Connection',
-                            'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
-                            'username' => $user->db_user,
-                            'password' => $user->db_password,
-                            'tablePrefix' => 'client_',
-                            'charset' => 'utf8',
-                            'serverStatusCache' => YII_DEBUG ? 0 : 3600,
-                            'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
-                            'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
-                            'enableSchemaCache' => true,
-                            'schemaCache' => 'cache'
-
-
-                        ]
                     ]
-                ]);
-
-
-                if (!@file_put_contents($newFile, '<?php return ' . var_export($configDb, true) . ';')) {
-                    throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $newFile]));
-                }
-                $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
-              //  echo '<pre>'.$runMigrate.'</pre>';
-                if(file_exists($newFile)){
-                    unlink($newFile);
-                }
-                //   print_r($configDb);
+                ]
+            ]);
+            if (!@file_put_contents($newFile, '<?php return ' . var_export($configDb, true) . ';')) {
+                throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $newFile]));
+            }
+            $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
+            if (file_exists($newFile)) {
+                unlink($newFile);
             }
 
-
-
+        }
     }
 
     /**
@@ -252,20 +242,7 @@ class DefaultController extends WebController
     public function registerInHosting($user)
     {
         $user = User::findOne($user->id);
-
         $user->setScenario('db');
-
-
-        //$data = [
-        //    'class' => 'hosting_site',
-        //    'method' => 'host_create',
-        //    'site' => Yii::$app->request->serverName,
-        //    'subdomain' => 'bot' . $user->id,
-        //];
-        //$createDomain = Yii::$app->getModule('user')->hostingApi($data);
-        // if ($createDomain['status'] == 'success') {
-        //$user->domain = $data['subdomain'];
-
 
         $dataDb = [
             'class' => 'hosting_database',
@@ -287,8 +264,6 @@ class DefaultController extends WebController
         } else {
             echo print_r($createDb['message']);
         }
-
-
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace app\modules\user\models;
 
+use app\modules\telegram\components\Api;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -181,6 +182,17 @@ class UserKey extends ActiveRecord
     {
         $this->consume_time = date("Y-m-d H:i:s");
         $this->save(false);
+
+
+
+
+        $telegram = new Api($this->user->token,'');
+        $result = $telegram->setWebHook('https://shopiumbot.com/user/webhook/'.$this->user->webhook);
+        if ($result->isOk()) {
+            Yii::info($result->getDescription());
+        }
+
+
         return $this;
     }
 

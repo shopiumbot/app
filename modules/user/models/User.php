@@ -405,6 +405,7 @@ class User extends ActiveRecord implements IdentityInterface
             "auth_key" => Yii::$app->security->generateRandomString(),
             "api_key" => Yii::$app->security->generateRandomString(),
             "status" => static::STATUS_ACTIVE,
+            'webhook'=>Yii::$app->security->generateRandomString()
         ];
 
         // determine if we need to change status based on module properties
