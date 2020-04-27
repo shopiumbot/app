@@ -51,8 +51,14 @@ use app\modules\shop\models\Category;
                         "icon":"icon-eye",
                         "label": "' . Yii::t('app/default', 'Скрыть показать') . '",
                         "action": function (obj) {
+                        console.log($node);
                             $node = tree.get_node($node);
-                            categorySwitch($node);
+                            var id = parseInt($node.id.replace("node_", ""));
+                            if(id !== 1){
+                                categorySwitch($node);
+                            }else{
+                                common.notify("Access denied","error");
+                            }
                         }
                     }, 
                     "Add": {
@@ -60,32 +66,49 @@ use app\modules\shop\models\Category;
                         "label": "' . Yii::t('app/default', 'CREATE') . '",
                         "action": function (obj) {
                             $node = tree.get_node($node);
-                            console.log($node);
-                            window.location = "/shop/category/index?parent_id="+$node.id.replace("node_", "");
+                            var id = parseInt($node.id.replace("node_", ""));
+                            window.location = "/shop/category/index?parent_id="+id;
                         }
                     }, 
                     "Edit": {
                         "icon":"icon-edit",
                         "label": "' . Yii::t('app/default', 'UPDATE') . '",
                         "action": function (obj) {
-                            $node = tree.get_node($node);
-                            window.location = "/shop/category/index?id="+$node.id.replace("node_", "");
+                            var id = parseInt($node.id.replace("node_", ""));
+                            if(id !== 1){
+                                $node = tree.get_node($node);
+                                window.location = "/shop/category/index?id="+id;
+                            }else{
+                                common.notify("Access denied","error");
+                            }
                         }
                     },  
                     "Rename": {
                         "icon":"icon-rename",
                         "label": "' . Yii::t('app/default', 'RENAME') . '",
                         "action": function (obj) {
-                            console.log($node);
-                            tree.edit($node);
+                            $node = tree.get_node($node);
+                            var id = parseInt($node.id.replace("node_", ""));
+                            if(id !== 1){
+                                tree.edit($node);
+                            }else{
+                                common.notify("Access denied","error");
+                            }
+              
                         }
                     },                         
                     "Remove": {
                         "icon":"icon-trashcan",
                         "label": "' . Yii::t('app/default', 'DELETE') . '",
                         "action": function (obj) {
-                            if (confirm("' . Yii::t('app/default', 'DELETE_CONFIRM') . '\nТак же будут удалены все товары.")) {
-                                tree.delete_node($node);
+                            $node = tree.get_node($node);
+                            var id = parseInt($node.id.replace("node_", ""));
+                            if(id !== 1){
+                                if (confirm("' . Yii::t('app/default', 'DELETE_CONFIRM') . '\nТак же будут удалены все товары.")) {
+                                    tree.delete_node($node);
+                                }
+                            }else{
+                                common.notify("Access denied","error");
                             }
                         }
                     }
