@@ -97,8 +97,8 @@ class ImageBehavior extends Behavior
         } else {
             $pictureFileName = $uniqueName . '.' . $file->extension;
         }
-        $user_id = Yii::$app->user->id;
-        $path = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
+        $clientDir = Yii::$app->user->getWebhook();
+        $path = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
         $newAbsolutePath = $path . DIRECTORY_SEPARATOR . $pictureFileName;
 
         BaseFileHelper::createDirectory($path, 0775, true);

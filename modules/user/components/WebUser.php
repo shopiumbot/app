@@ -65,29 +65,35 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->language : "";
     }
+
     public function getClientDb()
     {
         $user = $this->getIdentity();
-        if($user){
+        if ($user) {
             return $user->getClientDb();
-        }else{
-            if(Yii::$app->request->get('webhook')){
-                $class = $this->identityClass;
-                $user = $class::findByHook(Yii::$app->request->get('webhook'));
-                return new Connection([
-                    'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
-                        '{db_name}' => $user->db_name,
-                    ]),
-                    'username' => $user->db_user,
-                    'password' => $user->db_password,
-                    'charset'=>'utf8',
-                    'tablePrefix' => 'client_',
-                    'serverStatusCache' => YII_DEBUG ? 0 : 3600,
-                    'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
-                    'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
-                    'enableSchemaCache' => true,
-                    'schemaCache' => 'cache'
-                ]);
+        } else {
+            if (Yii::$app->request->get('webhook')) {
+                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook') . __CLASS__, function () {
+                    $class = $this->identityClass;
+                    $user = $class::findByHook(Yii::$app->request->get('webhook'));
+
+                    return new Connection([
+                        'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                            '{db_name}' => $user->db_name,
+                        ]),
+                        'username' => $user->db_user,
+                        'password' => $user->db_password,
+                        'charset' => 'utf8',
+                        'tablePrefix' => 'client_',
+                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                        'enableSchemaCache' => true,
+                        'schemaCache' => 'cache'
+                    ]);
+                });
+
+
             }
         }
 
@@ -98,6 +104,7 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->webhook : Yii::$app->request->get('webhook');
     }
+
     public function getEmail()
     {
         $user = $this->getIdentity();
@@ -109,7 +116,6 @@ class WebUser extends User
         $user = $this->getIdentity();
         //return $user ? $user->timezone : NULL;
     }
-
 
 
     public function getPhone()

@@ -65,7 +65,7 @@ class CategoryController extends ClientController
         $this->buttons = [
             [
                 'label' => Yii::t('shop/admin', 'CREATE_CATEGORY'),
-                'url' => ['/admin/shop/category'],
+                'url' => ['/shop/category'],
                 'options' => ['class' => 'btn btn-success']
             ]
         ];
@@ -89,11 +89,11 @@ class CategoryController extends ClientController
 
                 $model->appendTo($model->parent_id);
                 Yii::$app->session->setFlash('success', Yii::t('app/default', 'SUCCESS_UPDATE'));
-                return $this->redirect(['/admin/shop/category/index']);
+                return $this->redirect(['/shop/category/index']);
             } else {
                 $model->saveNode();
                 Yii::$app->session->setFlash('success', Yii::t('app/default', 'SUCCESS_UPDATE'));
-                return $this->redirect(['/admin/shop/category/index', 'id' => $model->id]);
+                return $this->redirect(['/shop/category/index', 'id' => $model->id]);
             }
         }
 
