@@ -341,7 +341,7 @@ class EavBehavior extends \yii\base\Behavior
      */
     public function loadEavAttributes($attributes)
     {
-        $data = $this->getLoadEavAttributesQuery($attributes)->all(Yii::$app->user->getClientDb());
+        $data = $this->getLoadEavAttributesQuery($attributes)->all(Yii::$app->getModule('user')->getDb());
         foreach ($data as $row) {
             $attribute = $this->stripPrefix($row[$this->attributeField]);
             $value = $row[$this->valueField];
@@ -596,7 +596,7 @@ class EavBehavior extends \yii\base\Behavior
                 $this->attributeField => $attribute,
                 $this->valueField => $value,
             ];
-            return Yii::$app->user->getClientDb()->createCommand()->insert($this->tableName, $data);
+            return Yii::$app->getModule('user')->getDb()->createCommand()->insert($this->tableName, $data);
         }
     }
 
@@ -637,7 +637,7 @@ class EavBehavior extends \yii\base\Behavior
         if (!empty($attributes)) {
             $condition[$this->attributeField] = $attributes;
         }
-        return Yii::$app->user->getClientDb()->createCommand()->delete($this->tableName, $condition);
+        return Yii::$app->getModule('user')->getDb()->createCommand()->delete($this->tableName, $condition);
     }
 
 

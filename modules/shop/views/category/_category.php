@@ -61,7 +61,7 @@ use app\modules\shop\models\Category;
                         "action": function (obj) {
                             $node = tree.get_node($node);
                             console.log($node);
-                            window.location = "/admin/shop/category/index?parent_id="+$node.id.replace("node_", "");
+                            window.location = "/shop/category/index?parent_id="+$node.id.replace("node_", "");
                         }
                     }, 
                     "Edit": {
@@ -69,7 +69,7 @@ use app\modules\shop\models\Category;
                         "label": "' . Yii::t('app/default', 'UPDATE') . '",
                         "action": function (obj) {
                             $node = tree.get_node($node);
-                            window.location = "/admin/shop/category/index?id="+$node.id.replace("node_", "");
+                            window.location = "/shop/category/index?id="+$node.id.replace("node_", "");
                         }
                     },  
                     "Rename": {

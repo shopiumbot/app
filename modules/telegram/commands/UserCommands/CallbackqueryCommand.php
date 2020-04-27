@@ -507,6 +507,7 @@ class CallbackqueryCommand extends SystemCommand
                         // echo $product->getImage()->getPath();
 
                         $imageData = $product->getImage();
+
                         if ($imageData) {
                             $image = $imageData->getPathToOrigin();
                         } else {

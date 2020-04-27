@@ -2,6 +2,7 @@
 
 namespace app\modules\discounts\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
 use panix\engine\db\ActiveRecord;
 
@@ -20,12 +21,9 @@ use panix\engine\db\ActiveRecord;
  * @package app\modules\discounts\models
  *
  */
-class Discount extends ActiveRecord
+class Discount extends ClientActiveRecord
 {
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
     const MODULE_ID = 'discounts';
 
     /**

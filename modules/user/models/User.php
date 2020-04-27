@@ -258,13 +258,31 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-    public static function findByHook($hook)
+    public static function findByHook($webhook)
     {
-        return static::findOne(["webhook" => $hook]);
+        return static::findOne(["webhook" => $webhook]);
     }
     public function getClientDb()
     {
         return new Connection([
+            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                '{db_name}' => $this->db_name,
+            ]),
+            'username' => $this->db_user,
+            'password' => $this->db_password,
+            'charset'=>'utf8',
+            'tablePrefix' => 'client_',
+            'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+            'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+            'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+            'enableSchemaCache' => true,
+            'schemaCache' => 'cache'
+        ]);
+    }
+
+    public function getClientCache()
+    {
+        return new Cache([
             'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
                 '{db_name}' => $this->db_name,
             ]),
@@ -405,7 +423,7 @@ class User extends ActiveRecord implements IdentityInterface
             "auth_key" => Yii::$app->security->generateRandomString(),
             "api_key" => Yii::$app->security->generateRandomString(),
             "status" => static::STATUS_ACTIVE,
-            'webhook'=>Yii::$app->security->generateRandomString()
+            'webhook'=>CMS::hash(Yii::$app->security->generateRandomString())
         ];
 
         // determine if we need to change status based on module properties

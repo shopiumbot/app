@@ -23,7 +23,7 @@ var uiDialog = $('.ui-dialog');
  * @param status_id
  */
 function setProductsStatus(status_id, el) {
-    $.ajax(common.url('/admin/shop/product/update-is-active'), {
+    $.ajax(common.url('/shop/product/update-is-active'), {
         type: "post",
         dataType: "json",
         data: {
@@ -63,7 +63,7 @@ function showCategoryAssignWindow2(el_clicked) {
     var modalContainer = $('#exampleModal');
     var modalBody = modalContainer.find('.modal-body');
     $.ajax({
-        url: '/admin/shop/product/render-category-assign-window',
+        url: '/shop/product/render-category-assign-window',
         success: function (data) {
             modalBody.html(data);
             modalContainer.modal('show');
@@ -90,7 +90,7 @@ function showCategoryAssignWindow(el_clicked) {
             $('body').append(div);
         }
 
-        $(dialogSelector).load('/admin/shop/product/render-category-assign-window', {}, function () {
+        $(dialogSelector).load('/shop/product/render-category-assign-window', {}, function () {
             uiDialog.position({my: 'center', at: 'center', of: window});
         });
 
@@ -128,7 +128,7 @@ function showCategoryAssignWindow(el_clicked) {
                     }
 
                     //if (confirm($(el_clicked).data('confirm'))) {
-                    $.ajax(common.url('/admin/shop/product/assign-categories'), {
+                    $.ajax(common.url('/shop/product/assign-categories'), {
                         type: "POST",
                         dataType: "json",
                         data: {
@@ -173,7 +173,7 @@ function showDuplicateProductsWindow() {
             $('body').append(div);
         }
 
-        $(dialogSelector).load(common.url('/admin/shop/product/render-duplicate-products-window'), {}, function () {
+        $(dialogSelector).load(common.url('/shop/product/render-duplicate-products-window'), {}, function () {
             uiDialog.position({my: 'center', at: 'center', of: window});
         });
         var test;
@@ -195,7 +195,7 @@ function showDuplicateProductsWindow() {
                 'class': 'btn btn-primary',
                 click: function () {
                     console.log('getSelectedRows',grid.yiiGridView('getSelectedRows'));
-                    $.ajax(common.url('/admin/shop/product/duplicate-products'), {
+                    $.ajax(common.url('/shop/product/duplicate-products'), {
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -248,7 +248,7 @@ function setProductsPrice() {
             return;
         }
 
-        $(dialogSelector).load(common.url('/admin/shop/product/render-products-price-window'), {}, function () {
+        $(dialogSelector).load(common.url('/shop/product/render-products-price-window'), {}, function () {
             uiDialog.position({my: 'center', at: 'center', of: window});
         });
 
@@ -273,7 +273,7 @@ function setProductsPrice() {
                 //'class': 'btn btn-primary',
                 click: function () {
 
-                    $.ajax(common.url('/admin/shop/product/set-products'), {
+                    $.ajax(common.url('/shop/product/set-products'), {
                         type: "POST",
                         dataType: 'json',
                         data: {

@@ -3,11 +3,9 @@
 
 namespace app\modules\images\models;
 
+use app\modules\user\components\ClientActiveRecord;
 use Yii;
-use yii\base\Exception;
 use yii\helpers\Url;
-use yii\helpers\BaseFileHelper;
-use panix\engine\db\ActiveRecord;
 
 /**
  * This is the model class for table "image".
@@ -19,14 +17,11 @@ use panix\engine\db\ActiveRecord;
  * @property string $urlAlias
  * @property string $path
  */
-class Image extends ActiveRecord
+class Image extends ClientActiveRecord
 {
     const MODULE_ID = 'images';
     private $helper = false;
-    public static function getDb()
-    {
-        return Yii::$app->user->getClientDb();
-    }
+
 
     public function getExtension()
     {
@@ -64,11 +59,11 @@ class Image extends ActiveRecord
         //echo Yii::getAlias($this->path).DIRECTORY_SEPARATOR.$this->product_id.DIRECTORY_SEPARATOR.$this->filePath;
         //echo '<br>';
         //echo $filePath;
-$user_id = Yii::$app->user->id;
-        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+        $clientDir = Yii::$app->user->getWebhook();
+        $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
 
         if (!file_exists($filePath)) {
-            $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.png';
+            $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
         }else{
             $origin = $this->getPathToOrigin();
             $filePath= $this->createVersion($origin, $size);
@@ -90,19 +85,19 @@ $user_id = Yii::$app->user->id;
 
     public function getPathToOrigin()
     {
-        $user_id = Yii::$app->user->id;
+        $clientDir = Yii::$app->user->getWebhook();
         //$base = Yii::$app->getModule('images')->getStorePath();
-        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+        $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
         if (!file_exists($filePath)) {
-            $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.png';
+            $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
         }
         return $filePath;
     }
 
     public function getUrlToOrigin()
     {
-        $user_id = Yii::$app->user->id;
-        $base = '/uploads/'.$user_id.'/product/'.$this->product_id.'/' . $this->filePath;
+        $clientDir = Yii::$app->user->getWebhook();
+        $base = '/uploads/'.$clientDir.'/product/'.$this->product_id.'/' . $this->filePath;
         $filePath = $base;
         return $filePath;
     }

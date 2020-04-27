@@ -22,7 +22,18 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
     public $db = 'db';
     public $options = [];
 
+    public function setApi($version)
+    {
+        $this->_telegram = $version;
+    }
+
+    public function getApi()
+    {
+        return $this->_telegram;
+    }
+
     public $icon = 'telegram-outline';
+    public $_telegram;
 
     /**
      * @inheritdoc

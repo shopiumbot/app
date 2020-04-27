@@ -17,7 +17,7 @@ $(function () {
         });
         $.ajax({
             type:'GET',
-            url:'/admin/shop/attribute/test',
+            url:'/shop/attribute/test',
             success:function (data) {
                 console.log(row.find('td:nth-child(3)'));
                 //row.find('td:nth-child(3)').html(data);

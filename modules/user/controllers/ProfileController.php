@@ -34,6 +34,16 @@ class ProfileController extends ClientController
         if (!$user)
             $this->error404();
 
+
+        $container = new \yii\di\Container;
+        $container->set('cache', [
+            'class' => 'yii\caching\FileCache',
+            'directoryLevel' => 0,
+            'keyPrefix' => '',
+            'cachePath' => '@runtime/cache/' . $user->webhook
+        ]);
+
+
         $user->setScenario('profile');
 
         $this->pageName = Yii::t('user/default', 'PROFILE');

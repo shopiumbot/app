@@ -1,6 +1,9 @@
 <?php
 
 namespace app\modules\user;
+use app\modules\user\models\User;
+use yii\console\Application;
+use yii\db\Exception;
 use yii\httpclient\Client;
 use Yii;
 use yii\base\BootstrapInterface;
@@ -213,7 +216,23 @@ class Module extends WebModule implements BootstrapInterface
             'UserKey' => 'app\modules\user\models\UserKey',
         ];
     }
-
+    public function getDb()
+    {
+        if (!(Yii::$app instanceof Application)) {
+            if (Yii::$app->user->isGuest) {
+                return Yii::$app->cache->getOrSet(__CLASS__, function () {
+                    $user = User::findByHook(Yii::$app->request->get('webhook'));
+                    if ($user) {
+                        return $user->getClientDb();
+                    } else {
+                        throw new Exception('error client db in module');
+                    }
+                });
+            } else {
+                return Yii::$app->user->getClientDb();
+            }
+        }
+    }
     /**
      * @inheritdoc
      * NOTE: THIS IS NOT CURRENTLY USED.
@@ -228,7 +247,7 @@ class Module extends WebModule implements BootstrapInterface
             'prefix' => $this->id,
             'rules' => [
                 '<controller:(profile)>' => '<controller>/index',
-                '<controller:(webhook)>/<hook:[0-9a-zA-Z\-]+>' => '<controller>/index',
+                '<controller:(webhook)>/<webhook:[0-9a-zA-Z\-\_]+>' => '<controller>/index',
                 '<controller:(admin|copy|auth)>' => '<controller>',
                 '<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',
                 '<action:\w+>/authclient/<authclient:[0-9a-zA-Z\-]+>' => 'default/<action>',

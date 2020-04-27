@@ -45,7 +45,7 @@ use yii\widgets\Breadcrumbs;
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-brand">
-                    <a href="index.html" class="logo">
+                    <a href="/user" class="logo">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <img src="<?= $this->context->asset->baseUrl; ?>/images/logo.svg" alt="homepage"
@@ -296,24 +296,17 @@ use yii\widgets\Breadcrumbs;
                                          width="60">
                                 </div>
                                 <div class="ml-2">
-                                    <h4 class="mb-0"><?= Yii::$app->user->getDisplayName(); ?></h4>
+                                    <h5 class="mb-0"><?= Yii::$app->user->getDisplayName(); ?></h5>
                                     <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__">[email&#160;protected]</a>
                                     </p>
                                 </div>
                             </div>
                             <div class="profile-dis scrollable">
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="icon-user-outline mr-1 ml-1"></i> My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="icon-user-outline mr-1 ml-1"></i> My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="icon-user-outline mr-1 ml-1"></i> Inbox</a>
+                                <a class="dropdown-item" href="/user/profile">
+                                    <i class="icon-user-outline mr-1 ml-1"></i> Аккаунт</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="icon-settings mr-1 ml-1"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="icon-logout mr-1 ml-1"></i> Logout</a>
+                                <a class="dropdown-item" href="/user/logout">
+                                    <i class="icon-logout mr-1 ml-1"></i> Выход</a>
                                 <div class="dropdown-divider"></div>
                             </div>
                             <div class="pl-3 p-2">
