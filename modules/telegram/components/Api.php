@@ -15,6 +15,7 @@ class Api extends \Longman\TelegramBot\Telegram
     protected $version = '1.0.0';
     private $config = [];
     public $db;
+
     public function __construct($api_key, $bot_username = '')
     {
         $this->config = Yii::$app->settings->get('telegram');

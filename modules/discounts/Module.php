@@ -26,10 +26,7 @@ class Module extends WebModule implements BootstrapInterface
 
         if (!(Yii::$app instanceof \yii\console\Application)) {
             if ($this->discounts === null) {
-                $this->discounts = Discount::find()
-                    ->published()
-                    ->applyDate()
-                    ->all();
+
             }
         }
     }

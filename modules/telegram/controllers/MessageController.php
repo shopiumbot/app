@@ -12,6 +12,7 @@ class MessageController extends ClientController
 
     public $icon = 'settings';
 
+    public $layout = '@user/views/layouts/dashboard_fluid';
     public function actionIndex()
     {
         $this->pageName = Yii::t('app/default', 'SETTINGS');

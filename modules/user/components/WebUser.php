@@ -73,7 +73,7 @@ class WebUser extends User
             return $user->getClientDb();
         } else {
             if (Yii::$app->request->get('webhook')) {
-                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook') . __CLASS__, function () {
+                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook') . 'db', function () {
                     $class = $this->identityClass;
                     $user = $class::findByHook(Yii::$app->request->get('webhook'));
 
@@ -103,6 +103,23 @@ class WebUser extends User
     {
         $user = $this->getIdentity();
         return $user ? $user->webhook : Yii::$app->request->get('webhook');
+    }
+
+
+    public function getDb_name()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->db_name : null;
+    }
+    public function getDb_user()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->db_user : null;
+    }
+    public function getDb_password()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->db_password : null;
     }
 
     public function getEmail()

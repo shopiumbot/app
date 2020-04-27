@@ -262,6 +262,7 @@ class ImageBehavior extends Behavior
      */
     public function afterDelete()
     {
+        $clientDir = Yii::$app->user->getWebhook();
         $images = $this->owner->getImages();
         if (count($images) < 1) {
             return true;
@@ -270,7 +271,7 @@ class ImageBehavior extends Behavior
                 $this->owner->removeImage($image);
             }
 
-            $path = Yii::getAlias($this->path) . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
+            $path = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
             BaseFileHelper::removeDirectory($path);
         }
     }

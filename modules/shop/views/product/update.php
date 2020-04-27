@@ -10,8 +10,9 @@ use app\modules\shop\models\ProductType;
 <?php if (!$model->isNewRecord) { ?>
 
 <?php } ?>
+    <div class="card">
+        <div class="card-header"><h5><?= Html::encode($this->context->pageName) ?></h5></div>
 
-    <h5><?= Html::encode($this->context->pageName) ?></h5>
 
 
 <?php
@@ -30,6 +31,7 @@ if (count($typesList) > 0) {
         app\modules\shop\bundles\admin\ProductAsset::register($this);
 
         ?>
+
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-sm-4"><?= Html::activeLabel($model, 'type_id', ['class' => 'control-label']); ?></div>
@@ -55,8 +57,8 @@ if (count($typesList) > 0) {
             ]
         ]);
         ?>
-        <div class="card">
-            <div class="card-header"><h3>dasasddsa</h3></div>
+
+
 
             <div class="card-body">
                 <?php
@@ -112,7 +114,7 @@ if (count($typesList) > 0) {
             <div class="card-footer text-center">
                 <?= $model->submitButton(); ?>
             </div>
-        </div>
+
         <?php
         ActiveForm::end();
     }
@@ -121,7 +123,7 @@ if (count($typesList) > 0) {
     echo '<div class="alert alert-danger">' . Yii::t('shop/admin', 'SELECT_TYPE_PRODUCT') . '</div>';
 }
 ?>
-
+    </div>
 
 <?php
 

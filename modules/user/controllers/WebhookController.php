@@ -50,34 +50,40 @@ class WebhookController extends Controller
     public function actionIndex($webhook)
     {
 
-        Yii::$container->set('app\modules\telegram\Module', ['hook_url' => $webhook]);
 
+        /* $configCache = [
+             'class' => 'yii\caching\FileCache',
+             'directoryLevel' => 0,
+             'keyPrefix' => '',
+             'cachePath' => '@runtime/cache/' . $webhook
+         ];
 
-
-
-       /* $configCache = [
-            'class' => 'yii\caching\FileCache',
-            'directoryLevel' => 0,
-            'keyPrefix' => '',
-            'cachePath' => '@runtime/cache/' . $webhook
-        ];
-
-        $cache = Yii::createObject($configCache);*/
+         $cache = Yii::createObject($configCache);*/
 
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $user = User::findByHook($webhook);
 
 
+        if ($webhook) {
+            $user = User::findByHook($webhook);
 
-
-
-
-
-
-
-
-
+            Yii::info('hook: ' . Yii::$app->request->get('webhook'));
+            Yii::$app->setComponents([
+                'clientDb' => [
+                    'class' => 'yii\db\Connection',
+                    'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
+                    'username' => $user->db_user,
+                    'password' => $user->db_password,
+                    'charset' => 'utf8',
+                    'tablePrefix' => 'client_',
+                    'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                    'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                    'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                    'enableSchemaCache' => true,
+                    'schemaCache' => 'cache'
+                ]
+            ]);
+        }
 
 
         if ($user) {
@@ -94,18 +100,7 @@ class WebhookController extends Controller
                 $telegram = new Api($user->token, 'shopiumbot');
                 $telegram->db = $user->getClientDb();
 
-                $container = new \yii\di\Container;
-                $container->set('clientDb', [
-                    'class' => 'yii\db\Connection',
-                    'dsn' => 'mysql:host=corner.mysql.tools;dbname='.$user->db_user,
-                    'username' => $user->db_name,
-                    'password' => $user->db_password,
-                    'charset' => 'utf8',
-                ]);
-
-
-              //  Yii::$app->getModule('telegram')->setApi($user->getClientDb());
-
+                //  Yii::$app->getModule('telegram')->setApi($user->getClientDb());
 
 
                 $basePath = \Yii::$app->getModule('telegram')->basePath;

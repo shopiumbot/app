@@ -2,8 +2,7 @@
 
 namespace app\modules\telegram\models;
 
-use app\modules\telegram\models\query\MessageQuery;
-
+use app\modules\telegram\models\query\CallbackQueryQuery;
 use app\modules\user\components\ClientActiveRecord;
 use Yii;
 
@@ -15,13 +14,13 @@ use Yii;
  * @property string $time
  * @property string $direction
  */
-class Message extends ClientActiveRecord
+class CallbackQuery extends ClientActiveRecord
 {
     const MODULE_ID = 'telegram';
 
     public static function find()
     {
-        return new MessageQuery(get_called_class());
+        return new CallbackQueryQuery(get_called_class());
     }
 
     /**
@@ -29,7 +28,7 @@ class Message extends ClientActiveRecord
      */
     public static function tableName()
     {
-        return '{{%telegram__message}}';
+        return '{{%telegram__callback_query}}';
     }
 
     /**
@@ -53,9 +52,9 @@ class Message extends ClientActiveRecord
     }
 
 
-    public function getCallback()
+    public function getUser2()
     {
-        return $this->hasOne(CallbackQuery::class, ['message_id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
     /**
      * @inheritdoc

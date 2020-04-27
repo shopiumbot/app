@@ -62,7 +62,10 @@ class DiscountBehavior extends Behavior
                     ->published()
                     ->applyDate()
                     ->all();*/
-                $this->discounts = Yii::$app->getModule('discounts')->discounts;
+                $this->discounts = Discount::find()
+                    ->published()
+                    ->applyDate()
+                    ->all();
             }
         }
 

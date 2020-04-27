@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\user;
+
 use app\modules\user\models\User;
 use yii\console\Application;
 use yii\db\Exception;
@@ -88,7 +89,8 @@ class Module extends WebModule implements BootstrapInterface
      */
     public $emailViewPath = "@user/mail";
 
-    public function hostingApi(array $data=[]){
+    public function hostingApi(array $data = [])
+    {
 
         $client = new Client();
         $response = $client->createRequest()
@@ -208,6 +210,7 @@ class Module extends WebModule implements BootstrapInterface
             throw new InvalidConfigException('Yii::$app->user is not set properly. It needs to extend \panix\user\components\User');
         }
     }
+
     public function getDefaultModelClasses()
     {
         return [
@@ -216,6 +219,7 @@ class Module extends WebModule implements BootstrapInterface
             'UserKey' => 'app\modules\user\models\UserKey',
         ];
     }
+
     public function getDb()
     {
         if (!(Yii::$app instanceof Application)) {
@@ -233,6 +237,7 @@ class Module extends WebModule implements BootstrapInterface
             }
         }
     }
+
     /**
      * @inheritdoc
      * NOTE: THIS IS NOT CURRENTLY USED.
@@ -255,6 +260,27 @@ class Module extends WebModule implements BootstrapInterface
 
             ],
         ]);
+        if (!(Yii::$app instanceof \yii\console\Application)) {
+            if (!Yii::$app->user->isGuest) {
+
+                Yii::info('hook: ' . Yii::$app->request->get('webhook'));
+                $app->setComponents([
+                    'clientDb' => [
+                        'class' => 'yii\db\Connection',
+                        'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . Yii::$app->user->db_name,
+                        'username' => Yii::$app->user->db_user,
+                        'password' => Yii::$app->user->db_password,
+                        'charset' => 'utf8',
+                        'tablePrefix' => 'client_',
+                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                        'enableSchemaCache' => true,
+                        'schemaCache' => 'cache'
+                    ]
+                ]);
+            }
+        }
         $app->getUrlManager()->addRules($groupUrlRule->rules, false);
         if (!(Yii::$app instanceof \yii\console\Application)) {
             $config = $app->settings->get($this->id);

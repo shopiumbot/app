@@ -18,12 +18,14 @@ class DashboardAsset extends AssetBundle
     public $sourcePath = __DIR__ . '/assets';
     public $js = [
         'js/perfect-scrollbar.jquery.min.js',
+
          'js/app.js',
 
         'js/waves.js',
         'js/sidebarmenu.js',
         'js/custom.min.js',
         'js/dashboard.js',
+        'js/chat.js',
     ];
     public $css = [
         'css/chartist.min.css',

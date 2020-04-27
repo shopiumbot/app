@@ -11,11 +11,11 @@ use yii\console\Application;
 
 class ClientActiveRecord extends ActiveRecord
 {
-    public static function getDb2()
+    /*public static function getDb2()
     {
         if (!(Yii::$app instanceof Application)) {
             if (Yii::$app->user->isGuest) {
-                Yii::info('webhook '.Yii::$app->getModule('telegram')->hook_url);
+                Yii::info('webhook ' . Yii::$app->getModule('telegram')->hook_url);
                 $container = new \yii\di\Container;
                 $container->set('cache', [
                     'class' => 'yii\caching\FileCache',
@@ -23,7 +23,7 @@ class ClientActiveRecord extends ActiveRecord
                     'keyPrefix' => '',
                     'cachePath' => '@runtime/cache/' . Yii::$app->request->get('webhook')
                 ]);
-                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook').__CLASS__, function () {
+                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook') . __CLASS__, function () {
                     $user = User::findByHook(Yii::$app->request->get('webhook'));
                     if ($user) {
                         return $user->getClientDb();
@@ -38,9 +38,10 @@ class ClientActiveRecord extends ActiveRecord
             Yii::info('load default db');
             return parent::getDb();
         }
-    }
+    }*/
+
     public static function getDb()
     {
-        return Yii::$app->user->getClientDb();
+        return (isset(Yii::$app->clientDb)) ? Yii::$app->clientDb : parent::getDb();
     }
 }

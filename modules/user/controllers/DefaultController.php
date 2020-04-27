@@ -226,8 +226,13 @@ class DefaultController extends WebController
             if (!@file_put_contents($newFile, '<?php return ' . var_export($configDb, true) . ';')) {
                 throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $newFile]));
             }
-            $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
-           // echo '<pre>'.$runMigrate.'</pre>';
+            if(function_exists('shell_exec')){
+                // $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate');
+               $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
+                    // echo '<pre>'.$runMigrate.'</pre>';
+            }else{
+                echo 'exec error';
+            }
             if (file_exists($newFile)) {
                 unlink($newFile);
             }
@@ -264,7 +269,7 @@ class DefaultController extends WebController
             $user->save(false);
         } else {
             echo print_r($createDb['message']);
-        }
+    }
     }
 
     /**

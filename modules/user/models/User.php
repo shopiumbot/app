@@ -107,8 +107,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['token'], 'validateBotToken', 'on' => ['register']],
 
 
-
-            [['db_name','db_password','db_user','domain'], 'string', 'on' => ['db']],
+            [['db_name', 'db_password', 'db_user', 'domain'], 'string', 'on' => ['db']],
 
 
             ['phone', 'panix\ext\telinput\PhoneInputValidator'],
@@ -167,7 +166,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token'];
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
-        $scenarios['db'] = ['db_user', 'db_password','db_name','domain'];
+        $scenarios['db'] = ['db_user', 'db_password', 'db_name', 'domain'];
 
 
         return $scenarios;
@@ -262,22 +261,25 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(["webhook" => $webhook]);
     }
+
     public function getClientDb()
     {
-        return new Connection([
-            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
-                '{db_name}' => $this->db_name,
-            ]),
-            'username' => $this->db_user,
-            'password' => $this->db_password,
-            'charset'=>'utf8',
-            'tablePrefix' => 'client_',
-            'serverStatusCache' => YII_DEBUG ? 0 : 3600,
-            'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
-            'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
-            'enableSchemaCache' => true,
-            'schemaCache' => 'cache'
-        ]);
+        return Yii::$app->cache->getOrSet($this->webhook . 'db', function () {
+            return new Connection([
+                'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                    '{db_name}' => $this->db_name,
+                ]),
+                'username' => $this->db_user,
+                'password' => $this->db_password,
+                'charset' => 'utf8',
+                'tablePrefix' => 'client_',
+                'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                'enableSchemaCache' => true,
+                'schemaCache' => 'cache'
+            ]);
+        });
     }
 
     public function getClientCache()
@@ -288,7 +290,7 @@ class User extends ActiveRecord implements IdentityInterface
             ]),
             'username' => $this->db_user,
             'password' => $this->db_password,
-            'charset'=>'utf8',
+            'charset' => 'utf8',
             'tablePrefix' => 'client_',
             'serverStatusCache' => YII_DEBUG ? 0 : 3600,
             'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
@@ -297,6 +299,7 @@ class User extends ActiveRecord implements IdentityInterface
             'schemaCache' => 'cache'
         ]);
     }
+
     /**
      * @inheritdoc
      */
@@ -338,7 +341,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function beforeSave($insert)
     {
         // hash new password if set
-        if ($this->password && in_array($this->scenario,['reset','register'])) {
+        if ($this->password && in_array($this->scenario, ['reset', 'register'])) {
 
             $this->password = Yii::$app->security->generatePasswordHash($this->password);
         }
@@ -423,7 +426,7 @@ class User extends ActiveRecord implements IdentityInterface
             "auth_key" => Yii::$app->security->generateRandomString(),
             "api_key" => Yii::$app->security->generateRandomString(),
             "status" => static::STATUS_ACTIVE,
-            'webhook'=>CMS::hash(Yii::$app->security->generateRandomString())
+            'webhook' => CMS::hash(Yii::$app->security->generateRandomString())
         ];
 
         // determine if we need to change status based on module properties
