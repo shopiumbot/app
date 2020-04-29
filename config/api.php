@@ -95,7 +95,7 @@ $config = [
                 [
                     'class' => yii\rest\UrlRule::class,
                     'controller' => 'v1/country',
-                   // 'pluralize'=>false,
+                    'pluralize'=>false,
                     //'prefix'=>'api',
                     'extraPatterns' => [
                         'GET /new' => 'new',

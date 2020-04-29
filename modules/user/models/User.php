@@ -38,6 +38,13 @@ use ReflectionClass;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    public function fields()
+    {
+        return [
+            'id',
+            'username'
+        ];
+    }
 
     public $disallow_delete = [1];
     const MODULE_ID = 'user';
@@ -103,8 +110,9 @@ class User extends ActiveRecord implements IdentityInterface
             [['new_password'], 'required', 'on' => ['reset', 'change']],
             [['password_confirm'], 'required', 'on' => ['reset', 'register']],
 
-            [['password', 'token'], 'required', 'on' => ['register']],
+            [['password', 'token','plan_id'], 'required', 'on' => ['register']],
             [['token'], 'validateBotToken', 'on' => ['register']],
+            [['plan_id'], 'validatePlan', 'on' => ['register']],
 
 
             [['db_name', 'db_password', 'db_user', 'domain'], 'string', 'on' => ['db']],
@@ -135,6 +143,12 @@ class User extends ActiveRecord implements IdentityInterface
         return $rules;
     }
 
+    public function validatePlan($attribute)
+    {
+        if(!in_array($this->$attribute,Yii::$app->params['plan'])){
+            $this->addError($attribute, 'Ошибка, не выбран тарифный план.');
+        }
+    }
     public function validateBotToken($attribute)
     {
 
@@ -163,7 +177,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios = parent::scenarios();
 
         $scenarios['register_fast'] = ['username', 'email', 'phone'];
-        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token'];
+        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token','plan_id'];
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
         $scenarios['db'] = ['db_user', 'db_password', 'db_name', 'domain'];
@@ -264,7 +278,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getClientDb()
     {
-        return Yii::$app->cache->getOrSet($this->webhook . 'db', function () {
+        return Yii::$app->cache->getOrSet('client_db', function () {
             return new Connection([
                 'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
                     '{db_name}' => $this->db_name,
@@ -426,7 +440,9 @@ class User extends ActiveRecord implements IdentityInterface
             "auth_key" => Yii::$app->security->generateRandomString(),
             "api_key" => Yii::$app->security->generateRandomString(),
             "status" => static::STATUS_ACTIVE,
-            'webhook' => CMS::hash(Yii::$app->security->generateRandomString())
+            'webhook' => CMS::hash(Yii::$app->security->generateRandomString()),
+            'expire'=>time(),
+            'trial'=>1
         ];
 
         // determine if we need to change status based on module properties

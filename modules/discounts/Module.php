@@ -7,6 +7,7 @@ use Yii;
 use yii\base\BootstrapInterface;
 use panix\engine\WebModule;
 use panix\mod\admin\widgets\sidebar\BackendNav;
+use yii\web\GroupUrlRule;
 
 class Module extends WebModule implements BootstrapInterface
 {
@@ -25,9 +26,18 @@ class Module extends WebModule implements BootstrapInterface
     {
 
         if (!(Yii::$app instanceof \yii\console\Application)) {
-            if ($this->discounts === null) {
+            $groupUrlRule = new GroupUrlRule([
+                'prefix' => $this->id,
+                'rules' => [
+                    '' => 'default/index',
+                    '<controller:\w+>' => '<controller>/index',
+                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                    //'<action:\w+>' => 'default/<action>',
 
-            }
+                ],
+            ]);
+            $app->getUrlManager()->addRules($groupUrlRule->rules, false);
+
         }
     }
 

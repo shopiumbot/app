@@ -102,8 +102,9 @@ if (count($typesList) > 0) {
                 echo \panix\engine\bootstrap\Tabs::widget([
                     //'encodeLabels'=>true,
                     'options' => [
-                        'class' => 'nav-pills flex-column flex-sm-row nav-tabs-static'
+                        'class' => 'nav-pills2 flex-column flex-sm-row nav-tabs-static'
                     ],
+                    'tabContentOptions'=>['class'=>'mt-3'],
                     'items' => $tabs,
                 ]);
 

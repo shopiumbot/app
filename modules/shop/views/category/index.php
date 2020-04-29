@@ -2,6 +2,8 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
+use app\modules\shop\models\Category;
+use panix\engine\bootstrap\Alert;
 ?>
 
 <div class="row">
@@ -14,25 +16,27 @@ use panix\engine\bootstrap\ActiveForm;
 
             <div class="card-body">
                 <?php
-                $tabs = [];
 
-                $tabs[] = [
-                    'label' => $model::t('TAB_MAIN'),
-                    'content' => $this->render('_main', ['form' => $form, 'model' => $model]),
-                    'active' => true,
-                    'encode' => false,
-                    'options' => ['class' => 'text-center nav-item'],
-                ];
 
-                echo \panix\engine\bootstrap\Tabs::widget([
-                    //'encodeLabels'=>true,
-                    'options' => [
-                        'class' => 'nav-pills'
-                    ],
-                    'items' => $tabs,
-                ]);
 
+                /**
+                 * @var $form \panix\engine\bootstrap\ActiveForm
+                 * @var $model \app\modules\shop\models\Category
+                 */
+                if (Yii::$app->request->get('parent_id')) {
+                    $parent = Category::findOne(Yii::$app->request->get('parent_id'));
+                    echo Alert::widget([
+                        'options' => [
+                            'class' => 'alert-info',
+                        ],
+                        'body' => "Добавление в категорию: " . $parent->name,
+                    ]);
+                }
                 ?>
+
+                <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+
+
 
 
             </div>

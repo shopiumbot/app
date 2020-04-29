@@ -95,9 +95,9 @@ $config = [
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'db' => [
             'class' => 'panix\engine\db\Connection',
-            'dsn' => 'mysql:host=corner.mysql.tools;dbname=corner_bot57',
-            'username' => 'corner_bot57',
-            'password' => 'rdF7@U_77z',
+            'dsn' => 'mysql:host=corner.mysql.tools;dbname=corner_bot67',
+            'username' => 'corner_bot67',
+            'password' => '839^LyOnu@',
             'charset' => 'utf8',
             'tablePrefix' => 'client_',
             'serverStatusCache' => YII_DEBUG ? 0 : 3600,

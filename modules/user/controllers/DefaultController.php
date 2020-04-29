@@ -127,6 +127,7 @@ class DefaultController extends WebController
             $message->send();*/
 
             $user->role = 'user';
+
             if ($user->load($post)) {
 
                 $user->username = $user->email;

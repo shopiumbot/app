@@ -45,9 +45,9 @@ use yii\web\NotFoundHttpException;
  * @property integer $rating
  * @property Manufacturer[] $manufacturer
  * @property string $discount Discount
- * @property boolean $hasDiscount See [[\shopium\mod\discounts\components\DiscountBehavior]] //Discount
- * @property float $originalPrice See [[\shopium\mod\discounts\components\DiscountBehavior]]
- * @property float $discountPrice See [[\shopium\mod\discounts\components\DiscountBehavior]]
+ * @property boolean $hasDiscount See [[\app\modules\discounts\components\DiscountBehavior]] //Discount
+ * @property float $originalPrice See [[\app\modules\discounts\components\DiscountBehavior]]
+ * @property float $discountPrice See [[\app\modules\discounts\components\DiscountBehavior]]
  * @property integer $ordern
  * @property boolean $isAvailable
  * @property Category $categories
@@ -60,6 +60,21 @@ class Product extends ClientActiveRecord
 
     use traits\ProductTrait;
 
+    public function fields()
+    {
+        return [
+            'id',
+            'type_id',
+            'name',
+           // 'manufacturer' => function ($model) {
+            //    return ($model->manufacturer_id) ? $model->manufacturer : $model->manufacturer_id;
+           // },
+            'price',
+            'switch',
+            'created_at',
+            'updated_at',
+        ];
+    }
 
     public $file;
 
@@ -238,7 +253,7 @@ class Product extends ClientActiveRecord
         $rules = [];
 
 
-        $rules[] = [['main_category_id', 'price', 'unit','name'], 'required'];
+        $rules[] = [['main_category_id', 'price', 'unit', 'name'], 'required'];
         $rules[] = ['price', 'commaToDot'];
         $rules[] = [['file'], 'file', 'maxFiles' => Yii::$app->params['plan'][Yii::$app->params['plan_id']]['product_upload_files']];
         $rules[] = [['file'], 'validateLimit'];
@@ -247,7 +262,7 @@ class Product extends ClientActiveRecord
         $rules[] = [['name'], 'unique'];
         $rules[] = [['name'], 'trim'];
         $rules[] = [['description'], 'string'];
-		$rules[] = [['unit'], 'default', 'value' => 1];
+        $rules[] = [['unit'], 'default', 'value' => 1];
         $rules[] = [['sku', 'description', 'label', 'discount'], 'default']; // установим ... как NULL, если они пустые
         $rules[] = [['price'], 'double'];
         $rules[] = [['manufacturer_id', 'type_id', 'quantity', 'availability', 'added_to_cart_count', 'ordern', 'category_id', 'currency_id', 'label'], 'integer'];
@@ -292,11 +307,10 @@ class Product extends ClientActiveRecord
     }
 
 
-
     public function getManufacturer()
     {
         return $this->hasOne(Manufacturer::class, ['id' => 'manufacturer_id']);
-            //->cache(3200, new DbDependency(['sql' => 'SELECT MAX(`updated_at`) FROM ' . Manufacturer::tableName()]));
+        //->cache(3200, new DbDependency(['sql' => 'SELECT MAX(`updated_at`) FROM ' . Manufacturer::tableName()]));
     }
 
 
@@ -514,7 +528,7 @@ class Product extends ClientActiveRecord
 
 
             //$attributeModel = Attribute::find()->where(['name' => $attribute])->cache(3600 * 24, $dependency)->one();
-            return ['name'=>$attributeModel->title,'value'=>$attributeModel->renderValue($value)];
+            return ['name' => $attributeModel->title, 'value' => $attributeModel->renderValue($value)];
         }
         return parent::__get($name);
     }
@@ -577,26 +591,24 @@ class Product extends ClientActiveRecord
             $product = Product::findOne($product);
 
 
-
-            // if ($quantity > 1 && ($pr = $product->getPriceByQuantity($quantity))) {
-            if ($product->prices && $quantity > 1) {
-                $pr = $product->getPriceByQuantity($quantity);
-                $result = $pr->value;
-                // if ($product->currency_id) {
-                //$result = Yii::$app->currency->convert($pr->value, $product->currency_id);
-                //} else {
-                //     $result = $pr->value;
-                //}
+        // if ($quantity > 1 && ($pr = $product->getPriceByQuantity($quantity))) {
+        if ($product->prices && $quantity > 1) {
+            $pr = $product->getPriceByQuantity($quantity);
+            $result = $pr->value;
+            // if ($product->currency_id) {
+            //$result = Yii::$app->currency->convert($pr->value, $product->currency_id);
+            //} else {
+            //     $result = $pr->value;
+            //}
+        } else {
+            if ($product->currency_id) {
+                $result = Yii::$app->currency->convert($product->hasDiscount ? $product->discountPrice : $product->price, $product->currency_id);
             } else {
-                if ($product->currency_id) {
-                    $result = Yii::$app->currency->convert($product->hasDiscount ? $product->discountPrice : $product->price, $product->currency_id);
-                } else {
-                    $result = Yii::$app->currency->convert($product->hasDiscount ? $product->discountPrice : $product->price, $product->currency_id);
-                    //$result = ($product->hasDiscount) ? $product->discountPrice : $product->price;
-                }
-
+                $result = Yii::$app->currency->convert($product->hasDiscount ? $product->discountPrice : $product->price, $product->currency_id);
+                //$result = ($product->hasDiscount) ? $product->discountPrice : $product->price;
             }
 
+        }
 
 
         return $result;

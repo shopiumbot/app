@@ -328,132 +328,9 @@ use yii\widgets\Breadcrumbs;
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <aside class="left-sidebar" data-sidebarbg="skin5">
-        <!-- Sidebar scroll-->
         <div class="scroll-sidebar ps-container ps-theme-default ps-active-y">
-            <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li class="nav-small-cap">
-                        <i class="icon-telegram-outline"></i>
-                        <span class="hide-menu">Telegram-магазин</span>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('folder-open').'<span class="hide-menu">Каталог</span>', ['/shop/category'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('shopcart').'<span class="hide-menu">Продукция</span>', ['/shop/product'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('discount').'<span class="hide-menu">Скидки</span>', ['/discount'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item d-none">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i class="icon-puzzle"></i>
-                            <span class="hide-menu">Интеграция</span>
-                            <span class="badge badge-pill badge-info ml-auto m-r-15">3</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="index.html" class="sidebar-link">
-                                    <i class="icon-arrow-right"></i>
-                                    <span class="hide-menu">CSV</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="index2.html" class="sidebar-link">
-                                    <i class="icon-arrow-right"></i>
-                                    <span class="hide-menu">EXEL</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('apple').'<span class="hide-menu">Бренды</span>', ['/shop/manufacturer'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('t').'<span class="hide-menu">Типы товаров</span>', ['/shop/type'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('filter').'<span class="hide-menu">Атрибуты</span>', ['/shop/attribute'], ['class' => 'sidebar-link']); ?>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('settings').'<span class="hide-menu">Настройки</span>', ['/shop/settings'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i class="icon-cart"></i>
-                            <span class="hide-menu">Заказы</span>
-                            <span class="badge badge-pill badge-success ml-auto m-r-15">3</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse first-level">
-                            <li class="sidebar-item">
-                                <?= Html::a(Html::icon('list').'<span class="hide-menu">Список заказов</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
-                            </li>
-                            <li class="sidebar-item">
-                                <?= Html::a(Html::icon('delivery').'<span class="hide-menu">Доставка</span>', ['/'], ['class' => 'sidebar-link']); ?>
-                            </li>
-                            <li class="sidebar-item">
-                                <?= Html::a(Html::icon('creditcard').'<span class="hide-menu">Оплата</span>', ['/'], ['class' => 'sidebar-link']); ?>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    <li class="nav-small-cap">
-                        <i class="icon-puzzle"></i>
-                        <span class="hide-menu">Интеграция</span>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i class="icon-upload"></i>
-                            <span class="hide-menu">Импорт</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse first-level">
-                            <li class="sidebar-item">
-                                <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                           aria-expanded="false">
-                            <i class="icon-download"></i>
-                            <span class="hide-menu">Экспорт</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse first-level">
-                            <li class="sidebar-item">
-                                <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-
-                    <li class="nav-small-cap">
-                        <i class="icon-books"></i>
-                        <span class="hide-menu">Дополнительный</span>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('info').'<span class="hide-menu">Документация</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
-                    </li>
-                    <li class="sidebar-item">
-                        <?= Html::a(Html::icon('logout').'<span class="hide-menu">Выход</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
-                    </li>
-
-                </ul>
-            </nav>
-            <!-- End Sidebar navigation -->
+            <?= $this->render('_sidebar'); ?>
         </div>
-        <!-- End Sidebar scroll-->
     </aside>
     <div class="page-wrapper">
         <div class="page-breadcrumb">
@@ -463,24 +340,42 @@ use yii\widgets\Breadcrumbs;
                 </div>
                 <div class="col-7 align-self-center">
                     <div class="d-flex align-items-center justify-content-end">
-                        <nav aria-label="breadcrumb">
                         <?php
-                        if (isset($this->context->breadcrumbs)) {
-                            echo Breadcrumbs::widget([
-                                'links' => $this->context->breadcrumbs,
+                        if (!isset($this->context->buttons)) {
+                            if (method_exists($this->context, 'actionCreate')) {
+                                echo Html::a(Yii::t('app', 'CREATE'), ['create'], ['title' => Yii::t('app', 'CREATE'), 'class' => 'btn btn-success']);
+                            }
+                        } else {
+                            if ($this->context->buttons == true) {
+                                if (is_array($this->context->buttons)) {
 
-                            ]);
+                                    if (count($this->context->buttons) > 1) {
+                                        echo Html::beginTag('div', ['class' => 'btn-group']);
+                                    }
+                                    foreach ($this->context->buttons as $button) {
+                                        if (isset($button['icon'])) {
+                                            $icon = Html::icon($button['icon']) . ' ';
+                                        } else {
+                                            $icon = '';
+                                        }
+                                        if (!isset($button['options']['class'])) {
+                                            $button['options']['class'] = ['btn btn-secondary'];
+                                        }
+                                        if (!empty($icon))
+                                            $button['label'] = '<span class="d-none d-sm-inline">' . $button['label'] . '</span>';
+
+                                        if (empty($icon))
+                                            $button['options']['title'] = $button['label'];
+
+                                        echo Html::a($icon . $button['label'], $button['url'], $button['options']);
+                                    }
+                                    if (count($this->context->buttons) > 1) {
+                                        echo Html::endTag('div');
+                                    }
+                                }
+                            }
                         }
                         ?>
-
-
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page"><?= $this->context->pageName; ?></li>
-                            </ol>
-                        </nav>
                     </div>
                 </div>
             </div>

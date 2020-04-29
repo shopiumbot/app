@@ -80,9 +80,9 @@ use panix\engine\CMS;
 
         <tr>
             <td class="text-right"></td>
-            <td class="text-center"><?= Html::a('Регистрация', ['/'], ['class' => 'btn btn-outline-success']); ?></td>
-            <td class="text-center"><?= Html::a('Регистрация', ['/'], ['class' => 'btn btn-outline-success']); ?></td>
-            <td class="text-center"><?= Html::a('Регистрация', ['/'], ['class' => 'btn btn-outline-success']); ?></td>
+            <td class="text-center"><?= Html::a('Регистрация', ['/user/register','plan'=>1], ['class' => 'btn btn-outline-success']); ?></td>
+            <td class="text-center"><?= Html::a('Регистрация', ['/user/register','plan'=>2], ['class' => 'btn btn-outline-success']); ?></td>
+            <td class="text-center"><?= Html::a('Регистрация', ['/user/register','plan'=>3], ['class' => 'btn btn-outline-success']); ?></td>
         </tr>
     </table>
 

@@ -256,6 +256,7 @@ class Module extends WebModule implements BootstrapInterface
                 '<controller:(admin|copy|auth)>' => '<controller>',
                 '<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',
                 '<action:\w+>/authclient/<authclient:[0-9a-zA-Z\-]+>' => 'default/<action>',
+                'register/plan/<plan:[0-9]+>' => 'default/<action>',
                 '<action:\w+>' => 'default/<action>',
 
             ],
@@ -263,7 +264,6 @@ class Module extends WebModule implements BootstrapInterface
         if (!(Yii::$app instanceof \yii\console\Application)) {
             if (!Yii::$app->user->isGuest) {
 
-                Yii::info('hook: ' . Yii::$app->request->get('webhook'));
                 $app->setComponents([
                     'clientDb' => [
                         'class' => 'yii\db\Connection',

@@ -4,6 +4,7 @@ namespace app\modules\telegram\commands\UserCommands;
 
 use Longman\TelegramBot\Entities\BotCommand;
 use Longman\TelegramBot\Entities\File;
+use Longman\TelegramBot\Entities\InputMedia\InputMediaPhoto;
 use Longman\TelegramBot\Entities\PhotoSize;
 use Longman\TelegramBot\Entities\Poll;
 use Longman\TelegramBot\Entities\PollOption;
@@ -80,12 +81,52 @@ class StartCommand extends SystemCommand
 
 
 
+        Request::setChatDescription([
+            'chat_id'=>$chat_id,
+            'description'=>'test desc'
+        ]);
+        $s = Request::setChatTitle([
+            'chat_id'=>$chat_id,
+            'title'=>'test title'
+        ]);
+        $adsData2['chat_id']=$chat_id;
+        $adsData2['text']=json_encode($s);
+        $ads = Request::sendMessage($adsData2);
+
+        Request::setChatPhoto([
+            'chat_id'=>$chat_id,
+            'photo'=>'https://news.liga.net/images/general/2019/09/11/20190911155038-8657.jpg'
+        ]);
 
 
+        $g['chat_id']=$chat_id;
+        $g['media']=[
+            new InputMediaPhoto([
+                'type'=>'photo',
+                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155038-8657.jpg',
+                'caption'=>'test1'
+            ]),
+            new InputMediaPhoto([
+                'type'=>'photo',
+                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155121-2187.jpg',
+                'caption'=>'test2'
+            ]),
+            new InputMediaPhoto([
+                'type'=>'photo',
+                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155229-1638.jpg?v=1568211585',
+                'caption'=>'test3'
+            ]),
+            new InputMediaPhoto([
+                'type'=>'photo',
+                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155225-5301.jpg?v=1568211581',
+                'caption'=>'test 42 41 423'
+            ]),
+        ];
+
+        Request::sendMediaGroup($g);
 
 
-
-        $limit = 10;
+        /*$limit = 10;
         $offset = null;
         $response = Request::getUserProfilePhotos(
             [
@@ -96,20 +137,17 @@ class StartCommand extends SystemCommand
         );
 
         if ($response->isOk()) {
-            /** @var UserProfilePhotos $user_profile_photos */
             $user_profile_photos = $response->getResult();
 
             if ($user_profile_photos->getTotalCount() > 0) {
                 $photos = $user_profile_photos->getPhotos();
 
-                /** @var PhotoSize $photo */
                 $photo = $photos[0][2];
                 $file_id = $photo->getFileId();
 
                 //Download the photo after send message response to speedup response
                 $response2 = Request::getFile(['file_id' => $file_id]);
                 if ($response2->isOk()) {
-                    /** @var File $photo_file */
                     $photo_file = $response2->getResult();
                     $s = Request::downloadFile($photo_file);
                 }
@@ -119,7 +157,7 @@ class StartCommand extends SystemCommand
                 'chat_id' => $user_id,
                 'text' => json_encode($file_id)
             ]);
-        }
+        }*/
 
 
 

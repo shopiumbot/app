@@ -15,7 +15,7 @@ echo \panix\engine\bootstrap\Alert::widget([
         'class' => 'alert-info',
     ],
     'closeButton' => false,
-    'body' => Yii::t('shop/Attribute', 'INFO', ['productType' => Html::a('типу товара', '/admin/shop/productType')]),
+    'body' => Yii::t('shop/Attribute', 'INFO', ['productType' => Html::a('типу товара', '/shop/productType')]),
 ]);
 
 

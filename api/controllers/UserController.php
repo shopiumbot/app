@@ -2,11 +2,11 @@
 
 namespace api\controllers;
 
-use panix\mod\user\models\User;
+use app\modules\user\models\User;
 use yii\rest\ActiveController;
 
 
-class UserController extends ActiveController
+class UserController extends ApiController
 {
     public $modelClass = User::class;
 }

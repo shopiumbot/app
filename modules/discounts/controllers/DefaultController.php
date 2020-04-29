@@ -2,12 +2,13 @@
 
 namespace app\modules\discounts\controllers;
 
+use app\modules\user\controllers\ClientController;
 use Yii;
 use panix\engine\controllers\AdminController;
 use app\modules\discounts\models\Discount;
 use app\modules\discounts\models\DiscountSearch;
 
-class DefaultController extends AdminController
+class DefaultController extends ClientController
 {
     public function actions()
     {

@@ -70,12 +70,19 @@ class WebUser extends User
     {
         $user = $this->getIdentity();
         if ($user) {
+
             return $user->getClientDb();
         } else {
-            if (Yii::$app->request->get('webhook')) {
-                return Yii::$app->cache->getOrSet(Yii::$app->request->get('webhook') . 'db', function () {
+
+            if (Yii::$app->request->get('webhook') || Yii::$app->request->get('api_key')) {
+                return Yii::$app->cache->getOrSet('client_db', function () {
                     $class = $this->identityClass;
-                    $user = $class::findByHook(Yii::$app->request->get('webhook'));
+                    if(Yii::$app->request->get('webhook')){
+                        $user = $class::findByHook(Yii::$app->request->get('webhook'));
+                    }elseif(Yii::$app->request->get('api_key')){
+
+                        $user = $class::findIdentityByAccessToken(Yii::$app->request->get('api_key'));
+                    }
 
                     return new Connection([
                         'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [

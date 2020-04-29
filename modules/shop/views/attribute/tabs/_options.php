@@ -52,7 +52,7 @@ foreach ($model->options as $k => $o) {
 
     $data2['name'] = Html::textInput('options[' . $o->id . '][]', Html::decode($o->value), ['class' => 'form-control']);
 
-        $data2['products'] = Html::a($o->productsCount, ['/admin/shop/product/index', 'ProductSearch[eav][' . $model->name . ']' => $o->id], ['target' => '_blank']);
+        $data2['products'] = Html::a($o->productsCount, ['/shop/product/index', 'ProductSearch[eav][' . $model->name . ']' => $o->id], ['target' => '_blank']);
         $data[$o->id] = (array)$data2;
 
 }
@@ -92,6 +92,7 @@ $data_array = new \yii\data\ArrayDataProvider([
 
 
 echo panix\engine\grid\GridView::widget([
+    'layoutPath' => '@user/views/layouts/_grid_layout',
     'tableOptions' => ['class' => 'table table-striped optionsEditTable'],
     'dataProvider' => $data_array,
     'rowOptions' => ['class' => 'sortable-column'],

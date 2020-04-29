@@ -16,8 +16,18 @@ return [
             'class' => 'app\modules\shop\api\v1\Module'
         ]
     ],*/
+    'modules' => [
+        'user' => [
+            'class' => 'app\modules\user\Module'
+        ],
+        'shop' => [
+            'class' => 'app\modules\shop\Module'
+        ]
+    ],
 	'aliases' => [
         '@api' => dirname(dirname(__DIR__)) . '/api',
+        '@app' => dirname(dirname(__DIR__)),
+        '@uploads' => '@app/web/uploads',
     ],
     'controllerNamespace' => 'api\controllers',
     'vendorPath' => dirname(__DIR__).'/../vendor',
@@ -25,10 +35,17 @@ return [
         'site' => 'api\controllers\WebController',
         'user' => 'api\controllers\UserController',
     ],
-    'components' => [        
+    'components' => [
+        'cache' => [
+            'directoryLevel' => 0,
+            'keyPrefix' => '',
+            'class' => 'yii\caching\FileCache', //DummyCache
+        ],
         'user' => [
-            'identityClass' => 'app\modules\user\models\User',
+
+            'class' => 'app\modules\user\components\WebUser',
             'enableAutoLogin' => false,
+            'enableSession'=>false
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -82,11 +99,12 @@ return [
             //$event->sender->createCommand("SET names utf8")->execute();
             //},
         ],
-        /*'request' => [
+        'request' => [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
-            ]
-        ],*/
+            ],
+                        'cookieValidationKey' => 'm38y535nygo8wytowertg78gm4wt',
+        ],
 
         'urlManager' => [
             //'baseUrl'=>'/api',
@@ -104,9 +122,14 @@ return [
                     'controller' => ['user'],
                     //'prefix' => 'api',
                     'pluralize'=>false,
-                    //'tokens' => [
-                    //    '{id}' => '<id:\\w+>'
-                    // ]
+                    'tokens' => ['{id}' => '<id:\\w+>']
+                ],
+                [
+                    'class' => \yii\rest\UrlRule::class,
+                    'controller' => ['product'],
+                    //'prefix' => 'api',
+                    'pluralize'=>false,
+                    'tokens' => ['{id}' => '<id:\\w+>']
                 ]
             ],
         ]
