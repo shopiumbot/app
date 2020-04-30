@@ -111,7 +111,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['password_confirm'], 'required', 'on' => ['reset', 'register']],
 
             [['password', 'token','plan_id'], 'required', 'on' => ['register']],
-            [['token'], 'validateBotToken', 'on' => ['register']],
+            [['token'], 'validateBotToken', 'on' => ['register','profile']],
             [['plan_id'], 'validatePlan', 'on' => ['register']],
 
 

@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use panix\mod\telegram\components\Api;
+use app\modules\telegram\components\Api;
 use panix\engine\bootstrap\ActiveForm;
 
 /**
@@ -10,15 +10,24 @@ use panix\engine\bootstrap\ActiveForm;
  * @var \app\modules\user\models\forms\ChangePasswordForm $changePasswordForm
  */
 
-$telegram = new Api($model->token, 'shopiumbot');
-$res = \Longman\TelegramBot\Request::getMe();
 
-if ($res->isOk()) {
-    $result = $res->getResult();
-    ?>
-    <div class="alert alert-success">Подключен
-        бот: <?= Html::a($result->first_name, 'tg://@' . $result->username); ?></div>
-<?php } else { ?>
+
+try {
+    $telegram = new Api($model->token);
+
+
+    $res = \Longman\TelegramBot\Request::getMe();
+
+    if ($res->isOk()) {
+        $result = $res->getResult();
+
+        ?>
+        <div class="alert alert-success">Подключен
+            бот: <?= Html::a($result->first_name, 'tg://@' . $result->username); ?></div>
+    <?php } else { ?>
+        <div class="alert alert-danger">Бот не подключен!</div>
+    <?php } ?>
+<?php } catch (\yii\base\Exception $e) { ?>
     <div class="alert alert-danger">Бот не подключен!</div>
 <?php } ?>
 <?php if (!$model->status) { ?>
@@ -46,6 +55,12 @@ if ($res->isOk()) {
                 <?= Html::encode($this->context->pageName) ?>
             </div>
             <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-sm-4 col-lg-2"><label>API ключ</label></div>
+                    <div class="col-sm-8 col-lg-10">
+                        <?= $model->api_key; ?>
+                    </div>
+                </div>
                 <?= $form->field($model, 'token'); ?>
                 <?= $form->field($model, 'phone')->widget(\panix\ext\telinput\PhoneInput::class); ?>
                 <?= $form->field($model, 'gender')->dropDownList($model->getGenderList(), ['prompt' => $model::t('NO_SELECT_GENDER')]); ?>
@@ -58,7 +73,7 @@ if ($res->isOk()) {
     </div>
     <div class="col-sm-5">
         <?php $form = ActiveForm::begin([
-                'id' => 'reset-form',
+            'id' => 'reset-form',
             'fieldConfig' => [
                 'template' => "<div class=\"col-sm-6 col-lg-6\">{label}</div>\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                 'horizontalCssClasses' => [
