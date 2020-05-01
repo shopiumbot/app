@@ -6,14 +6,14 @@ namespace app\modules\csv\components;
 use Yii;
 use yii\base\Component;
 use panix\engine\CMS;
-use core\modules\shop\models\Manufacturer;
-use core\modules\shop\models\ProductType;
-use core\modules\shop\models\Attribute;
-use core\modules\shop\models\Category;
-use core\modules\shop\models\Product;
+use app\modules\shop\models\Manufacturer;
+use app\modules\shop\models\ProductType;
+use app\modules\shop\models\Attribute;
+use app\modules\shop\models\Category;
+use app\modules\shop\models\Product;
 use panix\mod\images\behaviors\ImageBehavior;
-use core\modules\shop\models\Currency;
-use core\modules\shop\models\Supplier;
+use app\modules\shop\models\Currency;
+use app\modules\shop\models\Supplier;
 
 /**
  * Import products from csv format

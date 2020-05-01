@@ -1,7 +1,9 @@
 <?php
 
-namespace app\modules\csv\controllers\admin;
+namespace app\modules\csv\controllers;
 
+use app\modules\csv\models\UploadForm;
+use app\modules\user\controllers\ClientController;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\data\Pagination;
@@ -12,14 +14,14 @@ use panix\engine\CMS;
 use panix\engine\controllers\AdminController;
 use app\modules\csv\components\CsvExporter;
 use app\modules\csv\components\CsvImporter;
-use core\modules\shop\models\Product;
+use app\modules\shop\models\Product;
 use app\modules\csv\models\FilterForm;
 use app\modules\csv\models\ImportForm;
 
 ignore_user_abort(1);
 set_time_limit(0);
 
-class DefaultController extends AdminController
+class DefaultController extends ClientController
 {
 
     public function actions()
@@ -27,7 +29,7 @@ class DefaultController extends AdminController
         return [
             'delete-file' => [
                 'class' => 'panix\engine\actions\RemoveFileAction',
-                'path' => '@uploads/csv_import_images',
+                'path' => Yii::$app->getModule('csv')->uploadPath,
                 'redirect' => ['/admin/csv/default/import']
             ],
         ];
@@ -35,8 +37,9 @@ class DefaultController extends AdminController
 
     public function beforeAction($action)
     {
-        if (!file_exists(Yii::getAlias('@uploads/csv_import_images'))) {
-            FileHelper::createDirectory(Yii::getAlias('@uploads/csv_import_images'));
+        $path = Yii::getAlias(Yii::$app->getModule('csv')->uploadPath);
+        if (!file_exists($path)) {
+            FileHelper::createDirectory($path);
         }
         return parent::beforeAction($action);
     }
@@ -74,7 +77,7 @@ class DefaultController extends AdminController
         $this->breadcrumbs[] = $this->pageName;
 
 
-        $files = \yii\helpers\FileHelper::findFiles(Yii::getAlias('@uploads/csv_import_images'));
+        $files = \yii\helpers\FileHelper::findFiles(Yii::getAlias(Yii::$app->getModule('csv')->uploadPath));
 
         $data = [];
         foreach ($files as $f) {
@@ -82,7 +85,7 @@ class DefaultController extends AdminController
             $data[] = [
                 'file' => $f,
                 'name' => $name,
-                'img' => Html::img('/uploads/csv_import_images/' . $name, ['width' => 100])
+                'img' => Html::img('/uploads/csv_import_image/'.Yii::$app->user->id.'/' . $name, ['width' => 100])
             ];
         }
 
@@ -101,20 +104,18 @@ class DefaultController extends AdminController
 
 
         $model = new ImportForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $importer->deleteDownloadedImages = $model->remove_images;
-
-            $model->files = UploadedFile::getInstance($model, 'files');
-            if ($model->files) {
-                $filePath = Yii::getAlias('@runtime') . DIRECTORY_SEPARATOR . $model->files->name;
-                if ($model->files->extension == 'zip') {
-                    $uploadFiles = $model->files->saveAs($filePath);
+        $uploadModel = new UploadForm();
+        if ($uploadModel->load(Yii::$app->request->post()) && $uploadModel->validate()) {
+            $uploadModel->files = UploadedFile::getInstance($uploadModel, 'files');
+            if ($uploadModel->files) {
+                $filePath = Yii::getAlias('@runtime') . DIRECTORY_SEPARATOR . $uploadModel->files->name;
+                if ($uploadModel->files->extension == 'zip') {
+                    $uploadFiles = $uploadModel->files->saveAs($filePath);
                     if ($uploadFiles) {
                         if (file_exists($filePath)) {
                             $zipFile = new \PhpZip\ZipFile();
                             $zipFile->openFile($filePath);
-                            $extract = $zipFile->extractTo(Yii::getAlias('@uploads/csv_import_images'));
+                            $extract = $zipFile->extractTo(Yii::getAlias(Yii::$app->getModule('csv')->uploadPath));
                             if ($extract)
                                 unlink($filePath);
 
@@ -124,14 +125,20 @@ class DefaultController extends AdminController
                             die('error 01');
                         }
                     }
-                } elseif (in_array($model->files->extension, $importer::$extension)) {
-                    //$filePath = Yii::getAlias('@uploads/csv_import_images') . DIRECTORY_SEPARATOR . CMS::gen(10) . '.' . $model->files->extension;
-                    $filePath = Yii::getAlias('@uploads/csv_import_images') . DIRECTORY_SEPARATOR . $model->files->name;
-                    $model->files->saveAs($filePath);
+                } elseif (in_array($uploadModel->files->extension, $importer::$extension)) {
+                    //$filePath = Yii::getAlias(Yii::$app->getModule('csv')->uploadPath) . DIRECTORY_SEPARATOR . CMS::gen(10) . '.' . $uploadModel->files->extension;
+                    $filePath = Yii::getAlias(Yii::$app->getModule('csv')->uploadPath) . DIRECTORY_SEPARATOR . $uploadModel->files->name;
+
+                    $uploadModel->files->saveAs($filePath);
                     Yii::$app->session->addFlash('success', Yii::t('csv/default', 'SUCCESS_UPLOAD_IMAGES'));
                 }
                 return $this->redirect(['import']);
             }
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $importer->deleteDownloadedImages = $model->remove_images;
+
+
             $model->file_csv = UploadedFile::getInstance($model, 'file_csv');
             if ($model->file_csv) {
 
@@ -149,6 +156,7 @@ class DefaultController extends AdminController
         return $this->render('import', [
             'importer' => $importer,
             'model' => $model,
+            'uploadModel' => $uploadModel,
             'filesData' => $provider
         ]);
     }

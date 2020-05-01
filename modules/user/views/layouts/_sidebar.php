@@ -61,13 +61,13 @@ use panix\engine\Html;
             </a>
             <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
-                    <?= Html::a(Html::icon('list').'<span class="hide-menu">Список заказов</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
+                    <?= Html::a(Html::icon('list').'<span class="hide-menu">Список заказов</span>', ['/cart/default/index'], ['class' => 'sidebar-link']); ?>
                 </li>
                 <li class="sidebar-item">
-                    <?= Html::a(Html::icon('delivery').'<span class="hide-menu">Доставка</span>', ['/'], ['class' => 'sidebar-link']); ?>
+                    <?= Html::a(Html::icon('delivery').'<span class="hide-menu">Доставка</span>', ['/cart/delivery/index'], ['class' => 'sidebar-link']); ?>
                 </li>
                 <li class="sidebar-item">
-                    <?= Html::a(Html::icon('creditcard').'<span class="hide-menu">Оплата</span>', ['/'], ['class' => 'sidebar-link']); ?>
+                    <?= Html::a(Html::icon('creditcard').'<span class="hide-menu">Оплата</span>', ['/cart/payment/index'], ['class' => 'sidebar-link']); ?>
                 </li>
             </ul>
         </li>
@@ -85,7 +85,7 @@ use panix\engine\Html;
             </a>
             <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
-                    <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
+                    <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/csv/default/import'], ['class' => 'sidebar-link']); ?>
                 </li>
             </ul>
         </li>
@@ -97,7 +97,7 @@ use panix\engine\Html;
             </a>
             <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
-                    <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/cart'], ['class' => 'sidebar-link']); ?>
+                    <?= Html::a(Html::icon('file-csv').'<span class="hide-menu">CSV - формат</span>', ['/csv/default/export'], ['class' => 'sidebar-link']); ?>
                 </li>
             </ul>
         </li>

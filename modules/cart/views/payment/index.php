@@ -7,6 +7,7 @@ Pjax::begin([
     'dataProvider'=>$dataProvider
 ]);
 echo GridView::widget([
+    'layoutPath' => '@user/views/layouts/_grid_layout',
     'tableOptions' => ['class' => 'table table-striped'],
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,

@@ -2,10 +2,10 @@
 
 namespace app\modules\csv\components;
 
-use core\modules\shop\models\ProductType;
+use app\modules\shop\models\ProductType;
 use Yii;
-use core\modules\shop\models\Product;
-use core\modules\shop\models\Manufacturer;
+use app\modules\shop\models\Product;
+use app\modules\shop\models\Manufacturer;
 use panix\engine\CMS;
 
 use yii\helpers\Url;
@@ -47,7 +47,7 @@ class CsvExporter
 
     /**
      * @param array $attributes
-     * @param $query \core\modules\shop\models\query\ProductQuery
+     * @param $query \app\modules\shop\models\query\ProductQuery
      */
     public function export(array $attributes, $query)
     {

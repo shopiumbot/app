@@ -5,11 +5,35 @@ namespace app\modules\csv;
 use panix\mod\admin\widgets\sidebar\BackendNav;
 use Yii;
 use panix\engine\WebModule;
+use yii\base\BootstrapInterface;
+use yii\web\GroupUrlRule;
 
-class Module extends WebModule
+class Module extends WebModule implements BootstrapInterface
 {
 
     public $icon = 'file-csv';
+
+    /**
+     * @inheritdoc
+     */
+    public function bootstrap($app)
+    {
+
+        $groupUrlRule = new GroupUrlRule([
+            'prefix' => $this->id,
+            'rules' => [
+                '<controller:\w+>' => '<controller>/index',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                //'<action:\w+>' => 'default/<action>',
+
+            ],
+        ]);
+        $app->getUrlManager()->addRules($groupUrlRule->rules, false);
+
+
+
+        $this->uploadPath = '@uploads/csv_import_image/'.Yii::$app->user->id;
+    }
 
     public function getAdminMenu()
     {

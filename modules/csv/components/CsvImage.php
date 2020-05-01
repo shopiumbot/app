@@ -38,7 +38,7 @@ class CsvImage extends UploadedFile {
                     file_put_contents($tmpName, file_get_contents($image));
             }
         } else{
-            $tmpName = Yii::getAlias('@uploads/csv_import_images') . DIRECTORY_SEPARATOR . $image;
+            $tmpName = Yii::getAlias(Yii::$app->getModule('csv')->uploadPath) . DIRECTORY_SEPARATOR . $image;
 
         }
 
