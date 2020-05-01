@@ -2899,12 +2899,6 @@ code {
     color: #6a7a8c
 }
 
-.table td, .table th {
-    padding: 1rem;
-    vertical-align: top;
-    border-top: 1px solid rgba(0, 0, 0, .1)
-}
-
 .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid rgba(0, 0, 0, .1)
@@ -5614,57 +5608,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
     background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid transparent;
-    border-radius: 0
-}
-
-.card > hr {
-    margin-right: 0;
-    margin-left: 0
-}
-
-.card > .list-group:first-child .list-group-item:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0
-}
-
-.card > .list-group:last-child .list-group-item:last-child {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0
-}
-
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1.25rem
-}
-
-.card-title {
-    margin-bottom: .75rem
-}
-
-.card-subtitle {
-    margin-top: -.375rem;
-    margin-bottom: 0
-}
-
-.card-text:last-child {
-    margin-bottom: 0
-}
-
-.card-link:hover {
-    text-decoration: none
-}
-
-.card-link + .card-link {
-    margin-left: 1.25rem
 }
 
 .card-header {
@@ -6025,7 +5969,6 @@ a.badge-secondary.focus, a.badge-secondary:focus {
 }
 
 .badge-success {
-    color: #fff;
     background-color: #5ac146
 }
 
@@ -9805,24 +9748,31 @@ html[dir=ltr] body .p-l-0 {
     background: #fff
 }
 
-#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
     color: #2b2b2b;
     opacity: .7
 }
 
-#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
     color: #2b2b2b
 }
 
-#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link.active, #main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link.active, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover {
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link.active,
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link.active,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link:hover {
     opacity: 1
 }
 
-#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .nav-small-cap, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .nav-small-cap {
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .nav-small-cap,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .nav-small-cap {
     color: #2b2b2b
 }
 
-#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav .has-arrow::after, #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav .has-arrow::after {
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav .has-arrow::after,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav .has-arrow::after {
     border-color: #2b2b2b
 }
 
@@ -10925,7 +10875,8 @@ ul.list-style-none li a:hover {
     text-align: center
 }
 
-.sidebar-nav ul .sidebar-item .sidebar-link.active, .sidebar-nav ul .sidebar-item .sidebar-link:hover {
+.sidebar-nav ul .sidebar-item .sidebar-link.active,
+.sidebar-nav ul .sidebar-item .sidebar-link:hover {
     opacity: 1
 }
 
@@ -10973,7 +10924,7 @@ ul.list-style-none li a:hover {
 
 .sidebar-nav > #sidebarnav > .sidebar-item.selected > .sidebar-link, .sidebar-nav > #sidebarnav > .sidebar-item > .sidebar-link:hover {
     background: rgba(0, 0, 0, .1);
-    border-left: 2px solid #137eff
+    border-left: 2px solid #F95700
 }
 
 .sidebar-nav > #sidebarnav > .sidebar-item > .sidebar-link {

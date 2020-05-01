@@ -66,6 +66,7 @@ class WebhookController extends Controller
 
         if ($webhook) {
             $user = User::findByHook($webhook);
+            //$user = Yii::$app->user->getClientDb();
 
             Yii::info('hook: ' . Yii::$app->request->get('webhook'));
             Yii::$app->setComponents([
@@ -97,8 +98,8 @@ class WebhookController extends Controller
             try {
                 // Create Telegram API object
                 //$telegram = new Api($user->token, 'test');
-                $telegram = new Api($user->token, 'shopiumbot');
-                $telegram->db = $user->getClientDb();
+                $telegram = new Api($user->token,'shopiumbot');
+                //$telegram->db = $user->getClientDb();
 
                 //  Yii::$app->getModule('telegram')->setApi($user->getClientDb());
 

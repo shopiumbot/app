@@ -28,10 +28,16 @@ echo GridView::widget([
         ['class' => 'panix\engine\grid\sortable\Column'],
         ['class' => 'panix\engine\grid\columns\CheckboxColumn'],
         [
+            'header' => 'name',
+            'attribute' => 'name',
+            'format' => 'raw',
+        ],
+        [
             'header' => 'title',
             'attribute' => 'title',
             'format' => 'raw',
         ],
+
         ['class' => 'panix\engine\grid\columns\ActionColumn'],
     ]
 ]);

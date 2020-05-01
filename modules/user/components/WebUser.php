@@ -66,20 +66,37 @@ class WebUser extends User
         return $user ? $user->language : "";
     }
 
+    public function getToken()
+    {
+        $user = $this->getIdentity();
+        if ($user) {
+            return $user->token;
+        } else {
+            $class = $this->identityClass;
+            if (Yii::$app->request->get('webhook')) {
+                $user = $class::findByHook(Yii::$app->request->get('webhook'));
+            } elseif (Yii::$app->request->get('api_key')) {
+
+                $user = $class::findIdentityByAccessToken(Yii::$app->request->get('api_key'));
+            }
+        }
+    }
+
     public function getClientDb()
     {
         $user = $this->getIdentity();
         if ($user) {
 
-            return $user->getClientDb();
+            return Yii::$app->clientDb;
+            //return $user->getClientDb();
         } else {
 
             if (Yii::$app->request->get('webhook') || Yii::$app->request->get('api_key')) {
                 return Yii::$app->cache->getOrSet('client_db', function () {
                     $class = $this->identityClass;
-                    if(Yii::$app->request->get('webhook')){
+                    if (Yii::$app->request->get('webhook')) {
                         $user = $class::findByHook(Yii::$app->request->get('webhook'));
-                    }elseif(Yii::$app->request->get('api_key')){
+                    } elseif (Yii::$app->request->get('api_key')) {
 
                         $user = $class::findIdentityByAccessToken(Yii::$app->request->get('api_key'));
                     }
@@ -118,11 +135,13 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->db_name : null;
     }
+
     public function getDb_user()
     {
         $user = $this->getIdentity();
         return $user ? $user->db_user : null;
     }
+
     public function getDb_password()
     {
         $user = $this->getIdentity();

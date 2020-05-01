@@ -41,9 +41,6 @@ use yii\widgets\Breadcrumbs;
                 <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
                     <i class="icon-menu"></i>
                 </a>
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-brand">
                     <a href="/user" class="logo">
                         <!-- Logo icon -->
@@ -57,21 +54,12 @@ use yii\widgets\Breadcrumbs;
                         <i class="icon-menu"></i>
                     </a>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Toggle which is visible on mobile only -->
-                <!-- ============================================================== -->
                 <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
                    data-toggle="collapse" data-target="#navbarSupportedContent"
                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="icon-menu"></i>
                 </a>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Logo -->
-            <!-- ============================================================== -->
             <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
                 <!-- ============================================================== -->
                 <!-- toggle and nav items -->
@@ -321,12 +309,7 @@ use yii\widgets\Breadcrumbs;
             </div>
         </nav>
     </header>
-    <!-- ============================================================== -->
-    <!-- End Topbar header -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
+
     <aside class="left-sidebar" data-sidebarbg="skin5">
         <div class="scroll-sidebar ps-container ps-theme-default ps-active-y">
             <?= $this->render('_sidebar'); ?>
@@ -433,8 +416,6 @@ use yii\widgets\Breadcrumbs;
                         </div>
                     </div>
                 </div>
-                <!-- Column -->
-                <!-- Column -->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -459,8 +440,6 @@ use yii\widgets\Breadcrumbs;
                         </div>
                     </div>
                 </div>
-                <!-- Column -->
-                <!-- Column -->
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -492,7 +471,7 @@ use yii\widgets\Breadcrumbs;
         </div>
 
         <footer class="footer text-center">
-            {copyright}
+           &copy; 2019-2020 &laquo;<?= Html::a('ShopiumBot',['/']); ?>&raquo;
         </footer>
 
     </div>

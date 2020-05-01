@@ -2,9 +2,9 @@
 
 namespace app\modules\discounts\controllers;
 
-use app\modules\user\controllers\ClientController;
+
 use Yii;
-use panix\engine\controllers\AdminController;
+use app\modules\user\controllers\ClientController;
 use app\modules\discounts\models\Discount;
 use app\modules\discounts\models\DiscountSearch;
 

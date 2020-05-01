@@ -237,6 +237,12 @@ class Module extends WebModule implements BootstrapInterface
             }
         }
     }
+    public function init()
+    {
+        parent::init();
+
+
+    }
 
     /**
      * @inheritdoc
@@ -262,24 +268,37 @@ class Module extends WebModule implements BootstrapInterface
             ],
         ]);
         if (!(Yii::$app instanceof \yii\console\Application)) {
-            if (!Yii::$app->user->isGuest) {
-
-                $app->setComponents([
-                    'clientDb' => [
-                        'class' => 'yii\db\Connection',
-                        'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . Yii::$app->user->db_name,
-                        'username' => Yii::$app->user->db_user,
-                        'password' => Yii::$app->user->db_password,
-                        'charset' => 'utf8',
-                        'tablePrefix' => 'client_',
-                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
-                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
-                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
-                        'enableSchemaCache' => true,
-                        'schemaCache' => 'cache'
-                    ]
-                ]);
+            $user = Yii::$app->user;
+            //return Yii::$app->cache->getOrSet('client_db', function () use ($app) {
+            $class = $user->identityClass;
+            if (Yii::$app->user->isGuest) {
+                if (Yii::$app->request->get('webhook') || Yii::$app->request->get('api_key')) {
+                    if (Yii::$app->request->get('webhook')) {
+                        $user = $class::findByHook(Yii::$app->request->get('webhook'));
+                    } elseif (Yii::$app->request->get('api_key')) {
+                        $user = $class::findIdentityByAccessToken(Yii::$app->request->get('api_key'));
+                    }
+                }
+            } else {
+                $user = Yii::$app->user;
             }
+
+
+            $app->setComponents([
+                'clientDb' => [
+                    'class' => 'yii\db\Connection',
+                    'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
+                    'username' => $user->db_user,
+                    'password' => $user->db_password,
+                    'charset' => 'utf8',
+                    'tablePrefix' => 'client_',
+                    'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                    'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                    'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                    'enableSchemaCache' => true,
+                    'schemaCache' => 'cache'
+                ]
+            ]);
         }
         $app->getUrlManager()->addRules($groupUrlRule->rules, false);
         if (!(Yii::$app instanceof \yii\console\Application)) {

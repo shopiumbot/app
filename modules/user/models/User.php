@@ -276,7 +276,7 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(["webhook" => $webhook]);
     }
 
-    public function getClientDb()
+    public function getClientDb222()
     {
         return Yii::$app->cache->getOrSet('client_db', function () {
             return new Connection([
@@ -296,7 +296,7 @@ class User extends ActiveRecord implements IdentityInterface
         });
     }
 
-    public function getClientCache()
+    public function getClientCache222()
     {
         return new Cache([
             'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [

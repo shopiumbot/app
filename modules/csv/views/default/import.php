@@ -16,14 +16,14 @@ use panix\engine\CMS;
                 <h5><?= $this->context->pageName; ?></h5>
             </div>
             <div class="card-body">
-                <div class="col mt-3">
-                    <div class="alert alert-warning"><?= Yii::t('csv/default', 'IMPORT_ALERT'); ?></div>
-                </div>
+
+                <div class="alert alert-warning"><?= Yii::t('csv/default', 'IMPORT_ALERT'); ?></div>
 
 
                 <?php if ($importer->hasErrors()) { ?>
                     <div class="form-group">
-                        <div class="errorSummary alert alert-danger"><p><?= Yii::t('csv/default', 'ERRORS_IMPORT'); ?>:</p>
+                        <div class="errorSummary alert alert-danger"><p><?= Yii::t('csv/default', 'ERRORS_IMPORT'); ?>
+                                :</p>
                             <ul>
                                 <?php
                                 $i = 0;
@@ -54,7 +54,7 @@ use panix\engine\CMS;
                             <br/>
                             <?php echo Yii::t('csv/default', 'DELETED_PRODUCTS', $importer->stats['deleted']); ?>
 
-					   </div>
+                        </div>
                     </div>
                 <?php } ?>
 
@@ -102,7 +102,7 @@ use panix\engine\CMS;
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-            <h5>Изображения для импорта</h5>
+                <h5>Изображения для импорта</h5>
             </div>
             <div class="card-body">
                 <?php
@@ -126,7 +126,7 @@ use panix\engine\CMS;
 
 
                 <?= \panix\engine\grid\GridView::widget([
-                    'enableLayout'=>false,
+                    'enableLayout' => false,
                     'layoutPath' => '@user/views/layouts/_grid_layout',
                     'dataProvider' => $filesData,
                     'layoutOptions' => ['title' => 'Изображения для импорта'],
@@ -157,9 +157,6 @@ use panix\engine\CMS;
                 ]); ?>
             </div>
         </div>
-
-
-
 
 
         <div class="card">

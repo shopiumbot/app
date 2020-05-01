@@ -15,7 +15,7 @@ use panix\engine\Html;
             <?= Html::a(Html::icon('shopcart').'<span class="hide-menu">Продукция</span>', ['/shop/product'], ['class' => 'sidebar-link']); ?>
         </li>
         <li class="sidebar-item">
-            <?= Html::a(Html::icon('discount').'<span class="hide-menu">Скидки</span>', ['/discount'], ['class' => 'sidebar-link']); ?>
+            <?= Html::a(Html::icon('discount').'<span class="hide-menu">Скидки</span>', ['/discounts/default/index'], ['class' => 'sidebar-link']); ?>
         </li>
         <li class="sidebar-item d-none">
             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
@@ -57,7 +57,7 @@ use panix\engine\Html;
                aria-expanded="false">
                 <i class="icon-cart"></i>
                 <span class="hide-menu">Заказы</span>
-                <span class="badge badge-pill badge-success ml-auto m-r-15">3</span>
+                <span class="badge badge-pill badge-success ml-auto mr-3">3</span>
             </a>
             <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
