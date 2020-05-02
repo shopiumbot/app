@@ -145,7 +145,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function validatePlan($attribute)
     {
-        if(!in_array($this->$attribute,Yii::$app->params['plan'])){
+        if(!in_array($this->$attribute,array_keys(Yii::$app->params['plan']))){
             $this->addError($attribute, 'Ошибка, не выбран тарифный план.');
         }
     }

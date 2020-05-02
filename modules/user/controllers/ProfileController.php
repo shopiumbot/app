@@ -2,6 +2,8 @@
 
 namespace app\modules\user\controllers;
 
+use app\modules\telegram\components\Api;
+use Longman\TelegramBot\Exception\TelegramException;
 use panix\engine\CMS;
 use app\modules\user\models\forms\ChangePasswordForm;
 use app\modules\user\models\forms\ForgotForm;
@@ -11,8 +13,10 @@ use app\modules\user\models\User;
 use app\modules\user\models\UserKey;
 use panix\engine\db\Connection;
 use Yii;
+use yii\base\UserException;
 use yii\db\Exception;
 use yii\helpers\FileHelper;
+use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 
@@ -88,5 +92,53 @@ class ProfileController extends ClientController
             'changePasswordForm' => $changePasswordForm
         ]);
     }
+    public function actionSet(){
+        Yii::$app->response->format = Response::FORMAT_HTML;
+        try {
+            // Create Telegram API object
+            $telegram = new Api(Yii::$app->user->token);
 
+            if (!empty(\Yii::$app->modules['telegram']->userCommandsPath)){
+                if(!$commandsPath = realpath(\Yii::getAlias(\Yii::$app->modules['telegram']->userCommandsPath))){
+                    $commandsPath = realpath(\Yii::getAlias('@app') . \Yii::$app->modules['telegram']->userCommandsPath);
+                }
+
+                if(!is_dir($commandsPath)) throw new UserException('dir ' . \Yii::$app->modules['telegram']->userCommandsPath . ' not found!');
+            }
+
+            // Set webhook
+            $result = $telegram->setWebHook(Yii::$app->user->urlWebhook);
+            if ($result->isOk()) {
+                Yii::$app->session->setFlash("success", Yii::t("user/default", $result->getDescription()));
+                return $this->redirect(['/user/profile']);
+            }
+        } catch (TelegramException $e) {
+            return $e->getMessage();
+        }
+        return null;
+    }
+
+    /**
+     * @return null|string
+     * @throws ForbiddenHttpException
+     */
+    public function actionUnset(){
+        Yii::$app->response->format = Response::FORMAT_HTML;
+        if (\Yii::$app->user->isGuest) throw new ForbiddenHttpException();
+        try {
+            // Create Telegram API object
+            $telegram = new Api(Yii::$app->user->token);
+
+            // Unset webhook
+            $result = $telegram->deleteWebhook();
+
+            if ($result->isOk()) {
+                Yii::$app->session->setFlash("success", Yii::t("user/default", $result->getDescription()));
+                return $this->redirect(['/user/profile']);
+            }
+
+        } catch (TelegramException $e) {
+            return $e->getMessage();
+        }
+    }
 }

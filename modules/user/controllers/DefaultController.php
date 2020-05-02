@@ -127,7 +127,9 @@ class DefaultController extends WebController
             $message->send();*/
 
             $user->role = 'user';
-
+            if (Yii::$app->request->get('plan')) {
+                $user->plan_id = Yii::$app->request->get('plan');
+            }
             if ($user->load($post)) {
 
                 $user->username = $user->email;
@@ -149,6 +151,9 @@ class DefaultController extends WebController
                     // don't use $this->refresh() because user may automatically be logged in and get 403 forbidden
                     $successText = Yii::t("user/default", "REGISTER_SUCCESS", ["username" => $user->getDisplayName()]);
                     Yii::$app->session->setFlash("success", $successText);
+                } else {
+                    print_r($user->getErrors());
+                    die;
                 }
             }
 
@@ -227,11 +232,11 @@ class DefaultController extends WebController
             if (!@file_put_contents($newFile, '<?php return ' . var_export($configDb, true) . ';')) {
                 throw new \yii\base\Exception(Yii::t('app/default', 'Error write modules setting in {file}...', ['file' => $newFile]));
             }
-            if(function_exists('shell_exec')){
+            if (function_exists('shell_exec')) {
                 // $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate');
-               $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
-                    // echo '<pre>'.$runMigrate.'</pre>';
-            }else{
+                $runMigrate = shell_exec('/usr/local/php73/bin/php -f /home/corner/shopiumbot.com/www/client migrate --interactive=0');
+                // echo '<pre>'.$runMigrate.'</pre>';
+            } else {
                 echo 'exec error';
             }
             if (file_exists($newFile)) {
@@ -270,7 +275,7 @@ class DefaultController extends WebController
             $user->save(false);
         } else {
             echo print_r($createDb['message']);
-    }
+        }
     }
 
     /**

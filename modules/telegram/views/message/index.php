@@ -55,6 +55,7 @@ Pjax::end();*/
                         <?php
 
                         $users = \app\modules\telegram\models\User::find()->where(['is_bot' => 0])->all();
+                        if($users){
                         foreach ($users as $user) {
                             //  print_r($user->lastMessage);
                             ?>
@@ -71,7 +72,7 @@ Pjax::end();*/
                                             class="time"><?= $user->lastMessage->date; ?></span>
                                 </div>
                             </a>
-                        <?php } ?>
+                        <?php } } ?>
 
                         <!-- Message -->
                         <a href="javascript:void(0)" class="chat-user message-item" id='chat_user_2' data-user-id='2'>
@@ -203,6 +204,7 @@ Pjax::end();*/
                             <?php
 
                             $user = \app\modules\telegram\models\User::find()->where(['id' => 812367093])->one();
+                            if($users){
                             foreach ($user->chats as $message) {
                                 // print_r($message);
                                 $odd = ($message->user_id == $message->chat_id) ? 'odd' : '';
@@ -233,7 +235,7 @@ Pjax::end();*/
                                 </li>
 
 
-                            <?php } ?>
+                            <?php } } ?>
 
                             <!--chat Row -->
                             <li class="chat-item">

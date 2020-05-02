@@ -258,6 +258,7 @@ class Module extends WebModule implements BootstrapInterface
             'prefix' => $this->id,
             'rules' => [
                 '<controller:(profile)>' => '<controller>/index',
+                '<controller:(profile)>/<action:\w+>' => '<controller>/<action>',
                 '<controller:(webhook)>/<webhook:[0-9a-zA-Z\-\_]+>' => '<controller>/index',
                 '<controller:(admin|copy|auth)>' => '<controller>',
                 '<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',

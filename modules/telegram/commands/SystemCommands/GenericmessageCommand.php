@@ -82,31 +82,9 @@ class GenericmessageCommand extends SystemCommand
 
 
         $user_id = $this->getMessage()->getFrom()->getId();
-
+        $chat_id = $this->getMessage()->getChat()->getId();
 
         $text = trim($this->getMessage()->getText());
-        /*
-                $results = Request::sendToActiveChats(
-                    'sendMessage', // Callback function to execute (see Request.php methods)
-                    ['text' => 'Hey! Check out the new features!!'], // Param to evaluate the request
-                    [
-                        'groups'      => true,
-                        'supergroups' => true,
-                        'channels'    => false,
-                        'users'       => true,
-                    ]
-                );
-        */
-        /*$message = $this->getMessage();
-
-        //You can use $command as param
-        $chat_id = $message->getChat()->getId();
-        $data['text'] = 'ЯЯ май фюрер';
-        $data['chat_id'] = $chat_id;
-        $req =  Request::sendMessage($data);*/
-
-
-
 
         if (preg_match('/^(\x{1F6CD})/iu', $text, $match)) { //cart emoji
             return $this->telegram->executeCommand('cart');

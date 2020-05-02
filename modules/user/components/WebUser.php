@@ -128,7 +128,10 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->webhook : Yii::$app->request->get('webhook');
     }
-
+    public function getUrlWebhook()
+    {
+        return 'https://shopiumbot.com/user/webhook/'.$this->getWebhook();
+    }
 
     public function getDb_name()
     {

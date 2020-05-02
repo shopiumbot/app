@@ -111,10 +111,10 @@ use panix\engine\Html;
         </li>
 
         <li class="sidebar-item">
-            <?= Html::a(Html::icon('info').'<span class="hide-menu">Документация</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
+            <?= Html::a(Html::icon('info').'<span class="hide-menu">Документация</span>', ['/documentation'], ['class' => 'sidebar-link']); ?>
         </li>
         <li class="sidebar-item">
-            <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
+            <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', ['/documentation/api'], ['class' => 'sidebar-link']); ?>
         </li>
         <li class="sidebar-item">
             <?= Html::a(Html::icon('logout').'<span class="hide-menu">Выход</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use app\modules\telegram\components\Api;
 use panix\engine\bootstrap\ActiveForm;
-
+use Longman\TelegramBot\Request;
 /**
  * @var \yii\web\View $this
  * @var \app\modules\user\models\User $model
@@ -16,10 +16,21 @@ try {
     $telegram = new Api($model->token);
 
 
-    $res = \Longman\TelegramBot\Request::getMe();
 
-    if ($res->isOk()) {
-        $result = $res->getResult();
+    $chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
+    if($chats){
+    foreach ($chats as $chat){
+        $send = Request::sendMessage([
+            'chat_id'=>$chat['id'],
+            'text'=>'test'
+        ]);
+    }
+    \panix\engine\CMS::dump($chats);
+    }
+    $me = Request::getMe();
+
+    if ($me->isOk()) {
+        $result = $me->getResult();
 
         ?>
         <div class="alert alert-success">Подключен
@@ -38,7 +49,8 @@ try {
         ]); ?>
     </div>
 <?php } ?>
-
+<a href="/user/profile/set">set</a>
+<a href="/user/profile/unset">unset</a>
 
 <div class="row">
     <div class="col-sm-7">

@@ -17,7 +17,7 @@ return [
     'MALE' => 'Мужской',
     'TIMEZONE' => 'Часовой пояс',
     'API_KEY' => 'API ключ',
-    'TOKEN'=>'Токен бота',
+    'TOKEN' => 'Токен бота',
     'NO_SELECT_GENDER' => 'Не указан',
     'SUBSCRIBE' => 'Подписаться на рассылку',
     'UPDATED_AT' => 'Дата обновление',
@@ -31,4 +31,5 @@ return [
     'STATUS_INACTIVE' => 'Не активирован',
     'STATUS_ACTIVE' => 'Активирован',
     'STATUS_UNCONFIRMED_EMAIL' => 'Не подтвержден',
+    'PLAN_ID' => 'Тарифный план'
 ];

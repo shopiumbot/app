@@ -28,6 +28,7 @@ use yii\widgets\ActiveForm;
             ],
             // 'enableAjaxValidation' => true,
         ]); ?>
+        <?= $form->field($user, 'plan_id')->dropDownList([1=>'Basic',2=>'Standard',3=>'Premium']) ?>
         <?= $form->field($user, 'email') ?>
         <?= $form->field($user, 'token') ?>
         <?= $form->field($user, 'password')->passwordInput() ?>
