@@ -121,7 +121,7 @@ class Discount extends ClientActiveRecord
         if (is_array($this->_categories))
             return $this->_categories;
 
-        $this->_categories = Yii::$app->user->getClientDb()->createCommand('SELECT category_id FROM {{%discount__category}} WHERE discount_id=:id')
+        $this->_categories = self::getDb()->createCommand('SELECT category_id FROM {{%discount__category}} WHERE discount_id=:id')
             ->bindValue(':id', $this->id)
             ->queryColumn();
 
@@ -145,7 +145,7 @@ class Discount extends ClientActiveRecord
         if (is_array($this->_manufacturers))
             return $this->_manufacturers;
 
-        $this->_manufacturers = Yii::$app->user->getClientDb()->createCommand('SELECT manufacturer_id FROM {{%discount__manufacturer}} WHERE discount_id=:id')
+        $this->_manufacturers = self::getDb()->createCommand('SELECT manufacturer_id FROM {{%discount__manufacturer}} WHERE discount_id=:id')
             ->bindValue(':id', $this->id)
             ->queryColumn();
 
@@ -158,10 +158,10 @@ class Discount extends ClientActiveRecord
      */
     public function clearRelations()
     {
-        Yii::$app->user->getClientDb()->createCommand()
+        self::getDb()->createCommand()
             ->delete('{{%discount__manufacturer}}', 'discount_id=:id', [':id' => $this->id])
             ->execute();
-        Yii::$app->user->getClientDb()->createCommand()
+        self::getDb()->createCommand()
             ->delete('{{%discount__category}}', 'discount_id=:id', [':id' => $this->id])
             ->execute();
 

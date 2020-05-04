@@ -24,6 +24,7 @@ use app\modules\cart\models\Order;
 use app\modules\cart\models\OrderProduct;
 use Longman\TelegramBot\Entities\InputMedia\InputMediaPhoto;
 use Longman\TelegramBot\Request;
+use panix\engine\db\ActiveQuery;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -510,7 +511,7 @@ class CallbackqueryCommand extends SystemCommand
 
             if (isset($params['category_id'])) {
 
-
+                /** @var ActiveQuery $query */
                 $query = Product::find()->published()->sort()->applyCategories($params['category_id']);
                 $pages = new KeyboardPagination([
                     'totalCount' => $query->count(),
@@ -550,7 +551,7 @@ class CallbackqueryCommand extends SystemCommand
                     foreach ($products as $index => $product) {
 
 
-                        $this->telegram
+                        $s = $this->telegram
                             ->setCommandConfig('productitem', [
                                 'photo_index'=>(isset($params['photo_index']))?$params['photo_index']:0,
                                 'product'=>$product

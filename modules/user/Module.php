@@ -220,7 +220,7 @@ class Module extends WebModule implements BootstrapInterface
         ];
     }
 
-    public function getDb()
+    public function getDb222()
     {
         if (!(Yii::$app instanceof Application)) {
             if (Yii::$app->user->isGuest) {
@@ -257,8 +257,8 @@ class Module extends WebModule implements BootstrapInterface
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
             'rules' => [
-                '<controller:(profile)>' => '<controller>/index',
-                '<controller:(profile)>/<action:\w+>' => '<controller>/<action>',
+                '<controller:(profile|settings)>' => '<controller>/index',
+                '<controller:(profile|settings)>/<action:\w+>' => '<controller>/<action>',
                 '<controller:(webhook)>/<webhook:[0-9a-zA-Z\-\_]+>' => '<controller>/index',
                 '<controller:(admin|copy|auth)>' => '<controller>',
                 '<controller:(admin|copy|auth)>/<action:\w+>' => '<controller>/<action>',
@@ -298,9 +298,15 @@ class Module extends WebModule implements BootstrapInterface
                     'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
                     'enableSchemaCache' => true,
                     'schemaCache' => 'cache'
-                ]
+                ],
+                'clientSettings' => [
+                    'class' => 'panix\engine\components\Settings',
+                    'db' => 'clientDb',
+                ],
             ]);
+
         }
+
         $app->getUrlManager()->addRules($groupUrlRule->rules, false);
         if (!(Yii::$app instanceof \yii\console\Application)) {
             $config = $app->settings->get($this->id);

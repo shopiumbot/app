@@ -151,12 +151,6 @@ class CatalogCommand extends UserCommand
             $result = $data;
 
         }
-
-
         return Request::sendMessage($result);
-
-
     }
-
-
 }

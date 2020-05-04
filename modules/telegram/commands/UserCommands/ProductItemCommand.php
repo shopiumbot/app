@@ -81,7 +81,7 @@ class ProductItemCommand extends SystemCommand
                     $callbackData = $params['query'];
                 } elseif ($params['query'] == 'deleteInCart') {
                     $callbackData = $params['query'];
-                }elseif($params['query'] == 'productSpinner'){
+                } elseif ($params['query'] == 'productSpinner') {
                     $callbackData = $params['query'];
                 }
             }
@@ -98,8 +98,6 @@ class ProductItemCommand extends SystemCommand
 
         $order = Order::findOne(['user_id' => $user_id, 'checkout' => 0]);
         $product = $this->product;
-
-
 
 
         $caption = '';
@@ -187,7 +185,7 @@ class ProductItemCommand extends SystemCommand
                 ]),
             ];
         } else {
-           $keyboards[] = [
+            $keyboards[] = [
                 new InlineKeyboardButton([
                     'text' => Yii::t('telegram/command', 'BUTTON_BUY', $this->number_format($product->getFrontPrice())),
                     'callback_data' => "query=addCart&product_id={$product->id}&photo_index={$this->photo_index}"
@@ -197,22 +195,21 @@ class ProductItemCommand extends SystemCommand
 
         $keyboards[] = $this->productAdminKeywords($chat_id, $product->id);
 
-        //  echo Url::to($product->getImage()->getUrlToOrigin(), true) . PHP_EOL;
-        // echo $product->getImage()->getPath();
+        if ($images) {
+            $imageData = $images[$this->photo_index];
+            if ($imageData) {
+                if ($imageData->telegram_file_id) {
+                    $image = $imageData->telegram_file_id;
+                } else {
+                    $image = $imageData->getPathToOrigin();
+                }
 
-        // $imageData = $product->getImage();
-        $imageData = $images[$this->photo_index];
-        if ($imageData) {
-            if($imageData->telegram_file_id){
-                $image = $imageData->telegram_file_id;
-            }else{
-                $image = $imageData->getPathToOrigin();
+            } else {
+                $image = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
             }
-
         } else {
             $image = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
         }
-
         if ($callbackData == 'changeProductImage') {
 
             $dataMedia = [
@@ -235,12 +232,14 @@ class ProductItemCommand extends SystemCommand
 
             $reqMedia = Request::editMessageMedia($dataMedia);
             if ($reqMedia->isOk()) {
-                if(!$imageData->telegram_file_id){
-                    $imageData->telegram_file_id = $reqMedia->getResult()->photo[0]['file_id'];
-                    $imageData->save(false);
+                if (isset($imageData)) {
+                    if (!$imageData->telegram_file_id) {
+                        $imageData->telegram_file_id = $reqMedia->getResult()->photo[0]['file_id'];
+                        $imageData->save(false);
+                    }
                 }
                 //$this->notify(json_encode($reqMedia->getResult()), 'error');
-            }else{
+            } else {
                 $errorCode = $reqMedia->getErrorCode();
                 $description = $reqMedia->getDescription();
                 $this->notify("{$errorCode} {$description} " . $image, 'error');
@@ -280,13 +279,13 @@ class ProductItemCommand extends SystemCommand
             $reqPhoto = Request::sendPhoto($dataPhoto);
             if ($reqPhoto->isOk()) {
 
-
-                if(!$imageData->telegram_file_id){
-                    $imageData->telegram_file_id = $reqPhoto->getResult()->photo[0]['file_id'];
-                    $imageData->save(false);
+                if (isset($imageData)) {
+                    if (!$imageData->telegram_file_id) {
+                        $imageData->telegram_file_id = $reqPhoto->getResult()->photo[0]['file_id'];
+                        $imageData->save(false);
+                    }
                 }
-
-            }else{
+            } else {
                 $errorCode = $reqPhoto->getErrorCode();
                 $description = $reqPhoto->getDescription();
                 //print_r($reqPhoto);
