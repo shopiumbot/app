@@ -6,16 +6,16 @@ $params = array_merge(
 
 return [
     'id' => 'api',
-    'name'=>'Api',
-    'basePath' => dirname(__DIR__),    
+    'name' => 'Api',
+    'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute'=> 'site',
-   /* 'modules' => [
-        'shop' => [
-            'basePath' => '@app/modules/shop/api/v1',
-            'class' => 'app\modules\shop\api\v1\Module'
-        ]
-    ],*/
+    'defaultRoute' => 'site',
+    /* 'modules' => [
+         'shop' => [
+             'basePath' => '@app/modules/shop/api/v1',
+             'class' => 'app\modules\shop\api\v1\Module'
+         ]
+     ],*/
     'modules' => [
         'user' => [
             'class' => 'app\modules\user\Module'
@@ -24,13 +24,13 @@ return [
             'class' => 'app\modules\shop\Module'
         ]
     ],
-	'aliases' => [
+    'aliases' => [
         '@api' => dirname(dirname(__DIR__)) . '/api',
         '@app' => dirname(dirname(__DIR__)),
         '@uploads' => '@app/web/uploads',
     ],
     'controllerNamespace' => 'api\controllers',
-    'vendorPath' => dirname(__DIR__).'/../vendor',
+    'vendorPath' => dirname(__DIR__) . '/../vendor',
     'controllerMap' => [
         'site' => 'api\controllers\WebController',
         'user' => 'api\controllers\UserController',
@@ -45,7 +45,7 @@ return [
 
             'class' => 'app\modules\user\components\WebUser',
             'enableAutoLogin' => false,
-            'enableSession'=>false
+            'enableSession' => false
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -82,11 +82,11 @@ return [
                 ],
             ],
         ],
-        'db'=>[
+        'db' => [
             'class' => 'panix\engine\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=shopiumbot',
             'username' => 'root',
-            'password' => '47228960panix',
+            'password' => 'root',
             'charset' => 'utf8',
             'tablePrefix' => 'm90f_',
             'serverStatusCache' => YII_DEBUG ? 0 : 3600,
@@ -99,11 +99,24 @@ return [
             //$event->sender->createCommand("SET names utf8")->execute();
             //},
         ],
+        'clientDb' => [
+            'class' => 'panix\engine\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=shopiumbot_jonggolf',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8',
+            'tablePrefix' => 'pf26_',
+            'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+            'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+            'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+            'enableSchemaCache' => true,
+            'schemaCache' => 'cache'
+        ],
         'request' => [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ],
-                        'cookieValidationKey' => 'm38y535nygo8wytowertg78gm4wt',
+            'cookieValidationKey' => 'm38y535nygo8wytowertg78gm4wt',
         ],
 
         'urlManager' => [
@@ -113,24 +126,44 @@ return [
             'showScriptName' => false,
             //http://yii-api.loc/api/v1/countries
             'rules' => [
+
+
+                //'GET api/device' => 'api/device/index',
+                //'POST api/device' => 'api/device/create',
+                '<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
+                //'GET api/search-dev/<serilal:[\w-]+>' => 'api/search-dev',
+                //'GET api/dev-models/type/<type_id:\d+>/brand/<brand_id:\d+>' => 'api/dev-models',
+                '<module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>',
+
+
                 [
                     'pattern' => '/',
                     'route' => 'site/index',
                 ],
-                [
+               /* [
                     'class' => \yii\rest\UrlRule::class,
                     'controller' => ['user'],
                     //'prefix' => 'api',
-                    'pluralize'=>false,
+                    'pluralize' => false,
                     'tokens' => ['{id}' => '<id:\\w+>']
-                ],
+                ],*/
                 [
                     'class' => \yii\rest\UrlRule::class,
                     'controller' => ['product'],
                     //'prefix' => 'api',
-                    'pluralize'=>false,
-                    'tokens' => ['{id}' => '<id:\\w+>']
-                ]
+                    'pluralize' => false,
+                    'tokens' => ['{id}' => '<id:\\w+>'],
+                    //'except' => ['manufacturer','index'],
+                ],
+                [
+                    'class' => \yii\rest\UrlRule::class,
+                    'controller' => ['orders'],
+                    //'prefix' => 'api',
+                    'pluralize' => false,
+                    'tokens' => ['{id}' => '<id:\\w+>'],
+                    //'except' => ['manufacturer','index'],
+                ],
+
             ],
         ]
     ],

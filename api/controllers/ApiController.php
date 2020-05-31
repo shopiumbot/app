@@ -36,8 +36,9 @@ class ApiController extends ActiveController
                 'class' => ContentNegotiator::class,
                 'formatParam' => 'format',
                 'formats' => [
+
                     'xml' => Response::FORMAT_XML,
-                    'json' => Response::FORMAT_JSON
+                    'json' => Response::FORMAT_JSON,
                 ]
             ],
             /*'authenticator' => [
@@ -60,7 +61,7 @@ class ApiController extends ActiveController
             ],*/
             'authenticator' => [
                 'class' => QueryParamAuth::class,
-                'tokenParam' => 'api_key',
+                'tokenParam' => 'token',
 
             ],
             'access' => [

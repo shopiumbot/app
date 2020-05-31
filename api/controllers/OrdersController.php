@@ -3,13 +3,14 @@
 namespace api\controllers;
 
 use app\modules\shop\models\Product;
+use app\modules\cart\models\Order;
 use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
 use Yii;
 
-class ProductController extends ApiController
+class OrdersController extends ApiController
 {
-    public $modelClass = Product::class;
+    public $modelClass = Order::class;
 
     public function actions()
     {
@@ -20,10 +21,8 @@ class ProductController extends ApiController
 
     public function actionIndex()
     {
-        $query = Product::find();
-        if(Yii::$app->request->get('manufacturer_id')){
-            $query->applyManufacturers((int)Yii::$app->request->get('manufacturer_id'));
-        }
+        $query = Order::find();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
