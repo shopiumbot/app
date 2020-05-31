@@ -46,4 +46,9 @@ class Order extends BaseOrder
             'paid'
         ];
     }
+
+    public function getProducts()
+    {
+        return $this->hasMany(OrderProduct::class, ['order_id' => 'id']);
+    }
 }

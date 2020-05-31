@@ -32,7 +32,7 @@ class OrderController extends ApiController
     }
 
 
-    public function actionView($id)
+    public function ___actionView($id)
     {
         $query = Order::findOne($id);
 

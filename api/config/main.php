@@ -137,6 +137,7 @@ return [
 
                 'GET <module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
                 'GET <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
+                '<module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/update',
 
                 //'POST api/device' => 'api/device/create',
                 //'<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
