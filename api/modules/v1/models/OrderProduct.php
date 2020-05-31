@@ -21,4 +21,9 @@ class OrderProduct extends BaseOrderProduct
             'price',
         ];
     }
+
+    public function extraFields()
+    {
+        return ['originalProduct'];
+    }
 }

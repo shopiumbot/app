@@ -137,7 +137,8 @@ return [
 
                 'GET <module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
                 'GET <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
-                '<module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/update',
+                'PUT <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/update',
+                'DELETE <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/delete',
 
                 //'POST api/device' => 'api/device/create',
                 //'<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
@@ -167,12 +168,21 @@ return [
                 ],
                 [
                     'class' => \yii\rest\UrlRule::class,
-                    'controller' => ['orders'],
+                    'controller' => ['order'],
                     //'prefix' => 'api',
                     'pluralize' => false,
                     'tokens' => ['{id}' => '<id:\\w+>'],
                     //'except' => ['manufacturer','index'],
                 ],
+
+
+                /*[
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/order',
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ]
+                ]*/
 
             ],
         ]
