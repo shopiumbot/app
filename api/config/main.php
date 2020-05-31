@@ -22,7 +22,10 @@ return [
         ],
         'shop' => [
             'class' => 'app\modules\shop\Module'
-        ]
+        ],
+        'v1' => ['class' => 'api\modules\v1\Module'],
+        //'v2' => ['class' => 'api\modules\v2\Module']
+
     ],
     'aliases' => [
         '@api' => dirname(dirname(__DIR__)) . '/api',
@@ -128,8 +131,13 @@ return [
             'rules' => [
 
 
-                'GET order' => 'order/index',
-                'GET order/<id:\d+>' => 'order/view',
+                //'GET <controller:[\w-]+>' => '<controller>/index',
+                //'GET <controller:[\w-]+>/<id:\d+>' => '<controller>/view',
+
+
+                'GET <module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
+                'GET <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
+
                 //'POST api/device' => 'api/device/create',
                 //'<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
                 //'GET api/search-dev/<serilal:[\w-]+>' => 'api/search-dev',

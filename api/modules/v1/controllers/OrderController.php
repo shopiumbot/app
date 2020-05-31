@@ -1,11 +1,10 @@
 <?php
 
-namespace api\controllers;
+namespace api\modules\v1\controllers;
 
-use app\modules\shop\models\Product;
-use app\modules\cart\models\Order;
+use api\controllers\ApiController;
+use api\modules\v1\models\Order;
 use yii\data\ActiveDataProvider;
-use yii\rest\ActiveController;
 use Yii;
 
 class OrderController extends ApiController

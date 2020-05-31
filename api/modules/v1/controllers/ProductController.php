@@ -1,10 +1,10 @@
 <?php
 
-namespace api\controllers;
+namespace api\modules\v1\controllers;
 
-use app\modules\shop\models\Product;
+use api\controllers\ApiController;
+use api\modules\v1\models\Product;
 use yii\data\ActiveDataProvider;
-use yii\rest\ActiveController;
 use Yii;
 
 class ProductController extends ApiController
@@ -49,7 +49,6 @@ class ProductController extends ApiController
         ]);
         return $query->one();
     }
-
 }
 
 
