@@ -121,7 +121,6 @@ return [
             ],
             'cookieValidationKey' => 'm38y535nygo8wytowertg78gm4wt',
         ],
-
         'urlManager' => [
             //'baseUrl'=>'/api',
             'enablePrettyUrl' => true,
