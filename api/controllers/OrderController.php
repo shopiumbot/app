@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
 use Yii;
 
-class OrdersController extends ApiController
+class OrderController extends ApiController
 {
     public $modelClass = Order::class;
 
@@ -33,20 +33,11 @@ class OrdersController extends ApiController
     }
 
 
-    public function actionManufacturer()
+    public function actionView($id)
     {
-        $query = Product::find();
-        if(Yii::$app->request->get('id')){
-            $query->applyManufacturers((int)Yii::$app->request->get('id'));
-        }
+        $query = Order::findOne($id);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'defaultPageSize' => 50,
-            ],
-        ]);
-        return $query->one();
+        return $query;
     }
 
 }

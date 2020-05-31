@@ -128,12 +128,13 @@ return [
             'rules' => [
 
 
-                //'GET api/device' => 'api/device/index',
+                'GET order' => 'order/index',
+                'GET order/<id:\d+>' => 'order/view',
                 //'POST api/device' => 'api/device/create',
-                '<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
+                //'<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
                 //'GET api/search-dev/<serilal:[\w-]+>' => 'api/search-dev',
                 //'GET api/dev-models/type/<type_id:\d+>/brand/<brand_id:\d+>' => 'api/dev-models',
-                '<module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>',
+                //'<module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>',
 
 
                 [
