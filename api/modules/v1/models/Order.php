@@ -13,7 +13,13 @@ class Order extends BaseOrder
     {
         return [
             'id',
-            'status_id',
+            'status' => function ($model) {
+                return [
+                    'id' => $model->status_id,
+                    'name' => $model->status->name,
+                    'color' => $model->status->color,
+                ];
+            },
             'total_price',
             'customer' => function ($model) {
 
@@ -31,6 +37,7 @@ class Order extends BaseOrder
                 return [
                     'id' => $model->delivery_id,
                     'name' => $model->deliveryMethod->name,
+                    'free_from' => $model->deliveryMethod->free_from,
                 ];
             },
             'payment' => function ($model) {
