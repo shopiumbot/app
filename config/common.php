@@ -42,6 +42,7 @@ $config = [
         'discounts' => ['class' => 'app\modules\discounts\Module'],
         'telegram' => ['class' => 'app\modules\telegram\Module'],
         'shop' => ['class' => 'app\modules\shop\Module'],
+        'csv' => ['class' => 'app\modules\csv\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -138,6 +139,37 @@ $config = [
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
+     /*   'clientDb' => function () {
+            $user = Yii::$app->get('user');
+            if ($user = Yii::$app->get('user', false)) {
+                if($user->getIsGuest()){
+                    $user = \app\modules\user\models\User::findByHook(Yii::$app->request->get('webhook'));
+                }else{
+
+                }
+            }
+
+
+            Yii::$app->setComponents([
+                'clientSettings' => [
+                    'class' => 'panix\engine\components\Settings',
+                    'db' => 'clientDb',
+                ],
+            ]);
+            return Yii::createObject([
+                'class' => 'yii\db\Connection',
+                'dsn' => 'mysql:host=localhost;dbname=' . $user->db_name,
+                'username' => $user->db_user,
+                'password' => $user->db_password,
+                'charset' => 'utf8',
+                'tablePrefix' => 'client_',
+                'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                'enableSchemaCache' => true,
+                'schemaCache' => 'cache'
+            ]);
+        },*/
     ],
     /*'as access' => [
         'class' => panix\mod\rbac\filters\AccessControl::class,
@@ -153,14 +185,5 @@ $config = [
     ],*/
     'params' => require(__DIR__ . '/params.php'),
 ];
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
-    //$config['modules']['debug']['dataPath'] = '@common/runtime/debug';
-}
 
 return $config;

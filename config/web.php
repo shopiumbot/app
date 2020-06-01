@@ -16,14 +16,12 @@ $config = [
         'panix\engine\widgets\webcontrol\WebInlineControl',
         //'webcontrol'
     ],
+    'on afterRequest' => function () {
+        Yii::error(Yii::$app->request->get('webhook'));
+    },
     'on beforeRequest' => function () {
 
-        if (false) {
-            Yii::$app->catchAll = [
-                'maintenance/expired',
-                'message' => 'Закончился период аренды интернет-магазина'
-            ];
-        }
+
         if (!Yii::$app->user->isGuest) {
 
             if (strtotime(Yii::$app->user->banTime) >= time()) {
@@ -113,11 +111,16 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        'allowedIPs' => ['127.0.0.1', '*'],
+        'dataPath'=>'@runtime/debug',
+        'traceLine'=>function ($options, $panel) {
+            $filePath = $options['file'];
+            return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+        }
+    ];
     //$config['modules']['debug']['panels'] = [
     //    'queue' => \yii\queue\debug\Panel::class,
     //];
