@@ -20,12 +20,25 @@ try {
     $chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
     if($chats){
     foreach ($chats as $chat){
-        $send = Request::sendMessage([
+        /*$send = Request::sendMessage([
             'chat_id'=>$chat['id'],
             'text'=>'test'
-        ]);
+        ]);*/
     }
-    \panix\engine\CMS::dump($chats);
+
+        $profile = Request::getUserProfilePhotos(['user_id'=>'1268221529']); //812367093 me
+        $photo = $profile->getResult()->photos[0][2];
+        $file = Request::getFile(['file_id'=>$photo['file_id']]);
+        if(!file_exists(Yii::getAlias('@app/web/downloads/telegram').DIRECTORY_SEPARATOR.$file->getResult()->file_path)){
+            $download = Request::downloadFile($file->getResult());
+            //\panix\engine\CMS::dump($download);
+        }else{
+            echo Html::img('/downloads/telegram/'.$file->getResult()->file_path,['class'=>'','width'=>100]);
+        }
+
+
+        $member = Request::getChatMember(['chat_id'=>'812367093','user_id'=>'812367093']);
+    \panix\engine\CMS::dump($member);
     }
     $me = Request::getMe();
 

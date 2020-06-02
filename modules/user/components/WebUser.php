@@ -102,8 +102,9 @@ class WebUser extends User
                     }
 
                     return new Connection([
-                        'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                        'dsn' => strtr('mysql:host={db_host};dbname={db_name}', [
                             '{db_name}' => $user->db_name,
+                            '{db_host}' => $user->db_host,
                         ]),
                         'username' => $user->db_user,
                         'password' => $user->db_password,
@@ -139,12 +140,16 @@ class WebUser extends User
         return $user ? $user->db_name : null;
     }
 
+    public function getDb_host()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->db_host : null;
+    }
     public function getDb_user()
     {
         $user = $this->getIdentity();
         return $user ? $user->db_user : null;
     }
-
     public function getDb_password()
     {
         $user = $this->getIdentity();

@@ -280,7 +280,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return Yii::$app->cache->getOrSet('client_db', function () {
             return new Connection([
-                'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+                'dsn' => strtr('mysql:host={db_host};dbname={db_name}', [
+                    '{db_host}' => $this->db_host,
                     '{db_name}' => $this->db_name,
                 ]),
                 'username' => $this->db_user,
@@ -299,7 +300,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function getClientCache222()
     {
         return new Cache([
-            'dsn' => strtr('mysql:host=corner.mysql.tools;dbname={db_name}', [
+            'dsn' => strtr('mysql:host={db_host};dbname={db_name}', [
+                '{db_host}' => $this->db_host,
                 '{db_name}' => $this->db_name,
             ]),
             'username' => $this->db_user,
