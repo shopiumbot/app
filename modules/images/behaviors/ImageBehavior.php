@@ -272,7 +272,9 @@ class ImageBehavior extends Behavior
             }
 
             $path = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
+            if(file_exists($path)){
             BaseFileHelper::removeDirectory($path);
+            }
         }
     }
 
@@ -285,10 +287,10 @@ class ImageBehavior extends Behavior
      */
     public function removeImage(Image $img)
     {
+        $clientDir = Yii::$app->user->getWebhook();
+        //$storePath = Yii::$app->getModule('images')->getStorePath();
 
-        $storePath = Yii::$app->getModule('images')->getStorePath();
-
-        $fileToRemove = $storePath . DIRECTORY_SEPARATOR . $img->filePath;
+        $fileToRemove = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $img->filePath;
         if (preg_match('@\.@', $fileToRemove) and is_file($fileToRemove)) {
             unlink($fileToRemove);
         }

@@ -134,7 +134,7 @@ use panix\engine\Html;
             <?= Html::a(Html::icon('info').'<span class="hide-menu">Документация</span>', ['/documentation'], ['class' => 'sidebar-link']); ?>
         </li>
         <li class="sidebar-item">
-            <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', ['/documentation/api'], ['class' => 'sidebar-link']); ?>
+            <?= Html::a(Html::icon('tools').'<span class="hide-menu">API</span>', 'https://shopiumbot.docs.apiary.io', ['class' => 'sidebar-link','target'=>'_blank']); ?>
         </li>
         <li class="sidebar-item">
             <?= Html::a(Html::icon('logout').'<span class="hide-menu">Выход</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>

@@ -61,7 +61,6 @@ class Product extends ClientActiveRecord
     use traits\ProductTrait;
 
 
-
     public $file;
 
     const route = '/admin/shop/default';
@@ -245,7 +244,7 @@ class Product extends ClientActiveRecord
         $rules[] = [['file'], 'validateLimit'];
         $rules[] = [['name'], 'string', 'max' => 255];
         $rules[] = [['image'], 'image'];
-        $rules[] = [['name'], 'unique'];
+        $rules[] = [['name'], 'unique','on'=>'default'];
         $rules[] = [['name'], 'trim'];
         $rules[] = [['description'], 'string'];
         $rules[] = [['unit'], 'default', 'value' => 1];
@@ -253,6 +252,9 @@ class Product extends ClientActiveRecord
         $rules[] = [['price'], 'double'];
         $rules[] = [['manufacturer_id', 'type_id', 'quantity', 'availability', 'added_to_cart_count', 'ordern', 'category_id', 'currency_id', 'label'], 'integer'];
         $rules[] = [['name', 'description'], 'safe'];
+
+        //API rules
+        $rules[] = [['type_id'], 'required', 'on' => ['api_create']];
 
         return $rules;
     }
