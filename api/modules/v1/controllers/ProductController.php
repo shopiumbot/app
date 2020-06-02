@@ -84,7 +84,7 @@ class ProductController extends ApiController
         $model = new Product([
             'scenario' => 'api_create',
         ]);
-        $result['success'] = false;
+
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
         if ($model->save()) {
             $response = Yii::$app->getResponse();
@@ -98,15 +98,7 @@ class ProductController extends ApiController
         } elseif (!$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
         }
-
-
-        if ($model->hasErrors()) {
-            $result['message'] = 'Error';
-            $result['errors'] = $model->getErrors();
-        }
-
-
-        return $result;
+        return $model;
     }
 
 

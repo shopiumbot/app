@@ -6,6 +6,8 @@ use yii\rest\Serializer as BaseSerializer;
 
 class Serializer extends BaseSerializer
 {
+    public $collectionEnvelope = 'items';
+
     protected function serializeDataProvider($dataProvider)
     {
         if ($this->preserveKeys) {
@@ -24,11 +26,26 @@ class Serializer extends BaseSerializer
         } elseif ($this->collectionEnvelope === null) {
             return $models;
         }
-        $result['success']=true;
+        $result['success'] = true;
         $result[$this->collectionEnvelope] = $models;
 
         if ($pagination !== false) {
             return array_merge($result, $this->serializePagination($pagination));
+        }
+
+        return $result;
+    }
+
+
+    protected function serializeModelErrors($model)
+    {
+        $this->response->setStatusCode(422, 'Data Validation Failed.');
+        $result['success'] = false;
+        foreach ($model->getFirstErrors() as $name => $message) {
+            $result['errors'][] = [
+                'field' => $name,
+                'message' => $message,
+            ];
         }
 
         return $result;

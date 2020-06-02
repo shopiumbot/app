@@ -2,8 +2,11 @@
 
 namespace api\modules\v1\models;
 
+use app\modules\images\behaviors\ImageBehavior;
+use app\modules\images\models\Image;
 use app\modules\shop\models\Attribute;
 use app\modules\shop\models\Product as BaseProduct;
+use yii\helpers\Url;
 
 /**
  * Class Product
@@ -50,6 +53,15 @@ class Product extends BaseProduct
             },*/
             'manufacturer' => function ($model) {
                 return ['id' => $model->manufacturer_id, 'name' => $model->manufacturer->name];
+            },
+            'images' => function ($model) {
+                $image = [];
+                /** @var ImageBehavior $model */
+                foreach ($model->getImages() as $img) {
+                    /** @var Image $img */
+                    $image[] = Url::to($img->getUrlToOrigin(), true);
+                }
+                return $image;
             },
             /*'supplier' => function ($model) {
                 return ['id' => $model->supplier_id, 'name' => $model->supplier->name];

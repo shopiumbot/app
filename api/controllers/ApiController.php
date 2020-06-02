@@ -20,7 +20,6 @@ class ApiController extends ActiveController
 
     public $serializer = [
         'class' => \api\rest\Serializer::class,
-        'collectionEnvelope' => 'items',
     ];
 
     public function init()
