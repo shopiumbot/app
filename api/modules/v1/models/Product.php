@@ -23,7 +23,8 @@ class Product extends BaseProduct
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['api'] = ['name', 'main_category_id', 'price', 'type_id'];
+        $scenarios['api_create'] = ['name', 'main_category_id', 'price', 'type_id'];
+        $scenarios['api_update'] = ['name', 'main_category_id', 'price'];
         return $scenarios;
     }
 

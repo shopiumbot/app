@@ -19,7 +19,7 @@ class ApiController extends ActiveController
 {
 
     public $serializer = [
-        'class' => Serializer::class,
+        'class' => \api\rest\Serializer::class,
         'collectionEnvelope' => 'items',
     ];
 
