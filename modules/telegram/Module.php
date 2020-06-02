@@ -103,8 +103,8 @@ class Module extends WebModule implements \yii\base\BootstrapInterface
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
             'rules' => [
-                '<controller:\w+>' => '<controller>/index',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:[0-9a-zA-Z_\-]+>' => '<controller>/index',
+                '<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>' => '<controller>/<action>',
                 //'<action:\w+>' => 'default/<action>',
 
             ],

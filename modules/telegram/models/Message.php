@@ -6,6 +6,7 @@ use app\modules\telegram\models\query\MessageQuery;
 
 use app\modules\user\components\ClientActiveRecord;
 use Longman\TelegramBot\Request;
+use panix\engine\CMS;
 use Yii;
 use yii\base\Exception;
 
@@ -46,9 +47,10 @@ class Message extends ClientActiveRecord
     {
         return [
             [['client_chat_id'], 'required'],
-         //   [['message'], 'string', 'max' => 4100],
+            //   [['message'], 'string', 'max' => 4100],
         ];
     }
+
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
@@ -59,31 +61,37 @@ class Message extends ClientActiveRecord
     {
         return $this->hasOne(CallbackQuery::class, ['message_id' => 'id']);
     }
+
     /**
      * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-    
+
         ];
     }
 
+    private $photoCache;
 
     public function getPhoto()
     {
 
         try {
-            $profile = Request::getUserProfilePhotos(['user_id' => $this->user_id]);
+            if (!isset($this->photoCache[$this->user_id])) {
+                $profile = Request::getUserProfilePhotos(['user_id' => $this->user_id]);
 
-
-            if ($profile->getResult()->photos) {
-                $photo = $profile->getResult()->photos[0][2];
-                $file = Request::getFile(['file_id' => $photo['file_id']]);
-                if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
-                    $download = Request::downloadFile($file->getResult());
+                if ($profile) {
+                    if ($profile->getResult()->photos) {
+                        $photo = $profile->getResult()->photos[0][2];
+                        $file = Request::getFile(['file_id' => $photo['file_id']]);
+                        if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+                            $download = Request::downloadFile($file->getResult());
+                        }
+                        $this->photoCache[$this->user_id] = $file->getResult()->file_path;
+                        return '/downloads/telegram/' . $file->getResult()->file_path;
+                    }
                 }
-                return '/downloads/telegram/' . $file->getResult()->file_path;
             }
         } catch (Exception $e) {
 
