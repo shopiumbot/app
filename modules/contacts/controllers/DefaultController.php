@@ -2,37 +2,41 @@
 
 namespace app\modules\contacts\controllers;
 
+use app\modules\contacts\models\SettingsForm;
+use app\modules\user\controllers\ClientController;
 use Yii;
-use panix\engine\controllers\WebController;
-use app\modules\contacts\models\ContactForm;
+use panix\engine\controllers\AdminController;
 
-
-class DefaultController extends WebController
+/**
+ * Class DefaultController
+ * @package app\modules\contacts\controllers\admin
+ */
+class DefaultController extends ClientController
 {
+
 
     public function actionIndex()
     {
-        $this->pageName = Yii::t('contacts/default', 'MODULE_NAME');
-        $this->view->title = $this->pageName;
+        $this->pageName = Yii::t('app/default', 'SETTINGS');
         $this->breadcrumbs = [
+            [
+                'label' => $this->module->info['label'],
+                'url' => $this->module->info['url'],
+            ],
             $this->pageName
         ];
-        $model = new ContactForm();
+        $model = new SettingsForm();
         if ($model->load(Yii::$app->request->post())) {
-            if($model->validate()){
-                $emails = explode(',',Yii::$app->settings->get('contacts', 'email'));
-                foreach ($emails as $email){
-                    $model->send($email);
-                }
-
-                Yii::$app->session->setFlash('success', Yii::t('contacts/default', 'SUCCESS_SEND_FORM'));
-
-                return $this->refresh();
+            if ($model->validate()) {
+                $model->save();
+                Yii::$app->session->setFlash("success", Yii::t('app/default', 'SUCCESS_UPDATE'));
             }
+            return $this->refresh();
         }
         return $this->render('index', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
+
 
 }

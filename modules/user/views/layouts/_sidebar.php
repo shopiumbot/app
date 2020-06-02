@@ -73,6 +73,26 @@ use panix\engine\Html;
         </li>
 
 
+
+        <li class="sidebar-item">
+            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+               aria-expanded="false">
+                <i class="icon-telegram-outline"></i>
+                <span class="hide-menu">Telegram</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                    <?= Html::a(Html::icon('comments').'<span class="hide-menu">Messages</span>', ['/telegram/message'], ['class' => 'sidebar-link']); ?>
+                </li>
+                <li class="sidebar-item">
+                    <?= Html::a(Html::icon('user-outline').'<span class="hide-menu">Users</span>', ['/telegram/users'], ['class' => 'sidebar-link']); ?>
+                </li>
+                <li class="sidebar-item">
+                    <?= Html::a(Html::icon('creditcard').'<span class="hide-menu">Оплата</span>', ['/cart/payment/index'], ['class' => 'sidebar-link']); ?>
+                </li>
+            </ul>
+        </li>
+
         <li class="nav-small-cap">
             <i class="icon-puzzle"></i>
             <span class="hide-menu">Интеграция</span>
@@ -118,6 +138,10 @@ use panix\engine\Html;
         </li>
         <li class="sidebar-item">
             <?= Html::a(Html::icon('logout').'<span class="hide-menu">Выход</span>', ['/user/logout'], ['class' => 'sidebar-link']); ?>
+        </li>
+
+        <li class="sidebar-item">
+            <?= Html::a(Html::icon('phone').'<span class="hide-menu">contacts</span>', ['/contacts'], ['class' => 'sidebar-link']); ?>
         </li>
 
     </ul>

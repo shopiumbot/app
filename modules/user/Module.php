@@ -136,29 +136,6 @@ class Module extends WebModule implements BootstrapInterface
         return (new BackendNav())->findMenu($this->id)['items'];
     }
 
-    /**
-     * Установка модуля
-     * @return boolean
-     */
-    public function afterInstall()
-    {
-        Yii::$app->db->import($this->id);
-
-        if (Yii::$app->settings)
-            Yii::$app->settings->set($this->id, SettingsForm::defaultSettings());
-        return parent::afterInstall();
-    }
-
-    /**
-     * Удаление модуля
-     * @return boolean
-     */
-    public function afterUninstall()
-    {
-
-        Yii::$app->settings->clear($this->id);
-        return parent::afterUninstall();
-    }
 
     public function getInfo()
     {
@@ -168,7 +145,7 @@ class Module extends WebModule implements BootstrapInterface
             'version' => '1.0',
             'icon' => 'icon-users',
             'description' => Yii::t('user/default', 'MODULE_DESC'),
-            'url' => ['/admin/user'],
+            'url' => ['/user'],
         ];
     }
 

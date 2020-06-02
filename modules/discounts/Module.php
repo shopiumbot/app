@@ -30,8 +30,8 @@ class Module extends WebModule implements BootstrapInterface
                 'prefix' => $this->id,
                 'rules' => [
                     '' => 'default/index',
-                    '<controller:\w+>' => '<controller>/index',
-                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                    '<controller:[0-9a-zA-Z_\-]+>' => '<controller>/index',
+                    '<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>' => '<controller>/<action>',
                     //'<action:\w+>' => 'default/<action>',
 
                 ],
