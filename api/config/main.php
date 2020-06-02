@@ -9,6 +9,7 @@ return [
     'name' => 'Api',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language'=>'ru',
     'defaultRoute' => 'site',
     /* 'modules' => [
          'shop' => [
@@ -135,6 +136,7 @@ return [
 
 
                 'GET <module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
+                'POST <module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/create',
                 'GET <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
                 'PUT <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/update',
                 'DELETE <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/delete',

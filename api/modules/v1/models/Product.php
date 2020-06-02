@@ -18,6 +18,15 @@ use app\modules\shop\models\Product as BaseProduct;
  */
 class Product extends BaseProduct
 {
+
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['api'] = ['name', 'main_category_id', 'price', 'type_id'];
+        return $scenarios;
+    }
+
     public function fields()
     {
         $data = [];
@@ -57,10 +66,11 @@ class Product extends BaseProduct
 
     public function extraFields()
     {
-        return ['prices','characteristics'];
+        return ['prices', 'characteristics'];
     }
 
-    public function getCharacteristics(){
+    public function getCharacteristics()
+    {
         $attributes = $this->getEavAttributes();
 
         $_list = [];

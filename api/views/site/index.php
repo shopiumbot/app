@@ -1,4 +1,6 @@
 <?php
 use panix\engine\Html;
-echo Html::a('test',['/user']);
+use yii\helpers\Url;
+
+echo Url::to(['/product','token'=>'XXXXXXX']);
 ?>
