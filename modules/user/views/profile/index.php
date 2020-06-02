@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\modules\telegram\components\Api;
 use panix\engine\bootstrap\ActiveForm;
 use Longman\TelegramBot\Request;
+use Longman\TelegramBot\Entities\InlineKeyboardButton;
 /**
  * @var \yii\web\View $this
  * @var \app\modules\user\models\User $model
@@ -11,40 +12,80 @@ use Longman\TelegramBot\Request;
  */
 
 
-
 try {
     $telegram = new Api($model->token);
 
 
-
     $chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
-    if($chats){
-    foreach ($chats as $chat){
-        /*$send = Request::sendMessage([
-            'chat_id'=>$chat['id'],
-            'text'=>'test'
-        ]);*/
-    }
-
-        $profile = Request::getUserProfilePhotos(['user_id'=>'1268221529']); //812367093 me
-        $photo = $profile->getResult()->photos[0][2];
-        $file = Request::getFile(['file_id'=>$photo['file_id']]);
-        if(!file_exists(Yii::getAlias('@app/web/downloads/telegram').DIRECTORY_SEPARATOR.$file->getResult()->file_path)){
-            $download = Request::downloadFile($file->getResult());
-            //\panix\engine\CMS::dump($download);
-        }else{
-            echo Html::img('/downloads/telegram/'.$file->getResult()->file_path,['class'=>'','width'=>100]);
+    if ($chats) {
+        foreach ($chats as $chat) {
+            /*$send = Request::sendMessage([
+                'chat_id'=>$chat['id'],
+                'text'=>'test'
+            ]);*/
         }
+        /*$venue = Request::sendVenue([
+            'chat_id' => $chat['id'],
+            'latitude' => 46.3974947,
+            'longitude' => 30.7125803,
+            'title' => 'Pixelion',
+            'address' => 'Pixelion address',
+        ]);*/
 
+        $keyboards[] = [
+            new InlineKeyboardButton([
+                'text' => 'Pay 1.00UAH',
+                'callback_data' => "cartDelete"
+            ]),
+            new InlineKeyboardButton([
+                'text' => '—',
+                'callback_data' => "spinner/down/cart"
+            ]),
 
-        $member = Request::getChatMember(['chat_id'=>'812367093','user_id'=>'812367093']);
-    \panix\engine\CMS::dump($member);
+        ];
+        /*$invoice = Request::sendInvoice([
+            'chat_id' => $chat['id'],
+            'title' => 'title',
+            'description' => 'description',
+            'payload' => 'order-id',
+            'provider_token' => '632593626:TEST:i56982357197',
+            'start_parameter' => 'start_parameter',
+            'currency' => 'UAH',
+            'prices' => [
+                new \Longman\TelegramBot\Entities\Payments\LabeledPrice([
+                    'label' => 'test',
+                    'amount' => 100
+                ]),
+            ],
+
+            'disable_notification' => false,
+            'reply_markup' => new \Longman\TelegramBot\Entities\InlineKeyboard([
+                'inline_keyboard' => $keyboards
+            ])
+
+        ]);*/
+
+        //\panix\engine\CMS::dump($invoice);
+
     }
     $me = Request::getMe();
+
 
     if ($me->isOk()) {
         $result = $me->getResult();
 
+        // $chatTitle = Request::setChatTitle(['chat_id' => $result->id,'title'=>'test chnage']);
+
+
+        $profile = Request::getUserProfilePhotos(['user_id' => $result->id]); //812367093 me
+        $photo = $profile->getResult()->photos[0][2];
+        $file = Request::getFile(['file_id' => $photo['file_id']]);
+        if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+            $download = Request::downloadFile($file->getResult());
+
+        } else {
+            echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => '', 'width' => 100]);
+        }
         ?>
         <div class="alert alert-success">Подключен
             бот: <?= Html::a($result->first_name, 'tg://@' . $result->username); ?></div>

@@ -38,7 +38,7 @@ class MessageController extends ClientController
     public function actionLoadChat(){
         $api = new Api(Yii::$app->user->token);
         $user_id = Yii::$app->request->get('user_id');
-        $model = Message::find()->where(['chat_id'=>$user_id])->all();
+        $model = Message::find()->where(['chat_id'=>$user_id])->limit(50)->all();
         //print_r($id);die;
        // return $id;
         return $this->renderAjax('load-chat',['model'=>$model]);

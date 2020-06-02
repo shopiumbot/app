@@ -410,9 +410,9 @@ class Order extends ClientActiveRecord
             $image = NULL;
 
             $imageData = $product->getImage();
-            if($imageData){
-                $image = "/uploads/store/product/{$product->id}/".basename($imageData->getPathToOrigin());
-            }else{
+            if ($imageData) {
+                $image = "/uploads/store/product/{$product->id}/" . basename($imageData->getPathToOrigin());
+            } else {
                 $image = '/uploads/no-image.jpg';
             }
             $ordered_product = new OrderProduct();

@@ -273,16 +273,25 @@ class CsvImporter extends Component
                     if ($this->validateImage($data['Фото'])) {
                         /** @var ImageBehavior $model */
                         $imagesArray = explode(';', $data['Фото']);
-                        foreach ($imagesArray as $n => $im) {
-                            $image = CsvImage::create($im);
-                            if ($image) {
-                                $model->attachImage($image);
-                                if ($this->deleteDownloadedImages) {
-                                    $image->deleteTempFile();
+                        $limit = Yii::$app->params['plan'][2]['product_upload_files'];
+                        if((count($imagesArray) > $limit) || $model->imagesCount > $limit){
+                            $this->errors[] = [
+                                'line' => $this->line,
+                                'error' => 'limit image'
+                            ];
+                        }else{
+                            foreach ($imagesArray as $n => $im) {
+                                $image = CsvImage::create($im);
+                                if ($image) {
+                                    $model->attachImage($image);
+                                    if ($this->deleteDownloadedImages) {
+                                        $image->deleteTempFile();
+                                    }
                                 }
-                            }
 
+                            }
                         }
+
                     } else {
                         $this->errors[] = [
                             'line' => $this->line,

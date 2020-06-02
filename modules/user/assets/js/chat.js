@@ -9,6 +9,8 @@ $(function() {
         var id = $(this).attr("data-user-id");
         var status = $(this).find(".profile-status").attr("data-status");
 
+
+
         if ($(this).hasClass("active")) {
             $(this).toggleClass("active");
             $(".chat-windows #user-chat" + id).hide();
@@ -85,6 +87,12 @@ $('.searchbar > input').on('keyup', function() {
 });
 
 $('.app-chat .chat-user ').on('click', function(event) {
+
+
+
+
+
+
     if ($(this).hasClass('.active')) {
         return false;
     } else {
@@ -93,6 +101,20 @@ $('.app-chat .chat-user ').on('click', function(event) {
         var personImage = $(this).find('img').attr('src');
         var hideTheNonSelectedContent = $(this).parents('.chat-application').find('.chat-not-selected').hide().siblings('.chatting-box').show();
         var showChatInnerContent = $(this).parents('.chat-application').find('.chat-container .chat-box-inner-part').show();
+
+
+
+
+        $.ajax({
+            url:'/telegram/message/load-chat',
+            type:'GET',
+            data:{user_id:findChat},
+            success:function (data) {
+                console.log(data);
+                $('.chat-box').append(data);
+            }
+        });
+
 
         if (window.innerWidth <= 767) {
             $('.chat-container .current-chat-user-name .name').html(personName.split(' ')[0]);

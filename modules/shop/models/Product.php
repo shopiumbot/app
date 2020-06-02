@@ -60,21 +60,7 @@ class Product extends ClientActiveRecord
 
     use traits\ProductTrait;
 
-    public function fields()
-    {
-        return [
-            'id',
-            'type_id',
-            'name',
-           // 'manufacturer' => function ($model) {
-            //    return ($model->manufacturer_id) ? $model->manufacturer : $model->manufacturer_id;
-           // },
-            'price',
-            'switch',
-            'created_at',
-            'updated_at',
-        ];
-    }
+
 
     public $file;
 
@@ -88,7 +74,7 @@ class Product extends ClientActiveRecord
 
     public function labels()
     {
-        /** @var DiscountBehavior|self $this */
+        /** @var \app\modules\discounts\components\DiscountBehavior|self $this */
 
         $labelsList['new'] = [
             'class' => 'success',
@@ -356,6 +342,10 @@ class Product extends ClientActiveRecord
             });
     }
 
+    public function getImagesCount()
+    {
+        return $this->hasOne(Image::class, ['id' => 'product_id'])->count();
+    }
 
 //'variants' => array(self::HAS_MANY, 'ProductVariant', array('product_id'), 'with' => array('attribute', 'option'), 'order' => 'option.ordern'),
 

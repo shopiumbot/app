@@ -21,7 +21,12 @@ class Manufacturer extends ClientActiveRecord
 
     const MODULE_ID = 'shop';
     const route = '/admin/shop/manufacturer';
-
+    public function fields()
+    {
+        return [
+            'id',
+        ];
+    }
     /**
      * @inheritdoc
      * @return ManufacturerQuery

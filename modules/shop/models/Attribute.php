@@ -45,6 +45,21 @@ class Attribute extends ClientActiveRecord
 
     const MODULE_ID = 'shop';
 
+    public function fields()
+    {
+        return [
+            'id',
+            'title',
+            'abbreviation',
+            'hint',
+            'required',
+            'switch',
+            'type' => function ($model) {
+                $data = $model::typesList();
+                return $data[$model->type];
+            }
+        ];
+    }
 
     public static function find()
     {
