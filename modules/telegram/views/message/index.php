@@ -2,6 +2,9 @@
 
 use panix\engine\widgets\Pjax;
 use panix\engine\grid\GridView;
+use Longman\TelegramBot\Request;
+use panix\engine\Html;
+use panix\engine\CMS;
 
 /*
 Pjax::begin([
@@ -53,26 +56,32 @@ Pjax::end();*/
 
 
                         <?php
-
+                        $telegram = new \app\modules\telegram\components\Api('1268221529:AAGtVcw8e8jJdC8ir-GFDlQVobxhYWDy92s');
                         $users = \app\modules\telegram\models\User::find()->where(['is_bot' => 0])->all();
-                        if($users){
-                        foreach ($users as $user) {
-                            //  print_r($user->lastMessage);
-                            ?>
-                            <a href="javascript:void(0)" class="chat-user message-item" id='chat_user_1'
-                               data-user-id='1'>
+                        if ($users) {
+                            foreach ($users as $user) {
+
+                                //$member = Request::getChatMember(['chat_id'=>'812367093','user_id'=>'812367093']);
+
+
+                                ?>
+                                <a href="javascript:void(0)" class="chat-user message-item" id='chat_user_1'
+                                   data-user-id='1'>
                                         <span class="user-img">
-                                            <img src="<?= $this->context->asset->baseUrl; ?>/images/3.jpg" alt="user"
+
+                                            <img src="<?= $user->getPhoto(); ?>" alt="<?= $user->first_name; ?>"
                                                  class="rounded-circle">
                                             <span class="profile-status online pull-right"></span>
                                         </span>
-                                <div class="mail-contnet">
-                                    <h5 class="message-title" data-username="Pavan kumar"><?= $user->first_name; ?></h5>
-                                    <span class="mail-desc"><?= $user->lastMessage->text; ?></span> <span
-                                            class="time"><?= $user->lastMessage->date; ?></span>
-                                </div>
-                            </a>
-                        <?php } } ?>
+                                    <div class="mail-contnet">
+                                        <h5 class="message-title"
+                                            data-username="Pavan kumar"><?= $user->first_name; ?></h5>
+                                        <span class="mail-desc"><?= $user->lastMessage->text; ?></span> <span
+                                                class="time"><?= $user->lastMessage->date; ?></span>
+                                    </div>
+                                </a>
+                            <?php }
+                        } ?>
 
                         <!-- Message -->
                         <a href="javascript:void(0)" class="chat-user message-item" id='chat_user_2' data-user-id='2'>
@@ -204,38 +213,47 @@ Pjax::end();*/
                             <?php
 
                             $user = \app\modules\telegram\models\User::find()->where(['id' => 812367093])->one();
-                            if($users){
-                            foreach ($user->chats as $message) {
-                                // print_r($message);
-                                $odd = ($message->user_id == $message->chat_id) ? 'odd' : '';
-                                ?>
-                                <li class="<?= $odd; ?> chat-item">
-                                    <div class="chat-img"><img src="<?= $this->context->asset->baseUrl; ?>/images/1.jpg"
-                                                               alt="user"></div>
-                                    <div class="chat-content">
-                                        <h6 class="font-medium"><?= $message->user_id; ?></h6>
-                                        <div class="box bg-light-info"><?= $message->text; ?></div>
+                            if ($users) {
+                                foreach ($user->chats as $message) {
+                                   // CMS::dump($message);die;
+                                    $odd = ($message->user_id == $message->chat_id) ? 'odd' : '';
+                                    $imageClass = ($message->user_id == $message->chat_id) ? 'float-right' : '';
+                                    ?>
+                                    <li class="<?= $odd; ?> chat-item">
+                                        <div class="chat-img <?= $imageClass ?>">
+                                            <img src="<?= $message->getPhoto(); ?>" alt="user1">
+                                        </div>
+                                        <div class="chat-content">
+                                            <h6 class="font-medium"><?= $message->user_id; ?></h6>
+                                            <div class="box bg-light-info"><?= $message->text; ?></div>
 
-                                        <?php if ($message->reply_markup) {
-                                            $data = json_decode($message->reply_markup);
-                                            echo '<div>';
-                                            foreach ($data->inline_keyboard as $k => $keyboard) {
-                                                echo '<span class="btn btn-secondary">' . $keyboard[$k]->text . '</span>';
+                                            <?php if ($message->reply_markup) {
+                                                $data = json_decode($message->reply_markup);
+                                                if ($data->inline_keyboard) {
+                                                    echo '<div>';
+
+
+                                                    foreach ($data->inline_keyboard as $k => $keyboard) {
+
+                                                        echo '<span class="btn btn-secondary">' . $keyboard[0]->text . '</span>';
+                                                    }
+
+                                                    echo '</div>';
+                                                }
                                             }
-                                            echo '</div>';
-                                        }
-                                        ?>
-                                        <?php if ($message->callback) { ?>
-                                            <div>
-                                                <div class="box bg-light-info"><?= $message->callback->data ?></div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="chat-time">10:56 am</div>
-                                </li>
+                                            ?>
+                                            <?php if ($message->callback) { ?>
+                                                <div>
+                                                    <div class="box bg-light-info"><?= $message->callback->data ?></div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="chat-time"><?= date('H:i',strtotime($message->date));?></div>
+                                    </li>
 
 
-                            <?php } } ?>
+                                <?php }
+                            } ?>
 
                             <!--chat Row -->
                             <li class="chat-item">

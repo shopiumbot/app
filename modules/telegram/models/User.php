@@ -5,7 +5,9 @@ namespace app\modules\telegram\models;
 
 use app\modules\telegram\models\query\UserQuery;
 use app\modules\user\components\ClientActiveRecord;
+use Longman\TelegramBot\Request;
 use Yii;
+use yii\base\Exception;
 
 /**
  * This is the model class for table "actions".
@@ -48,14 +50,17 @@ class User extends ClientActiveRecord
     {
         return $this->hasMany(Message::class, ['user_id' => 'id']);
     }
+
     public function getChats()
     {
         return $this->hasMany(Message::class, ['chat_id' => 'id']);
     }
+
     public function getLastMessage()
     {
-        return $this->hasOne(Message::class, ['user_id' => 'id'])->orderBy(['date'=>SORT_DESC]);
+        return $this->hasOne(Message::class, ['user_id' => 'id'])->orderBy(['date' => SORT_DESC]);
     }
+
     /**
      * @inheritdoc
      */
@@ -64,5 +69,26 @@ class User extends ClientActiveRecord
         return [
 
         ];
+    }
+
+    public function getPhoto()
+    {
+
+        try {
+            $profile = Request::getUserProfilePhotos(['user_id' => $this->id]);
+
+
+            if ($profile->getResult()->photos) {
+                $photo = $profile->getResult()->photos[0][2];
+                $file = Request::getFile(['file_id' => $photo['file_id']]);
+                if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+                    $download = Request::downloadFile($file->getResult());
+                }
+                return '/downloads/telegram/' . $file->getResult()->file_path;
+            }
+        } catch (Exception $e) {
+
+        }
+        return '/uploads/no-image.jpg';
     }
 }

@@ -5,7 +5,9 @@ namespace app\modules\telegram\models;
 use app\modules\telegram\models\query\MessageQuery;
 
 use app\modules\user\components\ClientActiveRecord;
+use Longman\TelegramBot\Request;
 use Yii;
+use yii\base\Exception;
 
 /**
  * This is the model class for table "actions".
@@ -65,5 +67,27 @@ class Message extends ClientActiveRecord
         return [
     
         ];
+    }
+
+
+    public function getPhoto()
+    {
+
+        try {
+            $profile = Request::getUserProfilePhotos(['user_id' => $this->user_id]);
+
+
+            if ($profile->getResult()->photos) {
+                $photo = $profile->getResult()->photos[0][2];
+                $file = Request::getFile(['file_id' => $photo['file_id']]);
+                if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+                    $download = Request::downloadFile($file->getResult());
+                }
+                return '/downloads/telegram/' . $file->getResult()->file_path;
+            }
+        } catch (Exception $e) {
+
+        }
+        return '/uploads/no-image.jpg';
     }
 }

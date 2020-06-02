@@ -5,7 +5,9 @@ namespace app\modules\telegram\models;
 
 use app\modules\telegram\models\query\ChatQuery;
 use app\modules\user\components\ClientActiveRecord;
+use Longman\TelegramBot\Request;
 use Yii;
+use yii\base\Exception;
 
 /**
  * This is the model class for table "actions".
@@ -54,4 +56,5 @@ class Chat extends ClientActiveRecord
 
         ];
     }
+
 }
