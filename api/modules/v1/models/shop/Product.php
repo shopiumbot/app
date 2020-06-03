@@ -1,6 +1,6 @@
 <?php
 
-namespace api\modules\v1\models;
+namespace api\modules\v1\models\shop;
 
 use app\modules\images\behaviors\ImageBehavior;
 use app\modules\images\models\Image;
@@ -75,6 +75,26 @@ class Product extends BaseProduct
             'price',
             'currency_id' => function ($model) {
                 return ($model->currency_id) ? $model->currency_id : 'UAH';
+            },
+            'attributes' => function ($model) {
+                $attributes = $model->getEavAttributes();
+                $data = [];
+                $query = Attribute::find()
+                    ->where(['IN', 'name', array_keys($attributes)])
+                    ->sort()
+                    ->all();
+
+
+                foreach ($query as $attr) {
+                    /** @var Attribute $attr */
+                    $value = $attr->renderValue($attributes[$attr->name]);
+                    $data[] = [
+                        'id' => $attr->id,
+                        'title' => $attr->title,
+                        'value' => $value
+                    ];
+                }
+                return $data;
             },
             'switch',
             'availability',

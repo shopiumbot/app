@@ -169,6 +169,9 @@ return [
                 'PUT <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/update',
                 'DELETE <module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/delete',
 
+
+                'POST <module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>' => '<module>/<controller>/<action>',
+
                 //'POST api/device' => 'api/device/create',
                 //'<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
                 //'GET api/search-dev/<serilal:[\w-]+>' => 'api/search-dev',

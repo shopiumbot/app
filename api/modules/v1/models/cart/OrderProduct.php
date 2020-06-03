@@ -1,6 +1,6 @@
 <?php
 
-namespace api\modules\v1\models;
+namespace api\modules\v1\models\cart;
 
 
 use app\modules\cart\models\OrderProduct as BaseOrderProduct;

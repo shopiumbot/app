@@ -3,7 +3,7 @@
 namespace api\modules\v1\controllers;
 
 use api\controllers\ApiController;
-use api\modules\v1\models\Order;
+use api\modules\v1\models\cart\Order;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use Yii;
@@ -25,6 +25,10 @@ class OrderController extends ApiController
     public function actionIndex()
     {
         $query = Order::find();
+
+        if(Yii::$app->request->get('status')){
+            $query->where(['status_id'=>(int)Yii::$app->request->get('status')]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

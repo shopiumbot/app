@@ -3,16 +3,16 @@
 namespace api\modules\v1\controllers;
 
 use api\controllers\ApiController;
-use api\modules\v1\models\Product;
+use api\modules\v1\models\shop\Product;
 use app\modules\images\behaviors\ImageBehavior;
 use app\modules\images\models\Image;
+use app\modules\shop\models\Category;
 use panix\engine\CMS;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\Url;
-use yii\web\HttpException;
+use yii\helpers\ArrayHelper;
 use yii\web\ServerErrorHttpException;
 
 class ProductController extends ApiController
@@ -70,7 +70,7 @@ class ProductController extends ApiController
     {
         /* @var $model ActiveRecord */
         $model = Product::findOne($id);
-
+        $response = Yii::$app->getResponse();
         $result['success'] = false;
         if ($model) {
             $model->scenario = 'api_update';
@@ -89,18 +89,19 @@ class ProductController extends ApiController
                         if (isset($file['url'])) {
                             $cover = (isset($file['is_main']) && $file['is_main']) ? true : false;
 
-                            try{
+                            try {
                                 $image = $model->attachImage($file['url'], $cover);
-                                if($image){
+                                if ($image) {
                                     $result['notes'][] = 'Success upload: ' . $file['url'];
-                                }else{
+                                } else {
                                     $result['success'] = false;
                                     $result['message'] = 'Ошибка [001]';
                                     return $result;
                                 }
-                            }catch (Exception $exception){
+                            } catch (Exception $exception) {
+                                $response->setStatusCode(500);
                                 $result['success'] = false;
-                                $result['errors'][] = 'URL: '.$file['url'];
+                                $result['errors'][] = ['message' => 'URL: ' . $file['url']];
                                 $result['message'] = $exception->getMessage();
                                 return $result;
                             }
@@ -139,24 +140,84 @@ class ProductController extends ApiController
         return $result;
     }
 
-    public
-    function actionCreate()
+    public function actionCreate()
     {
-
+        $response = Yii::$app->getResponse();
         /* @var $model \yii\db\ActiveRecord */
         $model = new Product([
             'scenario' => 'api_create',
         ]);
+        $params = Yii::$app->getRequest()->getBodyParams();
+        $model->load($params, '');
 
-        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+
+        $mainCategoryId = 1;
+        if (isset($params['main_category_id']))
+            $mainCategoryId = $params['main_category_id'];
+
+        $category = Category::findOne($mainCategoryId);
+        if (!$category) {
+            $response->setStatusCode(404);
+            $result['success'] = false;
+            $result['message'] = 'Not found category ID: '.$mainCategoryId;
+            return $result;
+        }
         if ($model->save()) {
-            $response = Yii::$app->getResponse();
-            $response->setStatusCode(201);
 
+
+
+
+            //if (true) { //Yii::$app->settings->get('shop', 'auto_add_subcategories')
+                // Авто добавление в предков категории
+                // Нужно выбирать в админки самую последнию категории по уровню.
+
+                $categories = [];
+                if ($category) {
+                    $tes = $category->ancestors()->excludeRoot()->all();
+                    foreach ($tes as $cat) {
+                        $categories[] = $cat->id;
+                    }
+
+                }else {
+
+                }
+                $categories = ArrayHelper::merge($categories,[]);
+            //} else {
+
+               // $categories = Yii::$app->request->post('categories', []);
+           // }
+
+            $model->setCategories($categories, $mainCategoryId);
+
+            /** @var ImageBehavior|Product $model */
+            foreach ($params['images'] as $file) {
+                if (isset($file['url'])) {
+                    $cover = (isset($file['is_main']) && $file['is_main']) ? true : false;
+
+                    try {
+                        $image = $model->attachImage($file['url'], $cover);
+                        if ($image) {
+                            $result['notes'][] = 'Success upload: ' . $file['url'];
+                        } else {
+                            $result['success'] = false;
+                            $result['message'] = 'Ошибка [001]';
+                            return $result;
+                        }
+                    } catch (Exception $exception) {
+                        $response->setStatusCode(500);
+                        $result['success'] = false;
+                        $result['errors'][] = ['message' => 'URL: ' . $file['url']];
+                        $result['message'] = $exception->getMessage();
+                        return $result;
+                    }
+
+                }
+            }
+
+            $response->setStatusCode(201);
             $result['success'] = true;
             $result['message'] = Yii::t('app/default', 'SUCCESS_CREATE');
             $result['item'] = $model;
-
             return $result;
         } elseif (!$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
@@ -165,8 +226,7 @@ class ProductController extends ApiController
     }
 
 
-    public
-    function actionDelete($id)
+    public function actionDelete($id)
     {
         $model = Product::findOne($id);
 
