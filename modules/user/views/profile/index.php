@@ -1,10 +1,11 @@
 <?php
 
-use yii\helpers\Html;
+use panix\engine\Html;
 use app\modules\telegram\components\Api;
 use panix\engine\bootstrap\ActiveForm;
 use Longman\TelegramBot\Request;
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
+
 /**
  * @var \yii\web\View $this
  * @var \app\modules\user\models\User $model
@@ -12,7 +13,7 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
  */
 
 
-try {
+
     $telegram = new Api($model->token);
 
 
@@ -70,31 +71,8 @@ try {
     }
     $me = Request::getMe();
 
+?>
 
-    if ($me->isOk()) {
-        $result = $me->getResult();
-
-        // $chatTitle = Request::setChatTitle(['chat_id' => $result->id,'title'=>'test chnage']);
-
-
-        $profile = Request::getUserProfilePhotos(['user_id' => $result->id]); //812367093 me
-        $photo = $profile->getResult()->photos[0][2];
-        $file = Request::getFile(['file_id' => $photo['file_id']]);
-        if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
-            $download = Request::downloadFile($file->getResult());
-
-        } else {
-            echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => '', 'width' => 100]);
-        }
-        ?>
-        <div class="alert alert-success">Подключен
-            бот: <?= Html::a($result->first_name, 'tg://@' . $result->username); ?></div>
-    <?php } else { ?>
-        <div class="alert alert-danger">Бот не подключен!</div>
-    <?php } ?>
-<?php } catch (\yii\base\Exception $e) { ?>
-    <div class="alert alert-danger">Бот не подключен!</div>
-<?php } ?>
 <?php if (!$model->status) { ?>
     <div class="alert alert-warning">
         <?= Yii::t('user/default', 'NO_ACTIVE_ACCOUNT', [
@@ -105,6 +83,7 @@ try {
 <?php } ?>
 <a href="/user/profile/set">set</a>
 <a href="/user/profile/unset">unset</a>
+
 
 <div class="row">
     <div class="col-sm-7">
@@ -125,6 +104,7 @@ try {
                     <div class="col-sm-4 col-lg-2"><label>API ключ</label></div>
                     <div class="col-sm-8 col-lg-10">
                         <?= $model->api_key; ?>
+                        <?= Html::a(Html::icon('s'), ['']); ?>
                     </div>
                 </div>
                 <?= $form->field($model, 'token'); ?>
@@ -138,6 +118,62 @@ try {
         <?php ActiveForm::end(); ?>
     </div>
     <div class="col-sm-5">
+        <div class="card">
+            <div class="card-header">
+                <?php
+                if ($me->isOk()) { ?>
+                    Подключен бот: <?= Html::a($me->getResult()->first_name, 'tg://@' . $me->getResult()->username); ?>
+                <?php }else{ ?>
+                    Бот не подключен!
+                <?php } ?>
+
+            </div>
+            <div class="card-body">
+                <?php
+                if ($me->isOk()) {
+                    $result = $me->getResult();
+                    $profile = Request::getUserProfilePhotos(['user_id' => $result->id]); //812367093 me
+                    $photo = $profile->getResult()->photos[0][2];
+                    $file = Request::getFile(['file_id' => $photo['file_id']]);
+                    if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+                        $download = Request::downloadFile($file->getResult());
+
+                    } else {
+                        echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => 'mb-4', 'width' => 100]);
+                    }
+                    ?>
+                <?php } ?>
+
+                <?php if ($model->plan_id) { ?>
+                    <div class="form-group row">
+                        <div class="col-sm-5 col-lg-5"><label>Текущий тариф</label></div>
+                        <div class="col-sm-7 col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <?= Yii::$app->params['plan'][$model->plan_id]['name']; ?>
+                                    <?php if ($model->trial) {
+                                        echo Html::tag('span', 'TRIAL', ['class' => 'badge badge-danger']);
+                                    }
+                                    ?>
+                                </div>
+                                <div class="col-lg-6 text-lg-right"><?= Html::a('Оплатить','',['class'=>'btn btn-success']); ?></div>
+                            </div>
+
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php if ($model->expire) { ?>
+                    <div class="form-group row">
+                        <div class="col-sm-5 col-lg-5"><label>Продлен до</label></div>
+                        <div class="col-sm-7 col-lg-7">
+                            <?= \panix\engine\CMS::date($model->expire); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+            </div>
+
+        </div>
         <?php $form = ActiveForm::begin([
             'id' => 'reset-form',
             'fieldConfig' => [

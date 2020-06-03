@@ -4,6 +4,7 @@
 namespace app\modules\images\models;
 
 use app\modules\user\components\ClientActiveRecord;
+use app\modules\user\models\User;
 use Yii;
 use yii\helpers\Url;
 
@@ -59,7 +60,11 @@ class Image extends ClientActiveRecord
         //echo Yii::getAlias($this->path).DIRECTORY_SEPARATOR.$this->product_id.DIRECTORY_SEPARATOR.$this->filePath;
         //echo '<br>';
         //echo $filePath;
-        $clientDir = Yii::$app->user->getWebhook();
+        if(Yii::$app->request->get('token')){
+            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+        }else{
+            $clientDir = Yii::$app->user->getWebhook();
+        }
         $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
 
         if (!file_exists($filePath)) {
@@ -85,7 +90,11 @@ class Image extends ClientActiveRecord
 
     public function getPathToOrigin()
     {
-        $clientDir = Yii::$app->user->getWebhook();
+        if(Yii::$app->request->get('token')){
+            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+        }else{
+            $clientDir = Yii::$app->user->getWebhook();
+        }
         //$base = Yii::$app->getModule('images')->getStorePath();
         $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
         if (!file_exists($filePath)) {
@@ -96,7 +105,12 @@ class Image extends ClientActiveRecord
 
     public function getUrlToOrigin()
     {
-        $clientDir = Yii::$app->user->getWebhook();
+        if(Yii::$app->request->get('token')){
+            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+        }else{
+            $clientDir = Yii::$app->user->getWebhook();
+        }
+
         $base = '/uploads/'.$clientDir.'/product/'.$this->product_id.'/' . $this->filePath;
         $filePath = $base;
         return $filePath;

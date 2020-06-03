@@ -104,6 +104,25 @@ class ImageBehavior extends Behavior
         BaseFileHelper::createDirectory($path, 0775, true);
 
 
+
+        $img = $this->owner->getImage();
+
+
+
+        /** @var ImageHandler $img */
+        if (is_object($file)) {
+            $file->saveAs($newAbsolutePath);
+        } else {
+            copy($file, $newAbsolutePath);
+        }
+        $img = Yii::$app->img->load($newAbsolutePath);
+        if ($img->getHeight() > Yii::$app->params['maxUploadImageSize']['height'] || $img->getWidth() > Yii::$app->params['maxUploadImageSize']['width']) {
+            $img->resize(Yii::$app->params['maxUploadImageSize']['width'], Yii::$app->params['maxUploadImageSize']['height']);
+        }
+        if ($img->save($newAbsolutePath)) {
+            //   unlink($runtimePath);
+        }
+
         $image = new Image;
         $image->product_id = $this->owner->primaryKey;
         $image->filePath = $pictureFileName;
@@ -122,25 +141,10 @@ class ImageBehavior extends Behavior
             unlink($newAbsolutePath);
             throw new \Exception(array_shift($ar));
         }
-        $img = $this->owner->getImage();
 
         //If main image not exists
         if ($img == null || $is_main) {
             $this->setMainImage($image);
-        }
-
-        /** @var ImageHandler $img */
-        if (is_object($file)) {
-            $file->saveAs($newAbsolutePath);
-        } else {
-            copy($file, $newAbsolutePath);
-        }
-        $img = Yii::$app->img->load($newAbsolutePath);
-        if ($img->getHeight() > Yii::$app->params['maxUploadImageSize']['height'] || $img->getWidth() > Yii::$app->params['maxUploadImageSize']['width']) {
-            $img->resize(Yii::$app->params['maxUploadImageSize']['width'], Yii::$app->params['maxUploadImageSize']['height']);
-        }
-        if ($img->save($newAbsolutePath)) {
-            //   unlink($runtimePath);
         }
 
         return $image;
