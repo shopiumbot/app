@@ -23,6 +23,7 @@ class Product extends BaseProduct
 {
 
     public $images;
+
     public function scenarios()
     {
         $scenarios = parent::scenarios();
@@ -59,7 +60,12 @@ class Product extends BaseProduct
                 /** @var ImageBehavior $model */
                 foreach ($model->getImages() as $img) {
                     /** @var Image $img */
-                    $image[] = Url::to($img->getUrlToOrigin(), true);
+                    $image[] = [
+                        'id' => $img->id,
+                        'is_main' => $img->is_main,
+                        'url' => Url::to($img->getUrlToOrigin(), true),
+                    ];
+
                 }
                 return $image;
             },

@@ -4,11 +4,15 @@ namespace api\modules\v1\controllers;
 
 use api\controllers\ApiController;
 use api\modules\v1\models\Product;
+use app\modules\images\behaviors\ImageBehavior;
+use app\modules\images\models\Image;
 use panix\engine\CMS;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
+use yii\web\HttpException;
 use yii\web\ServerErrorHttpException;
 
 class ProductController extends ApiController
@@ -80,8 +84,40 @@ class ProductController extends ApiController
             // print_r($model);die;
             if ($model->save()) {
                 if (isset($params['images'])) {
+                    /** @var ImageBehavior|Product $model */
                     foreach ($params['images'] as $file) {
-                        $image = $model->attachImage($file);
+                        if (isset($file['url'])) {
+                            $cover = (isset($file['is_main']) && $file['is_main']) ? true : false;
+
+                            try{
+                                $image = $model->attachImage($file['url'], $cover);
+                                if($image){
+                                    $result['notes'][] = 'Success upload: ' . $file['url'];
+                                }else{
+                                    $result['success'] = false;
+                                    $result['message'] = 'Ошибка [001]';
+                                    return $result;
+                                }
+                            }catch (Exception $exception){
+                                $result['success'] = false;
+                                $result['errors'][] = 'URL: '.$file['url'];
+                                $result['message'] = $exception->getMessage();
+                                return $result;
+                            }
+
+                        }
+
+                        if (isset($file['id']) && isset($file['action'])) {
+                            if ($file['action'] == 'delete') {
+                                $image = Image::findOne(['id' => $file['id'], 'product_id' => $model->getPrimaryKey()]);
+                                if ($image) {
+                                    $model->removeImage($image);
+                                } else {
+                                    $result['warning'][] = 'Not found image ID: ' . $file['id'];
+                                }
+                            }
+                        }
+
                     }
                 }
                 $result['success'] = true;
@@ -95,6 +131,7 @@ class ProductController extends ApiController
         } else {
             $result['message'] = 'Object not found';
         }
+
         if ($model->hasErrors()) {
             $result['message'] = 'Error';
             $result['errors'] = $model->getErrors();
@@ -102,7 +139,8 @@ class ProductController extends ApiController
         return $result;
     }
 
-    public function actionCreate()
+    public
+    function actionCreate()
     {
 
         /* @var $model \yii\db\ActiveRecord */
@@ -127,7 +165,8 @@ class ProductController extends ApiController
     }
 
 
-    public function actionDelete($id)
+    public
+    function actionDelete($id)
     {
         $model = Product::findOne($id);
 
