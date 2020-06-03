@@ -8,7 +8,32 @@ return [
     'id' => 'api',
     'name' => 'Api',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+    ],
+    'on beforeRequest' => function ($event) {
+        if (Yii::$app->request->get('token')) {
+            $user = \app\modules\user\models\User::findIdentityByAccessToken(Yii::$app->request->get('token'));
+            if ($user) {
+                Yii::$app->setComponents([
+                    'clientDb' => [
+                        'class' => 'yii\db\Connection',
+                        'dsn' => 'mysql:host='.$user->db_host.';dbname=' . $user->db_name,
+                        'username' => $user->db_user,
+                        'password' => $user->db_password,
+                        'charset' => 'utf8',
+                        'tablePrefix' => 'pf26_',
+                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                        'enableSchemaCache' => true,
+                        'schemaCache' => 'cache'
+                    ]
+                ]);
+                Yii::$app->runtimePath = '@app/runtime/test';
+            }
+        }
+    },
     'language'=>'ru',
     'defaultRoute' => 'site',
     /* 'modules' => [
@@ -44,6 +69,9 @@ return [
             'directoryLevel' => 0,
             'keyPrefix' => '',
             'class' => 'yii\caching\FileCache', //DummyCache
+        ],
+        'img' => [
+            'class' => 'panix\engine\components\ImageHandler',
         ],
         'user' => [
 
@@ -103,7 +131,7 @@ return [
             //$event->sender->createCommand("SET names utf8")->execute();
             //},
         ],
-        'clientDb' => [
+        /*'clientDb' => [
             'class' => 'panix\engine\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=shopiumbot_jonggolf',
             'username' => 'root',
@@ -115,7 +143,7 @@ return [
             'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
             'enableSchemaCache' => true,
             'schemaCache' => 'cache'
-        ],
+        ],*/
         'request' => [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',

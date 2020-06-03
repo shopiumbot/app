@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use panix\engine\CMS;
 use Yii;
 use app\modules\user\models\User;
 use yii\filters\AccessControl;
@@ -11,7 +12,7 @@ use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\filters\ContentNegotiator;
 use yii\rest\ActiveController;
-use yii\rest\Serializer;
+use api\rest\Serializer;
 use yii\web\Response;
 
 
@@ -19,7 +20,7 @@ class ApiController extends ActiveController
 {
 
     public $serializer = [
-        'class' => \api\rest\Serializer::class,
+        'class' => Serializer::class,
     ];
 
     public function init()

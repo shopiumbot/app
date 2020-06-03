@@ -4,6 +4,7 @@ namespace api\modules\v1\controllers;
 
 use api\controllers\ApiController;
 use api\modules\v1\models\Product;
+use panix\engine\CMS;
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\db\ActiveRecord;
@@ -37,9 +38,20 @@ class ProductController extends ApiController
         return $dataProvider;
     }
 
+    private function guid()
+    {
+        if (function_exists('com_create_guid') === true) {
+            return trim(com_create_guid(), '{}');
+        }
+
+        return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
+
     public function actionView($id)
     {
+//echo $this->guid();
         $model = Product::findOne($id);
+
         $result['success'] = false;
         if ($model) {
             $result['item'] = $model;
@@ -58,10 +70,23 @@ class ProductController extends ApiController
         $result['success'] = false;
         if ($model) {
             $model->scenario = 'api_update';
-            $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+            $params = Yii::$app->getRequest()->getBodyParams();
+            $model->load($params, '');
+
+
+            $model->file = $params['images'];
+
+
+            // print_r($model);die;
             if ($model->save()) {
+                if (isset($params['images'])) {
+                    foreach ($params['images'] as $file) {
+                        $image = $model->attachImage($file);
+                    }
+                }
                 $result['success'] = true;
                 $result['message'] = Yii::t('app/default', 'SUCCESS_UPDATE');
+
                 $result['item'] = $model;
                 return $result;
             } elseif (!$model->hasErrors()) {
