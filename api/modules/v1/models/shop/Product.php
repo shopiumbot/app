@@ -40,18 +40,19 @@ class Product extends BaseProduct
             'type' => function ($model) {
                 return ['id' => $model->type_id, 'name' => $model->type->name];
             },
-
             'name',
+            'price',
             'sku',
-            // 'manufacturer' => function ($model) {
-            //    return ($model->manufacturer_id) ? $model->manufacturer : $model->manufacturer_id;
-            // },
-            /*'categories' => function ($model) {
+            'switch',
+            'availability',
+            'created_at',
+            'updated_at',
+            'categories' => function ($model) {
                 return [
                     'main_category' => $model->mainCategory->name,
                     'categories' => $model->categories
                 ];
-            },*/
+            },
             'manufacturer' => function ($model) {
                 return ['id' => $model->manufacturer_id, 'name' => $model->manufacturer->name];
             },
@@ -69,10 +70,6 @@ class Product extends BaseProduct
                 }
                 return $image;
             },
-            /*'supplier' => function ($model) {
-                return ['id' => $model->supplier_id, 'name' => $model->supplier->name];
-            },*/
-            'price',
             'currency_id' => function ($model) {
                 return ($model->currency_id) ? $model->currency_id : 'UAH';
             },
@@ -96,10 +93,7 @@ class Product extends BaseProduct
                 }
                 return $data;
             },
-            'switch',
-            'availability',
-            'created_at',
-            'updated_at',
+
         ];
     }
 
