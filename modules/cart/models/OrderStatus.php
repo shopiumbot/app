@@ -12,6 +12,14 @@ class OrderStatus extends ClientActiveRecord
     public $disallow_delete = [1];
     const route = '/admin/cart/statuses';
 
+    public function fields()
+    {
+        return [
+            'id',
+            'name',
+        ];
+    }
+
     public static function tableName()
     {
         return '{{%order__status}}';

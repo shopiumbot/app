@@ -210,6 +210,16 @@ class ProductItemCommand extends SystemCommand
         } else {
             $image = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
         }
+
+
+        $test = [
+
+           // 'text' => json_encode($images),
+            'chat_id' => $chat_id,
+        ];
+     //  Request::sendMessage($test);
+
+
         if ($callbackData == 'changeProductImage') {
 
             $dataMedia = [
@@ -234,6 +244,7 @@ class ProductItemCommand extends SystemCommand
             if ($reqMedia->isOk()) {
                 if (isset($imageData)) {
                     if (!$imageData->telegram_file_id) {
+                        //todo: добавить проверку на бота, ИД или токен, еще не ясно
                         $imageData->telegram_file_id = $reqMedia->getResult()->photo[0]['file_id'];
                         $imageData->save(false);
                     }
@@ -289,7 +300,7 @@ class ProductItemCommand extends SystemCommand
                 $errorCode = $reqPhoto->getErrorCode();
                 $description = $reqPhoto->getDescription();
                 //print_r($reqPhoto);
-                $s = $this->notify("{$errorCode} {$description} " . $image, 'error');
+                $s = $this->notify("sendPhoto: {$errorCode} {$description} " . $image, 'error');
             }
 
             //

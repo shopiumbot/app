@@ -87,6 +87,12 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
 
 <div class="row">
     <div class="col-sm-7">
+
+        <?php if(Yii::$app->session->hasFlash('success')){
+            echo  Yii::$app->session->getFlash('success');
+        }?>
+
+
         <?php $form = ActiveForm::begin([
             'id' => 'profile-form',
             'fieldConfig' => [
@@ -122,7 +128,7 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
             <div class="card-header">
                 <?php
                 if ($me->isOk()) { ?>
-                    Подключен бот: <?= Html::a($me->getResult()->first_name, 'tg://@' . $me->getResult()->username); ?>
+                    Подключен бот: <?= Html::a($me->getResult()->first_name, 'tg://resolve?domain=' . $me->getResult()->username); ?>
                 <?php }else{ ?>
                     Бот не подключен!
                 <?php } ?>
@@ -133,6 +139,8 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                 if ($me->isOk()) {
                     $result = $me->getResult();
                     $profile = Request::getUserProfilePhotos(['user_id' => $result->id]); //812367093 me
+
+                    if($profile->getResult()->photos){
                     $photo = $profile->getResult()->photos[0][2];
                     $file = Request::getFile(['file_id' => $photo['file_id']]);
                     if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
@@ -140,6 +148,7 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
 
                     } else {
                         echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => 'mb-4', 'width' => 100]);
+                    }
                     }
                     ?>
                 <?php } ?>
@@ -188,6 +197,8 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                 // 'labelOptions' => ['class' => 'col-lg-22 control-label'],
             ],
         ]); ?>
+
+
 
         <div class="card">
             <div class="card-header">

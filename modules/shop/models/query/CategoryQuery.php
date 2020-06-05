@@ -57,7 +57,7 @@ class CategoryQuery extends ActiveQuery
         $totalCount = 0;
         if (is_object($root)) {
             /** @var \app\modules\shop\models\Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $root */
-            $res[$root->{$root->idAttribute}]['key'] = $root->{$root->idAttribute};
+            $res[$root->{$root->idAttribute}]['id'] = $root->{$root->idAttribute};
             $res[$root->{$root->idAttribute}]['title'] = $root->{$root->titleAttribute};
             $res[$root->{$root->idAttribute}]['count'] = $root->countItems;
             if (method_exists($root, 'getUrl'))

@@ -44,7 +44,7 @@ class ProfileController extends ClientController
             'class' => 'yii\caching\FileCache',
             'directoryLevel' => 0,
             'keyPrefix' => '',
-            'cachePath' => '@runtime/cache/' . $user->webhook
+            'cachePath' => '@runtime/cache/' . $user->id
         ]);
 
 //20c47911956ccc8ad0bcb00c34c01181 np
@@ -92,18 +92,20 @@ class ProfileController extends ClientController
             'changePasswordForm' => $changePasswordForm
         ]);
     }
-    public function actionSet(){
+
+    public function actionSet()
+    {
         Yii::$app->response->format = Response::FORMAT_HTML;
         try {
             // Create Telegram API object
             $telegram = new Api(Yii::$app->user->token);
 
-            if (!empty(\Yii::$app->modules['telegram']->userCommandsPath)){
-                if(!$commandsPath = realpath(\Yii::getAlias(\Yii::$app->modules['telegram']->userCommandsPath))){
+            if (!empty(\Yii::$app->modules['telegram']->userCommandsPath)) {
+                if (!$commandsPath = realpath(\Yii::getAlias(\Yii::$app->modules['telegram']->userCommandsPath))) {
                     $commandsPath = realpath(\Yii::getAlias('@app') . \Yii::$app->modules['telegram']->userCommandsPath);
                 }
 
-                if(!is_dir($commandsPath)) throw new UserException('dir ' . \Yii::$app->modules['telegram']->userCommandsPath . ' not found!');
+                if (!is_dir($commandsPath)) throw new UserException('dir ' . \Yii::$app->modules['telegram']->userCommandsPath . ' not found!');
             }
 
             // Set webhook
@@ -122,7 +124,8 @@ class ProfileController extends ClientController
      * @return null|string
      * @throws ForbiddenHttpException
      */
-    public function actionUnset(){
+    public function actionUnset()
+    {
         Yii::$app->response->format = Response::FORMAT_HTML;
         if (\Yii::$app->user->isGuest) throw new ForbiddenHttpException();
         try {

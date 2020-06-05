@@ -66,30 +66,37 @@ class WebhookController extends Controller
 
         if ($webhook) {
             $user = User::findByHook($webhook);
+
             //$user = Yii::$app->user->getClientDb();
 
-            Yii::info('hook: ' . Yii::$app->request->get('webhook'));
-            Yii::$app->setComponents([
-                'clientDb' => [
-                    'class' => 'yii\db\Connection',
-                    'dsn' => 'mysql:host=corner.mysql.tools;dbname=' . $user->db_name,
-                    'username' => $user->db_user,
-                    'password' => $user->db_password,
-                    'charset' => 'utf8',
-                    'tablePrefix' => 'client_',
-                    'serverStatusCache' => YII_DEBUG ? 0 : 3600,
-                    'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
-                    'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
-                    'enableSchemaCache' => true,
-                    'schemaCache' => 'cache'
-                ]
-            ]);
+            if ($user) {
+                Yii::info('hook: ' . Yii::$app->request->get('webhook'));
+                Yii::$app->setComponents([
+                    'clientDb' => [
+                        'class' => 'yii\db\Connection',
+                        'dsn' => 'mysql:host=' . $user->db_host . ';dbname=' . $user->db_name,
+                        'username' => $user->db_user,
+                        'password' => $user->db_password,
+                        'charset' => 'utf8',
+                        'tablePrefix' => 'client_',
+                        'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+                        'schemaCacheDuration' => YII_DEBUG ? 0 : 3600 * 24,
+                        'queryCacheDuration' => YII_DEBUG ? 0 : 3600 * 24 * 7,
+                        'enableSchemaCache' => true,
+                        'schemaCache' => 'cache'
+                    ]
+                ]);
+            } else {
+                die('die 1');
+            }
+        } else {
+            die('die 2');
         }
 
 
         if ($user) {
             $mysql_credentials = [
-                'host' => 'corner.mysql.tools',
+                'host' => $user->db_host,
                 'user' => $user->db_user,
                 'password' => $user->db_password,
                 'database' => $user->db_name,

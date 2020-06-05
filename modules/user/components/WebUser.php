@@ -90,7 +90,8 @@ class WebUser extends User
             return Yii::$app->clientDb;
             //return $user->getClientDb();
         } else {
-
+            return Yii::$app->clientDb;
+/*
             if (Yii::$app->request->get('webhook') || Yii::$app->request->get('api_key')) {
                 return Yii::$app->cache->getOrSet('client_db', function () {
                     $class = $this->identityClass;
@@ -119,7 +120,7 @@ class WebUser extends User
                 });
 
 
-            }
+            }*/
         }
 
     }
