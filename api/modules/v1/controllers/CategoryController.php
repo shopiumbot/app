@@ -17,7 +17,7 @@ class CategoryController extends ApiController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['index'], $actions['create']);
+        unset($actions['index'], $actions['create'], $actions['update']);
         return $actions;
     }
 
@@ -74,8 +74,8 @@ class CategoryController extends ApiController
             } elseif (!$model->hasErrors()) {
                 throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
             }
-             $result['success'] = true;
-             $result['message'] = Yii::t('app/default', 'SUCCESS_CREATE');
+            $result['success'] = true;
+            $result['message'] = Yii::t('app/default', 'SUCCESS_CREATE');
 
         } else {
             if ($model->saveNode()) {
@@ -87,6 +87,36 @@ class CategoryController extends ApiController
 
         }
         $response->setStatusCode(201);
+        $result['item'] = $model;
+        return $result;
+    }
+
+
+
+    public function actionUpdate($id)
+    {
+        $response = Yii::$app->getResponse();
+        /* @var $model \yii\db\ActiveRecord */
+        $model = Category::findOne($id);
+        $result['success'] = false;
+        if(!$model){
+            $response->setStatusCode(404);
+            $result['message'] = 'Not found category ID ' . $id;
+            return $result;
+        }
+        $params = Yii::$app->getRequest()->getBodyParams();
+        $model->load($params, '');
+
+        if ($model->saveNode()) {
+            $result['success'] = true;
+            $result['message'] = Yii::t('app/default', 'SUCCESS_UPDATE');
+        } elseif (!$model->hasErrors()) {
+            $response->setStatusCode(500);
+            $result['message'] = 'Failed to update the object for unknown reason.';
+            return $result;
+           // throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
+        }
+
         $result['item'] = $model;
         return $result;
     }
