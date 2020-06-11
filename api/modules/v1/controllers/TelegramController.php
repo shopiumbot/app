@@ -9,6 +9,7 @@ use Longman\TelegramBot\Entities\InlineKeyboard;
 use Longman\TelegramBot\Entities\InlineKeyboardButton;
 use Longman\TelegramBot\Entities\InputMedia\InputMediaPhoto;
 use Longman\TelegramBot\Request;
+use panix\engine\CMS;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use Yii;
@@ -45,10 +46,12 @@ class TelegramController extends ApiController
         if ($chats) {
             if (isset($params['action'])) {
                 foreach ($params['action'] as $action) {
+                    $dataKeyword=[];
                     if (isset($action['text']) && isset($action['callback'])) {
+
                         $dataKeyword['text']=$action['text'];
                         if( !preg_match('/http(s?)\:\/\//i', $action['callback']) ) {
-                            $dataKeyword['callback']=$action['callback'];
+                            $dataKeyword['callback_data']=$action['callback'];
                         }else{
                             $dataKeyword['url']=$action['callback'];
                         }
