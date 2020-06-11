@@ -37,14 +37,26 @@ class TelegramController extends ApiController
             $result['message'] = 'error required message';
         }
 
+
+
+
+
         $chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
         if ($chats) {
             if (isset($params['action'])) {
                 foreach ($params['action'] as $action) {
-                    if (isset($action['text']) && isset($action['url'])) {
+                    if (isset($action['text']) && isset($action['callback'])) {
+                        $dataKeyword['text']=$action['text'];
+                        if( !preg_match('/http(s?)\:\/\//i', $action['callback']) ) {
+                            $dataKeyword['callback']=$action['callback'];
+                        }else{
+                            $dataKeyword['url']=$action['callback'];
+                        }
+
                         $inlineKeyboards[] = [
-                            new InlineKeyboardButton(['text' => $action['text'], 'url' => $action['url']]),
+                            new InlineKeyboardButton($dataKeyword),
                         ];
+
                         $data['reply_markup'] = new InlineKeyboard([
                             'inline_keyboard' => $inlineKeyboards
                         ]);
