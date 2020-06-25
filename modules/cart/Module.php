@@ -43,6 +43,7 @@ class Module extends WebModule implements BootstrapInterface
         $groupUrlRule = new GroupUrlRule([
             'prefix' => $this->id,
             'rules' => [
+
                 '<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>' => '<controller>/<action>',
                 '<controller:[0-9a-zA-Z_\-]+>' => '<controller>/index',
                 '<action:[0-9a-zA-Z_\-]+>' => 'default/<action>',

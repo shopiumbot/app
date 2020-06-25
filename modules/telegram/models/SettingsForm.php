@@ -2,7 +2,7 @@
 
 namespace app\modules\telegram\models;
 
-use panix\engine\SettingsModel;
+use app\modules\user\components\SettingsModel;
 use Yii;
 class SettingsForm extends SettingsModel
 {
@@ -10,7 +10,6 @@ class SettingsForm extends SettingsModel
     public static $category = 'telegram';
 
     protected $module = 'telegram';
-    protected $component = 'clientSettings';
 
     public $api_token;
     public $bot_name;
@@ -20,7 +19,7 @@ class SettingsForm extends SettingsModel
 
     public function init()
     {
-        $this->component = 'clientSettings';
+
         parent::init();
     }
 

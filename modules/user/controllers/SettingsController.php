@@ -1,12 +1,11 @@
 <?php
 
-namespace app\modules\user\controllers\admin;
+namespace app\modules\user\controllers;
 
 use Yii;
-use panix\engine\controllers\AdminController;
 use app\modules\user\models\forms\SettingsForm;
 
-class SettingsController extends AdminController
+class SettingsController extends ClientController
 {
 
     public $icon = 'settings';

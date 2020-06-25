@@ -3,7 +3,7 @@
 namespace app\modules\user\models\forms;
 
 use Yii;
-use panix\engine\SettingsModel;
+use app\modules\user\components\SettingsModel;
 
 /**
  * Class SettingsForm
@@ -44,7 +44,6 @@ class SettingsForm extends SettingsModel
 
     public $oauth_live_id;
     public $oauth_live_secret;
-
     /**
      * @inheritdoc
      */

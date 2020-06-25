@@ -65,6 +65,7 @@ class DefaultController extends Controller
         $image = \Yii::$app->getModule('images')->getImage($alias);
 
         if ($image) {
+
             $response = Yii::$app->getResponse();
             $response->format = \yii\web\Response::FORMAT_RAW;
             $image->getContent($size)->show();

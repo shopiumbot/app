@@ -3,6 +3,7 @@
 namespace app\modules\user\controllers;
 
 use app\modules\telegram\components\Api;
+use Faker\Provider\File;
 use panix\engine\CMS;
 use panix\engine\controllers\WebController;
 use app\modules\user\models\forms\ChangePasswordForm;
@@ -110,7 +111,7 @@ class DefaultController extends WebController
     public function actionRegister()
     {
         $config = Yii::$app->settings->get('user');
-        if(!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
             return $this->redirect(['/user/profile']);
         }
         if ($config->enable_register) {
@@ -155,8 +156,8 @@ class DefaultController extends WebController
                     $successText = Yii::t("user/default", "REGISTER_SUCCESS", ["username" => $user->getDisplayName()]);
                     Yii::$app->session->setFlash("success", $successText);
                 } else {
-                    print_r($user->getErrors());
-                    die;
+                    //   print_r($user->getErrors());
+                    //   die;
                 }
             }
 
@@ -206,7 +207,49 @@ class DefaultController extends WebController
         }
     }
 
-    private function unZip($user)
+    private function downloadGithubClient222($user)
+    {
+
+        $url = "https://github.com/shopiumbot/client/archive/1.1.zip"; // THE FILE URL
+
+        $ch = curl_init();
+        $filePath = Yii::$app->basePath."/../{$user->domain}/master.zip";
+        echo $filePath;die;
+        $file = fopen($filePath, 'w+');
+        $opt = [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FILE => $file,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_BINARYTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
+        ];
+        curl_setopt_array($ch, $opt);
+        $file = curl_exec($ch);
+
+        curl_close($ch);
+        fclose($file);
+
+        return $filePath;
+    }
+
+    private function unZip($path)
+    {
+
+        $zip = new \ZipArchive;
+        $res = $zip->open(Yii::$app->basePath.'/client.zip'); // zip datei
+        if ($res === true) {
+            $zip->extractTo($path);
+            $zip->close();
+        } else {
+            CMS::dump($res);
+            echo ' unzip failed; ';die;
+        }
+    }
+
+    private function unZip_OLD($user)
     {
         $newFile = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.php';
         if (copy(Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'client-config.dist.php', $newFile)) {
@@ -266,14 +309,66 @@ class DefaultController extends WebController
             'collation' => 'utf8_general_ci',
             'user_create' => true,
         ];
+
+
+        $dataDomain = [
+            'class' => 'hosting_site',
+            'method' => 'host_create',
+            'site' => 'shopiumbot.com',
+            'subdomain' => $user->domain,
+        ];
         $createDb = Yii::$app->getModule('user')->hostingApi($dataDb);
+        $createDomain = Yii::$app->getModule('user')->hostingApi($dataDomain);
+        //create domain
+        if ($createDomain['status'] == 'success') {
+            //create domain dir
+            $domainPath = Yii::$app->basePath . '/../' . $user->domain;
+            $createDomainDir = FileHelper::createDirectory($domainPath);
+
+
+            if($createDomainDir){
+               // copy(Yii::$app->basePath.'/client.zip', $domainPath."/client.zip");
+
+                    $this->unZip($domainPath);
+
+
+            }
+
+            $dataDomainConfig = [
+                'class' => 'hosting_site_config_ws',
+                'method' => 'edit',
+                'host' => $user->domain . '.shopiumbot.com',
+                'redirect' => 'www_from',
+                'https_redirect' => 'to_https'
+            ];
+            //configure domain
+            $createDomainConfig = Yii::$app->getModule('user')->hostingApi($dataDomainConfig);
+            if ($createDomainConfig['status'] == 'success') {
+
+            }
+
+
+            $dataDomainConfigPHP = [
+                'class' => 'hosting_site_config_php',
+                'method' => 'edit',
+                'host' => $user->domain . '.shopiumbot.com',
+                'php_version' => 'php74',
+
+            ];
+            $createDomainConfigPHP = Yii::$app->getModule('user')->hostingApi($dataDomainConfigPHP);
+            if ($createDomainConfigPHP['status'] == 'success') {
+
+            }
+
+
+        }
         if ($createDb['status'] == 'success') {
             if ($createDb['data']['user']['status'] == 'success') {
 
                 $user->db_name = $createDb['data']['user']['login'];
                 $user->db_password = $createDb['data']['user']['password'];
                 $user->db_user = $createDb['data']['user']['login'];
-                $this->unZip($user);
+
             }
             $user->save(false);
         } else {
@@ -321,6 +416,7 @@ class DefaultController extends WebController
      */
     public function actionAccount()
     {
+        /** @var User $user */
         $user = Yii::$app->user->identity;
         $user->setScenario("account");
         $loadedPost = $user->load(Yii::$app->request->post());

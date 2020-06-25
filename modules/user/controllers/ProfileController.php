@@ -109,9 +109,9 @@ class ProfileController extends ClientController
             }
 
             // Set webhook
-            $result = $telegram->setWebHook(Yii::$app->user->urlWebhook);
+            $result = $telegram->setWebHook(Yii::$app->user->webhookUrl);
             if ($result->isOk()) {
-                Yii::$app->session->setFlash("success", Yii::t("user/default", $result->getDescription()));
+                Yii::$app->session->setFlash("success-webhook", Yii::t("user/default", 'Бот успешно подписан'));
                 return $this->redirect(['/user/profile']);
             }
         } catch (TelegramException $e) {
@@ -136,7 +136,7 @@ class ProfileController extends ClientController
             $result = $telegram->deleteWebhook();
 
             if ($result->isOk()) {
-                Yii::$app->session->setFlash("success", Yii::t("user/default", $result->getDescription()));
+                Yii::$app->session->setFlash("success-webhook", Yii::t("user/default",'Бот успешно отписан'));
                 return $this->redirect(['/user/profile']);
             }
 

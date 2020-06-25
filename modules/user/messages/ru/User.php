@@ -13,6 +13,7 @@ return [
     'PHONE' => 'Телефон',
     'FULL_NAME' => 'ФИО',
     'GENDER' => 'Пол',
+    'DOMAIN' => 'Домен',
     'FEMALE' => 'Женский',
     'MALE' => 'Мужской',
     'TIMEZONE' => 'Часовой пояс',

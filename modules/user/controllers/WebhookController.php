@@ -7,6 +7,7 @@ use app\modules\user\models\User;
 use Longman\TelegramBot\Exception\TelegramException;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -92,7 +93,9 @@ class WebhookController extends Controller
         } else {
             die('die 2');
         }
-
+        $admins=ArrayHelper::merge([
+            812367093 //all bots admin PANIX
+        ],[]);
 
         if ($user) {
             $mysql_credentials = [
@@ -110,7 +113,7 @@ class WebhookController extends Controller
 
                 //  Yii::$app->getModule('telegram')->setApi($user->getClientDb());
 
-
+                $telegram->enableAdmins($admins);
                 $basePath = \Yii::$app->getModule('telegram')->basePath;
                 $commands_paths = [
                     realpath($basePath . '/commands') . '/SystemCommands',

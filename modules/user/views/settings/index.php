@@ -22,18 +22,7 @@ $form = ActiveForm::begin();
                         'active' => true,
                         'options' => ['id' => 'main'],
                     ],
-                    [
-                        'label' => 'Почта',
-                        'content' => $this->render('_mail', ['form' => $form, 'model' => $model]),
-                        'headerOptions' => [],
-                        'options' => ['id' => 'mail'],
-                    ],
-                    [
-                        'label' => 'OAuth',
-                        'content' => $this->render('_oauth', ['form' => $form, 'model' => $model]),
-                        'headerOptions' => [],
-                        'options' => ['id' => 'oauth'],
-                    ],
+
                 ],
             ]);
             ?>

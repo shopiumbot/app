@@ -13,63 +13,66 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
  */
 
 
+$telegram = new Api($model->token);
 
-    $telegram = new Api($model->token);
 
-
-    $chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
-    if ($chats) {
-        foreach ($chats as $chat) {
-            /*$send = Request::sendMessage([
-                'chat_id'=>$chat['id'],
-                'text'=>'test'
-            ]);*/
-        }
-        /*$venue = Request::sendVenue([
-            'chat_id' => $chat['id'],
-            'latitude' => 46.3974947,
-            'longitude' => 30.7125803,
-            'title' => 'Pixelion',
-            'address' => 'Pixelion address',
+$chats = \app\modules\telegram\models\Chat::find()->asArray()->all();
+if ($chats) {
+    foreach ($chats as $chat) {
+        /*$send = Request::sendMessage([
+            'chat_id'=>$chat['id'],
+            'text'=>'test'
         ]);*/
-
-        $keyboards[] = [
-            new InlineKeyboardButton([
-                'text' => 'Pay 1.00UAH',
-                'callback_data' => "cartDelete"
-            ]),
-            new InlineKeyboardButton([
-                'text' => '—',
-                'callback_data' => "spinner/down/cart"
-            ]),
-
-        ];
-        /*$invoice = Request::sendInvoice([
-            'chat_id' => $chat['id'],
-            'title' => 'title',
-            'description' => 'description',
-            'payload' => 'order-id',
-            'provider_token' => '632593626:TEST:i56982357197',
-            'start_parameter' => 'start_parameter',
-            'currency' => 'UAH',
-            'prices' => [
-                new \Longman\TelegramBot\Entities\Payments\LabeledPrice([
-                    'label' => 'test',
-                    'amount' => 100
-                ]),
-            ],
-
-            'disable_notification' => false,
-            'reply_markup' => new \Longman\TelegramBot\Entities\InlineKeyboard([
-                'inline_keyboard' => $keyboards
-            ])
-
-        ]);*/
-
-        //\panix\engine\CMS::dump($invoice);
-
     }
-    $me = Request::getMe();
+    /*$venue = Request::sendVenue([
+        'chat_id' => $chat['id'],
+        'latitude' => 46.3974947,
+        'longitude' => 30.7125803,
+        'title' => 'Pixelion',
+        'address' => 'Pixelion address',
+    ]);*/
+
+    $keyboards[] = [
+        new InlineKeyboardButton([
+            'text' => 'Pay 1.00UAH',
+            'callback_data' => "cartDelete"
+        ]),
+        new InlineKeyboardButton([
+            'text' => '—',
+            'callback_data' => "spinner/down/cart"
+        ]),
+
+    ];
+    /*$invoice = Request::sendInvoice([
+        'chat_id' => $chat['id'],
+        'title' => 'title',
+        'description' => 'description',
+        'payload' => 'order-id',
+        'provider_token' => '632593626:TEST:i56982357197',
+        'start_parameter' => 'start_parameter',
+        'currency' => 'UAH',
+        'prices' => [
+            new \Longman\TelegramBot\Entities\Payments\LabeledPrice([
+                'label' => 'test',
+                'amount' => 100
+            ]),
+        ],
+
+        'disable_notification' => false,
+        'reply_markup' => new \Longman\TelegramBot\Entities\InlineKeyboard([
+            'inline_keyboard' => $keyboards
+        ])
+
+    ]);*/
+
+    //\panix\engine\CMS::dump($invoice);
+
+}
+$me = Request::getMe();
+
+
+$webhook_info = Request::getWebhookInfo();
+
 
 ?>
 
@@ -81,16 +84,49 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
         ]); ?>
     </div>
 <?php } ?>
-<a href="/user/profile/set">set</a>
-<a href="/user/profile/unset">unset</a>
+
+<?php
 
 
+/*$s1 = Request::setChatDescription([
+    'chat_id'=>1269972177,
+    'description'=>'test desc'
+]);
+\panix\engine\CMS::dump($s1);
+$s = Request::setChatTitle([
+    'chat_id'=>1269972177,
+    'title'=>'test title'
+]);
+\panix\engine\CMS::dump($s);
+$permissions = Request::setChatPermissions([
+    'chat_id'=>1269972177,
+    'permissions'=>new \Longman\TelegramBot\Entities\ChatPermissions([
+        'can_send_messages'=>true,
+        'can_send_media_messages'=>true,
+        'can_send_polls'=>true,
+        'can_send_other_messages'=>true,
+        'can_add_web_page_previews'=>true,
+        'can_change_info'=>true,
+        'can_invite_users'=>true,
+        'can_pin_messages'=>true,
+    ])
+]);
+\panix\engine\CMS::dump($permissions);*/
+
+
+
+
+?>
+
+<?php if (Yii::$app->session->hasFlash('success-webhook')) { ?>
+    <div class="alert alert-success">
+        <?= Yii::$app->session->getFlash('success-webhook'); ?>
+    </div>
+<?php } ?>
 <div class="row">
     <div class="col-sm-7">
 
-        <?php if(Yii::$app->session->hasFlash('success')){
-            echo  Yii::$app->session->getFlash('success');
-        }?>
+
 
 
         <?php $form = ActiveForm::begin([
@@ -114,6 +150,12 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                     </div>
                 </div>
                 <?= $form->field($model, 'token'); ?>
+
+                <?= $form->field($model, 'bot_admins')
+                    ->widget(\panix\ext\taginput\TagInput::class, ['placeholder' => 'ID'])
+                    ->hint('Введите ID и нажмите Enter');
+                ?>
+
                 <?= $form->field($model, 'phone')->widget(\panix\ext\telinput\PhoneInput::class); ?>
                 <?= $form->field($model, 'gender')->dropDownList($model->getGenderList(), ['prompt' => $model::t('NO_SELECT_GENDER')]); ?>
             </div>
@@ -129,10 +171,20 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                 <?php
                 if ($me->isOk()) { ?>
                     Подключен бот: <?= Html::a($me->getResult()->first_name, 'tg://resolve?domain=' . $me->getResult()->username); ?>
-                <?php }else{ ?>
+                <?php } else { ?>
                     Бот не подключен!
                 <?php } ?>
+                <div class="float-right">
+                    <?php
 
+                    if ($webhook_info->isOk()) {
+                        $result = $webhook_info->getResult();
+                        if ($result->url === Yii::$app->user->webhookUrl) {
+                            echo Html::a('☹️ Оптисать бота', ['/user/profile/unset'], ['class' => 'btn btn-sm btn-danger']);
+                        }
+                    }
+                    ?>
+                </div>
             </div>
             <div class="card-body">
                 <?php
@@ -140,15 +192,15 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                     $result = $me->getResult();
                     $profile = Request::getUserProfilePhotos(['user_id' => $result->id]); //812367093 me
 
-                    if($profile->getResult()->photos){
-                    $photo = $profile->getResult()->photos[0][2];
-                    $file = Request::getFile(['file_id' => $photo['file_id']]);
-                    if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
-                        $download = Request::downloadFile($file->getResult());
+                    if ($profile->getResult()->photos) {
+                        $photo = $profile->getResult()->photos[0][2];
+                        $file = Request::getFile(['file_id' => $photo['file_id']]);
+                        if (!file_exists(Yii::getAlias('@app/web/downloads/telegram') . DIRECTORY_SEPARATOR . $file->getResult()->file_path)) {
+                            $download = Request::downloadFile($file->getResult());
 
-                    } else {
-                        echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => 'mb-4', 'width' => 100]);
-                    }
+                        } else {
+                            echo Html::img('/downloads/telegram/' . $file->getResult()->file_path, ['class' => 'mb-4', 'width' => 100]);
+                        }
                     }
                     ?>
                 <?php } ?>
@@ -165,7 +217,7 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                                     }
                                     ?>
                                 </div>
-                                <div class="col-lg-6 text-lg-right"><?= Html::a('Оплатить','',['class'=>'btn btn-success']); ?></div>
+                                <div class="col-lg-6 text-lg-right"><?= Html::a('Оплатить', '', ['class' => 'btn btn-success']); ?></div>
                             </div>
 
                         </div>
@@ -197,7 +249,6 @@ use Longman\TelegramBot\Entities\InlineKeyboardButton;
                 // 'labelOptions' => ['class' => 'col-lg-22 control-label'],
             ],
         ]); ?>
-
 
 
         <div class="card">

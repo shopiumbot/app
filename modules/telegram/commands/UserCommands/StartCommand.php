@@ -81,50 +81,6 @@ class StartCommand extends SystemCommand
 
 
 
-        Request::setChatDescription([
-            'chat_id'=>$chat_id,
-            'description'=>'test desc'
-        ]);
-        $s = Request::setChatTitle([
-            'chat_id'=>$chat_id,
-            'title'=>'test title'
-        ]);
-        $adsData2['chat_id']=$chat_id;
-        $adsData2['text']=json_encode($s);
-        $ads = Request::sendMessage($adsData2);
-
-        Request::setChatPhoto([
-            'chat_id'=>$chat_id,
-            'photo'=>'https://news.liga.net/images/general/2019/09/11/20190911155038-8657.jpg'
-        ]);
-
-
-        $g['chat_id']=$chat_id;
-        $g['media']=[
-            new InputMediaPhoto([
-                'type'=>'photo',
-                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155038-8657.jpg',
-                'caption'=>'test1'
-            ]),
-            new InputMediaPhoto([
-                'type'=>'photo',
-                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155121-2187.jpg',
-                'caption'=>'test2'
-            ]),
-            new InputMediaPhoto([
-                'type'=>'photo',
-                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155229-1638.jpg?v=1568211585',
-                'caption'=>'test3'
-            ]),
-            new InputMediaPhoto([
-                'type'=>'photo',
-                'media'=>'https://news.liga.net/images/general/2019/09/11/20190911155225-5301.jpg?v=1568211581',
-                'caption'=>'test 42 41 423'
-            ]),
-        ];
-
-        Request::sendMediaGroup($g);
-
 
         /*$limit = 10;
         $offset = null;

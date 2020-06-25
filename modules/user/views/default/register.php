@@ -8,7 +8,6 @@ use yii\widgets\ActiveForm;
  * @var app\modules\user\models\User $user
  */
 
-
 ?>
     <div class="text-center">
         <h1><?= Html::encode($this->context->pageName); ?></h1>
@@ -31,6 +30,8 @@ use yii\widgets\ActiveForm;
         <?= $form->field($user, 'plan_id')->dropDownList([1=>'Basic',2=>'Standard',3=>'Premium']) ?>
         <?= $form->field($user, 'email') ?>
         <?= $form->field($user, 'token') ?>
+        <?= $form->field($user, 'domain') ?>
+        <?= $form->field($user, 'phone')->widget(\panix\ext\telinput\PhoneInput::class); ?>
         <?= $form->field($user, 'password')->passwordInput() ?>
         <?= $form->field($user, 'password_confirm')->passwordInput() ?>
         <div class="form-group text-center">

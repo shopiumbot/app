@@ -2,7 +2,7 @@
 
 namespace app\modules\shop\models\forms;
 
-use panix\engine\SettingsModel;
+use app\modules\user\components\SettingsModel;
 
 class SettingsForm extends SettingsModel
 {
@@ -13,14 +13,15 @@ class SettingsForm extends SettingsModel
     public $per_page;
     public $group_attribute;
     public $label_expire_new;
-    public $smart_bc;
-    public $smart_title;
+
+
 
     public function rules()
     {
         return [
+            ['per_page', 'in', 'range' => [5, 6, 7,8]],
             [['per_page'], "required"],
-            [['group_attribute', 'smart_bc', 'smart_title'], 'boolean'],
+            [['group_attribute'], 'boolean'],
             [['label_expire_new'], 'integer'],
         ];
     }
@@ -31,12 +32,11 @@ class SettingsForm extends SettingsModel
     public static function defaultSettings()
     {
         return [
-            'per_page' => '10,20,30',
+            'per_page' => '10',
             'seo_categories' => false,
             'group_attribute' => false,
             'label_expire_new' => 7,
-            'smart_bc' => true,
-            'smart_title' => true,
+
         ];
     }
 

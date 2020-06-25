@@ -94,12 +94,13 @@ class User extends ActiveRecord implements IdentityInterface
         $rules = [
             [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             // general email and username rules
-            [['email', 'username', 'phone', 'token'], 'string', 'max' => 255],
+            [['email', 'username', 'phone', 'token','domain'], 'string', 'max' => 255],
             [['email', 'username'], 'unique'],
             [['email', 'username', 'token'], 'filter', 'filter' => 'trim'],
             [['email'], 'email'],
             ['image', 'file'],
-
+            [['bot_admins'], 'string'],
+            [['phone','domain'], 'required'],
             [['token'], 'required', 'on' => ['profile']],
 
             ['new_password', 'string', 'min' => 4, 'on' => ['reset', 'change']],
@@ -110,8 +111,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['new_password'], 'required', 'on' => ['reset', 'change']],
             [['password_confirm'], 'required', 'on' => ['reset', 'register']],
 
-            [['password', 'token','plan_id'], 'required', 'on' => ['register']],
-            [['token'], 'validateBotToken', 'on' => ['register','profile']],
+            [['password', 'token', 'plan_id'], 'required', 'on' => ['register']],
+            [['token'], 'validateBotToken', 'on' => ['register', 'profile']],
             [['plan_id'], 'validatePlan', 'on' => ['register']],
 
 
@@ -145,10 +146,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function validatePlan($attribute)
     {
-        if(!in_array($this->$attribute,array_keys(Yii::$app->params['plan']))){
+        if (!in_array($this->$attribute, array_keys(Yii::$app->params['plan']))) {
             $this->addError($attribute, 'Ошибка, не выбран тарифный план.');
         }
     }
+
     public function validateBotToken($attribute)
     {
 
@@ -177,7 +179,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios = parent::scenarios();
 
         $scenarios['register_fast'] = ['username', 'email', 'phone'];
-        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token','plan_id'];
+        $scenarios['register'] = ['username', 'email', 'password', 'password_confirm', 'token', 'plan_id','domain','phone'];
         $scenarios['reset'] = ['new_password', 'password_confirm'];
         $scenarios['admin'] = ['role', 'username'];
         $scenarios['db'] = ['db_user', 'db_password', 'db_name', 'domain'];
@@ -443,8 +445,8 @@ class User extends ActiveRecord implements IdentityInterface
             "api_key" => Yii::$app->security->generateRandomString(),
             "status" => static::STATUS_ACTIVE,
             'webhook' => CMS::hash(Yii::$app->security->generateRandomString()),
-            'expire'=>time(),
-            'trial'=>1
+            'expire' => time() + (86400 * 7),
+            'trial' => 1
         ];
 
         // determine if we need to change status based on module properties

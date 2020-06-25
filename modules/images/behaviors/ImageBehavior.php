@@ -97,8 +97,8 @@ class ImageBehavior extends Behavior
         } else {
             $pictureFileName = $uniqueName . '.' . $file->extension;
         }
-        $clientDir = Yii::$app->user->getWebhook();
-        $path = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
+        $user_id = Yii::$app->user->id;
+        $path = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
         $newAbsolutePath = $path . DIRECTORY_SEPARATOR . $pictureFileName;
 
         BaseFileHelper::createDirectory($path, 0775, true);
@@ -266,7 +266,7 @@ class ImageBehavior extends Behavior
      */
     public function afterDelete()
     {
-        $clientDir = Yii::$app->user->getWebhook();
+        $user_id = Yii::$app->user->id;
         $images = $this->owner->getImages();
         if (count($images) < 1) {
             return true;
@@ -275,7 +275,7 @@ class ImageBehavior extends Behavior
                 $this->owner->removeImage($image);
             }
 
-            $path = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
+            $path = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->owner->primaryKey;
             if(file_exists($path)){
             BaseFileHelper::removeDirectory($path);
             }
@@ -291,10 +291,10 @@ class ImageBehavior extends Behavior
      */
     public function removeImage(Image $img)
     {
-        $clientDir = Yii::$app->user->getWebhook();
+        $user_id = Yii::$app->user->id;
         //$storePath = Yii::$app->getModule('images')->getStorePath();
 
-        $fileToRemove = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $img->filePath;
+        $fileToRemove = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $img->filePath;
         if (preg_match('@\.@', $fileToRemove) and is_file($fileToRemove)) {
             unlink($fileToRemove);
         }

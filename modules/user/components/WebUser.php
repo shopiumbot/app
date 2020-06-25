@@ -65,7 +65,11 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->language : "";
     }
-
+    public function getBotAdmins()
+    {
+        $user = $this->getIdentity();
+        return $user ? $user->bot_admins : [];
+    }
     public function getToken()
     {
         $user = $this->getIdentity();
@@ -130,7 +134,7 @@ class WebUser extends User
         $user = $this->getIdentity();
         return $user ? $user->webhook : Yii::$app->request->get('webhook');
     }
-    public function getUrlWebhook()
+    public function getWebhookUrl()
     {
         return 'https://shopiumbot.com/user/webhook/'.$this->getWebhook();
     }

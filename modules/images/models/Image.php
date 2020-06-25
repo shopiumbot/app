@@ -61,11 +61,12 @@ class Image extends ClientActiveRecord
         //echo '<br>';
         //echo $filePath;
         if(Yii::$app->request->get('token')){
-            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+            $user_id = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->id;
         }else{
-            $clientDir = Yii::$app->user->getWebhook();
+            $user_id = Yii::$app->user->id;
         }
-        $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+
+        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
 
         if (!file_exists($filePath)) {
             $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
@@ -91,12 +92,12 @@ class Image extends ClientActiveRecord
     public function getPathToOrigin()
     {
         if(Yii::$app->request->get('token')){
-            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+            $user_id = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->id;
         }else{
-            $clientDir = Yii::$app->user->getWebhook();
+            $user_id = Yii::$app->user->id;
         }
         //$base = Yii::$app->getModule('images')->getStorePath();
-        $filePath = Yii::getAlias("@uploads/{$clientDir}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
+        $filePath = Yii::getAlias("@uploads/{$user_id}/product") . DIRECTORY_SEPARATOR . $this->product_id . DIRECTORY_SEPARATOR . $this->filePath;
         if (!file_exists($filePath)) {
             $filePath = Yii::getAlias('@uploads') . DIRECTORY_SEPARATOR . 'no-image.jpg';
         }
@@ -106,12 +107,12 @@ class Image extends ClientActiveRecord
     public function getUrlToOrigin()
     {
         if(Yii::$app->request->get('token')){
-            $clientDir = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->webhook;
+            $user_id = User::findIdentityByAccessToken(Yii::$app->request->get('token'))->id;
         }else{
-            $clientDir = Yii::$app->user->getWebhook();
+            $user_id = Yii::$app->user->id;
         }
 
-        $base = '/uploads/'.$clientDir.'/product/'.$this->product_id.'/' . $this->filePath;
+        $base = '/uploads/'.$user_id.'/product/'.$this->product_id.'/' . $this->filePath;
         $filePath = $base;
         return $filePath;
     }
